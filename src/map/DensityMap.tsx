@@ -19,10 +19,10 @@ import { spikeFragment, spikeUniforms, spikeVertex } from './spikeShader'
 import {
   BASE_HEIGHT,
   CELL_KM,
-  HEIGHT_CONTRAST,
   groundTexture,
   makeDataTexture,
   makeRampTexture,
+  shapeOf,
 } from './layers'
 import { HOME, applyCamera, boundsToWorld, fitState, type CamState } from './camera'
 import Rivers from './Rivers'
@@ -31,7 +31,7 @@ import CityLabels from './labels'
 const EASE = 'power3.inOut'
 
 /** categorical and flat layers must keep their exact classes; continuous ramps compress */
-const COLOR_POW = (def: LayerDef) => (def.type === 'categorical' || def.heightMode === 'flat' ? 1 : 2.6)
+const COLOR_POW = (def: LayerDef) => (def.type === 'categorical' || shapeOf(def).flat ? 1 : 2.6)
 
 type HoverPayload = { id: number; label: string; value: string; x: number; y: number } | null
 
@@ -156,24 +156,26 @@ function Spikes({ bin }: { bin: Uint8Array }) {
       u.uRampA.value = ramp
       u.uTexB.value = tex
       u.uRampB.value = ramp
-      u.uHeight.value = [def.heightScale, def.heightScale]
+      const shape = shapeOf(def)
+      u.uHeight.value = [shape.scale, shape.scale]
       u.uColorPow.value = [COLOR_POW(def), COLOR_POW(def)]
-      u.uExp.value = [def.heightExponent * HEIGHT_CONTRAST, def.heightExponent * HEIGHT_CONTRAST]
-      u.uFlat.value = [def.heightMode === 'flat' ? 1 : 0, def.heightMode === 'flat' ? 1 : 0]
+      u.uExp.value = [shape.exp, shape.exp]
+      u.uFlat.value = [shape.flat ? 1 : 0, shape.flat ? 1 : 0]
       u.uSink.value = [def.sink ? 1 : 0, def.sink ? 1 : 0]
-      u.uWidth.value = step * (def.heightMode === 'flat' ? 1.0 : 0.82)
+      u.uWidth.value = step * (shape.flat ? 1.0 : 0.82)
       invalidate()
       return
     }
 
+    const nextShape = shapeOf(def)
     u.uTexB.value = tex
     u.uRampB.value = ramp
-    u.uHeight.value = [u.uHeight.value[0], def.heightScale]
+    u.uHeight.value = [u.uHeight.value[0], nextShape.scale]
     u.uColorPow.value = [u.uColorPow.value[0], COLOR_POW(def)]
-    u.uExp.value = [u.uExp.value[0], def.heightExponent * HEIGHT_CONTRAST]
-    u.uFlat.value = [u.uFlat.value[0], def.heightMode === 'flat' ? 1 : 0]
+    u.uExp.value = [u.uExp.value[0], nextShape.exp]
+    u.uFlat.value = [u.uFlat.value[0], nextShape.flat ? 1 : 0]
     u.uSink.value = [u.uSink.value[0], def.sink ? 1 : 0]
-    u.uWidth.value = step * (def.heightMode === 'flat' ? 1.0 : 0.82)
+    u.uWidth.value = step * (nextShape.flat ? 1.0 : 0.82)
     u.uMix.value = 0
     mix.current.v = 0
 
@@ -190,12 +192,12 @@ function Spikes({ bin }: { bin: Uint8Array }) {
       onComplete: () => {
         u.uTexA.value = tex
         u.uRampA.value = ramp
-        u.uHeight.value = [def.heightScale, def.heightScale]
+        u.uHeight.value = [nextShape.scale, nextShape.scale]
         u.uColorPow.value = [COLOR_POW(def), COLOR_POW(def)]
-        u.uExp.value = [def.heightExponent * HEIGHT_CONTRAST, def.heightExponent * HEIGHT_CONTRAST]
-        u.uFlat.value = [def.heightMode === 'flat' ? 1 : 0, def.heightMode === 'flat' ? 1 : 0]
+        u.uExp.value = [nextShape.exp, nextShape.exp]
+        u.uFlat.value = [nextShape.flat ? 1 : 0, nextShape.flat ? 1 : 0]
         u.uSink.value = [def.sink ? 1 : 0, def.sink ? 1 : 0]
-        u.uWidth.value = step * (def.heightMode === 'flat' ? 1.0 : 0.82)
+        u.uWidth.value = step * (nextShape.flat ? 1.0 : 0.82)
         u.uMix.value = 0
         mix.current.v = 0
         current.current = { def, tex, ramp }

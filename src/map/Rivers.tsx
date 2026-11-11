@@ -52,9 +52,9 @@ export default function Rivers() {
       mat.color.set(BINS[i].color)
       // long dashes with a short gap: the channel reads as one continuous river
       // rather than the string of dots the old 3.4/8.5 split produced
-      mat.dashSize = 9
-      mat.gapSize = 3.2
-      mat.dashScale = 1.05
+      mat.dashSize = 34
+      mat.gapSize = 7
+      mat.dashScale = 1
       const line = new LineSegments2(geo, mat)
       line.computeLineDistances()
       line.frustumCulled = false

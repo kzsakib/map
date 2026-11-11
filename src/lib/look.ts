@@ -19,6 +19,15 @@ export const HEIGHT_BOOST: Record<string, { scale: number; exp: number }> = {
   population: { scale: 1.8, exp: 1.15 },
 }
 
+/**
+ * Shape overrides for layers whose stored height fields don't suit the site.
+ * Rivers ship as a flat plane with almost no height, which is why the layer read
+ * as a pale carpet with no structure next to the spiky ones.
+ */
+export const SHAPE_OVERRIDES: Record<string, { flat: boolean; scale: number; exp: number }> = {
+  rivers: { flat: false, scale: 0.62, exp: 3.0 },
+}
+
 export function rampOf(layer: LayerDef): string[] {
   return RAMP_OVERRIDES[layer.id] ?? layer.ramp
 }

@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { db, type LayerDef } from '../lib/data'
-import { GROUND_RAMP_MIX, GROUND_TINT, HEIGHT_BOOST, rampOf } from '../lib/look'
+import { GROUND_RAMP_MIX, GROUND_TINT, HEIGHT_BOOST, SHAPE_OVERRIDES, rampOf } from '../lib/look'
 
 /** world units: 1 unit = 1 km */
 export const CELL_KM = 1.11
@@ -90,16 +90,28 @@ export function makeDataTexture(bin: Uint8Array, cols: number, rows: number): TH
   return tex
 }
 
+/**
+ * One source of truth for how a layer's columns are shaped, so the CPU height
+ * used by labels and the shader uniforms in the map can never disagree.
+ */
+export function shapeOf(layer: LayerDef): { flat: boolean; scale: number; exp: number } {
+  const override = SHAPE_OVERRIDES[layer.id]
+  if (override) return override
+  const boost = HEIGHT_BOOST[layer.id]
+  const flat = layer.heightMode === 'flat'
+  return {
+    flat,
+    scale: layer.heightScale * (boost?.scale ?? 1),
+    exp: (layer.heightExponent + (boost?.exp ?? 0)) * HEIGHT_CONTRAST,
+  }
+}
+
 /** Must match spikeShader.ts exactly so labels sit on the real columns. */
 export function heightFor(layer: LayerDef, q: number): number {
   const t = Math.min(1, Math.max(0, q / 255))
-  if (layer.heightMode === 'flat') {
-    return layer.heightScale * BASE_HEIGHT - (layer.sink ? t * 0.55 : 0)
-  }
-  const boost = HEIGHT_BOOST[layer.id]
-  const exponent = (layer.heightExponent + (boost?.exp ?? 0)) * HEIGHT_CONTRAST
-  const scale = layer.heightScale * (boost?.scale ?? 1)
-  return Math.pow(t, exponent) * scale * BASE_HEIGHT
+  const shape = shapeOf(layer)
+  if (shape.flat) return shape.scale * BASE_HEIGHT - (layer.sink ? t * 0.55 : 0)
+  return Math.pow(t, shape.exp) * shape.scale * BASE_HEIGHT
 }
 
 /**
@@ -120,7 +132,7 @@ export function groundTexture(layer: LayerDef): THREE.CanvasTexture | null {
   if (!lctx) return null
 
   const tint = hexToRgb(GROUND_TINT[layer.id] ?? '#eef6f0')
-  const crisp = layer.type === 'categorical' || layer.heightMode === 'flat'
+  const crisp = layer.type === 'categorical' || shapeOf(layer).flat
   for (let r = 0; r < meta.rows; r++) {
     for (let c = 0; c < meta.cols; c++) {
       const i = r * meta.cols + c
