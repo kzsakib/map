@@ -35,6 +35,10 @@ export const SHAPE_OVERRIDES: Record<string, { flat: boolean; scale: number; exp
   // curve flattened the whole country except the Chittagong hills; an exponent
   // below 1 lifts the plains into readable relief and still lets the hills run
   elevation: { flat: false, scale: 0.65, exp: 0.35 },
+  // classes are stored as ids, so a gentle value curve turns the land-use map
+  // into stepped terrain: cropland barely lifts, forest, built-up and wetland
+  // stand above it. Without this the layer was a flat plate of one colour.
+  landuse: { flat: false, scale: 14.5, exp: 1 },
 }
 
 export function rampOf(layer: LayerDef): string[] {
@@ -82,7 +86,7 @@ export const COLOR_POW_OVERRIDE: Record<string, number> = {
  */
 export const CLASS_COLOR_OVERRIDE: Record<string, Record<number, string>> = {
   landuse: {
-    1: '#efe9d8', // cropland: the paper ground
+    1: '#e6d6ab', // cropland: a warm field, not the paper ground
     2: '#2f6b45', // trees
     3: '#8a2f4a', // built-up
     4: '#1f5f8b', // water
