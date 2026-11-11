@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+.venv/
+venv/
+
+# build output
+dist/
+dist-ssr/
+*.local
+
+# pipeline downloads (re-fetched by the scripts)
+scripts/raw/
+
+# local review screenshots
+artifacts/
+
+# misc
+.DS_Store
+*.log
+.vscode/*
+!.vscode/extensions.json

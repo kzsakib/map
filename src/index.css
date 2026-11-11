@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #fcfbf9;
+  --ink: #171717;
+  --indigo: #4338ca;
+  --line: #e5e5e5;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(67, 56, 202, 0.16);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--indigo);
+    outline-offset: 3px;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer utilities {
+  /* the only easing allowed anywhere in the system */
+  .premium-ease {
+    transition-timing-function: var(--ease);
+  }
+
+  .mono-label {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .mono-tight {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  .serif-display {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+  }
+
+  .soft-ring {
+    box-shadow: 0 1px 0 0 rgba(23, 23, 23, 0.04), 0 0 0 1px var(--line);
+  }
+}
+
+/* hero wave, exactly as specified */
+.wave-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25vh;
+  overflow: hidden;
+  pointer-events: none;
+}
+.wave-curve {
+  width: 120%;
+  height: 200%;
+  background: #fcfbf9;
+  border-radius: 50% 50% 0 0;
+  transform: translate(-10%, 20%);
+  pointer-events: auto;
+}
+
+/* hero mesh: three soft blurred fields drifting on a 30s linear loop */
+.mesh-field {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  will-change: transform;
+}
+
+.hero-mesh {
+  background:
+    radial-gradient(60% 60% at 30% 30%, rgba(199, 210, 254, 0.55), transparent 70%),
+    radial-gradient(50% 50% at 74% 40%, rgba(233, 213, 255, 0.45), transparent 72%),
+    radial-gradient(55% 55% at 50% 78%, rgba(252, 231, 243, 0.55), transparent 70%);
+}
+
+/* fine map frame ticks */
+.frame-ticks::before,
+.frame-ticks::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(23, 23, 23, 0.22) 0 1px,
+    transparent 1px 10%
+  );
+  height: 6px;
+  top: auto;
+  bottom: -7px;
+  opacity: 0.5;
+}
+
+.map-frame {
+  box-shadow: inset 0 0 0 1px rgba(23, 23, 23, 0.12);
+}
+
+/* soft card hover from the design system */
+.card-hover {
+  transition:
+    transform 600ms var(--ease),
+    box-shadow 600ms var(--ease),
+    border-color 600ms var(--ease);
+}
+.card-hover:hover {
+  transform: translateY(-16px) scale(1.02);
+  box-shadow: 0 30px 60px -30px rgba(67, 56, 202, 0.25);
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* thin, quiet scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ddd9d1;
+  border-radius: 999px;
+  border: 3px solid var(--cream);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .card-hover:hover {
+    transform: none;
+  }
+}

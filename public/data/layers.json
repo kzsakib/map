@@ -1,0 +1,261 @@
+[
+  {
+    "id": "population",
+    "label": "Population density",
+    "unit": "people / km²",
+    "type": "raster",
+    "min": 0,
+    "max": 212173.1,
+    "scale": "log",
+    "ramp": [
+      "#ddd6fe",
+      "#c4b5fd",
+      "#f9a8d4",
+      "#f472b6",
+      "#e05a6b",
+      "#8d1f4a",
+      "#3b0a1e"
+    ],
+    "heightMode": "value",
+    "heightScale": 1.0,
+    "heightExponent": 1.4,
+    "source": "WorldPop 2020, 1 km unconstrained population per pixel",
+    "sourceUrl": "https://hub.worldpop.org/geodata/summary?id=24873",
+    "license": "CC BY 4.0",
+    "year": 2020,
+    "quantization": "q1..255 = log1p(density)/log1p(max)"
+  },
+  {
+    "id": "forest",
+    "label": "Forest & tree cover",
+    "unit": "% of cell",
+    "type": "raster",
+    "min": 0,
+    "max": 100.0,
+    "scale": "linear",
+    "ramp": [
+      "#f4f1e8",
+      "#d7ead2",
+      "#9cc79a",
+      "#5b9a6b",
+      "#2f6b4a",
+      "#0f3d2e"
+    ],
+    "heightMode": "value",
+    "heightScale": 0.55,
+    "heightExponent": 1.6,
+    "source": "ESA WorldCover 2021 v200, classes 10 (tree cover) + 95 (mangroves)",
+    "sourceUrl": "https://esa-worldcover.org",
+    "license": "CC BY 4.0",
+    "year": 2021
+  },
+  {
+    "id": "elevation",
+    "label": "Elevation",
+    "unit": "metres",
+    "type": "raster",
+    "min": 0,
+    "max": 1150.0,
+    "scale": "linear",
+    "ramp": [
+      "#e9f0e2",
+      "#b7cfa0",
+      "#d8c48f",
+      "#b08a5e",
+      "#8a6b52",
+      "#f4f1ea",
+      "#ffffff"
+    ],
+    "heightMode": "value",
+    "heightScale": 1.0,
+    "heightExponent": 1.35,
+    "exaggeration": 6,
+    "source": "Copernicus DEM GLO-90 (90 m), averaged to 1 km",
+    "sourceUrl": "https://registry.opendata.aws/copernicus-dem/",
+    "license": "Free, © ESA / Copernicus DEM",
+    "year": 2021
+  },
+  {
+    "id": "rivers",
+    "label": "Rivers & water",
+    "unit": "% water cover",
+    "type": "raster",
+    "min": 0,
+    "max": 100,
+    "scale": "linear",
+    "ramp": [
+      "#fcfaf3",
+      "#e6e2f7",
+      "#b9b2ec",
+      "#7a6ed6",
+      "#4338ca",
+      "#22d3ee"
+    ],
+    "heightMode": "flat",
+    "heightScale": 0.01,
+    "sink": true,
+    "source": "HydroRIVERS v10 (lines) + ESA WorldCover class 80 (water mask)",
+    "sourceUrl": "https://www.hydrosheds.org/products/hydrorivers",
+    "license": "HydroSHEDS license (attribution); WorldCover CC BY 4.0",
+    "year": 2020
+  },
+  {
+    "id": "landuse",
+    "label": "Land use",
+    "unit": "dominant class",
+    "type": "categorical",
+    "min": 1,
+    "max": 8,
+    "scale": "linear",
+    "ramp": [
+      "#d9b46a",
+      "#4f8a5b",
+      "#6b2038",
+      "#3d6fa8",
+      "#5fa8a0",
+      "#1d4b3a",
+      "#cfc3a3"
+    ],
+    "classes": [
+      {
+        "id": 1,
+        "label": "Cropland",
+        "color": "#d9b46a",
+        "code": [
+          40
+        ]
+      },
+      {
+        "id": 2,
+        "label": "Trees",
+        "color": "#4f8a5b",
+        "code": [
+          10,
+          20,
+          100
+        ]
+      },
+      {
+        "id": 3,
+        "label": "Built-up",
+        "color": "#6b2038",
+        "code": [
+          50
+        ]
+      },
+      {
+        "id": 4,
+        "label": "Water",
+        "color": "#3d6fa8",
+        "code": [
+          80
+        ]
+      },
+      {
+        "id": 5,
+        "label": "Wetland",
+        "color": "#5fa8a0",
+        "code": [
+          90
+        ]
+      },
+      {
+        "id": 6,
+        "label": "Mangrove",
+        "color": "#1d4b3a",
+        "code": [
+          95
+        ]
+      },
+      {
+        "id": 7,
+        "label": "Grass / bare",
+        "color": "#cfc3a3",
+        "code": [
+          30,
+          60,
+          70
+        ]
+      }
+    ],
+    "heightMode": "flat",
+    "heightScale": 0.012,
+    "heightExponent": 1.0,
+    "source": "ESA WorldCover 2021 v200, dominant class per 1 km cell",
+    "sourceUrl": "https://esa-worldcover.org",
+    "license": "CC BY 4.0",
+    "year": 2021
+  },
+  {
+    "id": "rainfall",
+    "label": "Annual rainfall",
+    "unit": "mm / year",
+    "type": "raster",
+    "min": 0,
+    "max": 5000.0,
+    "scale": "linear",
+    "ramp": [
+      "#f6f3e4",
+      "#d5e6ee",
+      "#9cc6dd",
+      "#5f9fc4",
+      "#3f6fae",
+      "#6b4fa0"
+    ],
+    "heightMode": "value",
+    "heightScale": 0.6,
+    "heightExponent": 1.2,
+    "source": "WorldClim 2.1 (bio_12 annual precipitation, summed from monthly, 30 arc-second)",
+    "sourceUrl": "https://www.worldclim.org/data/worldclim21.html",
+    "license": "CC BY 4.0 (WorldClim 2.1)",
+    "year": 2020
+  },
+  {
+    "id": "airquality",
+    "label": "Air quality (PM2.5)",
+    "unit": "µg/m³",
+    "type": "raster",
+    "min": 0,
+    "max": 100.0,
+    "scale": "linear",
+    "ramp": [
+      "#faf6ea",
+      "#f2d79a",
+      "#e9a95c",
+      "#d9694f",
+      "#a63a58",
+      "#3b1250"
+    ],
+    "heightMode": "value",
+    "heightScale": 0.55,
+    "heightExponent": 1.3,
+    "source": "ACAG SatPM2.5 V6.GL.02.04, annual mean 2023, 0.01° CNN hybrid",
+    "sourceUrl": "https://sites.wustl.edu/acag/datasets/surface-pm2-5/",
+    "license": "CC BY 4.0",
+    "year": 2023
+  },
+  {
+    "id": "flood",
+    "label": "Flood risk (water occurrence)",
+    "unit": "% of time under water",
+    "type": "raster",
+    "min": 0,
+    "max": 100.0,
+    "scale": "linear",
+    "ramp": [
+      "#f7f5ec",
+      "#e3eef0",
+      "#b9dbe2",
+      "#7fb9cc",
+      "#4a86b4",
+      "#2a4d8f"
+    ],
+    "heightMode": "value",
+    "heightScale": 0.5,
+    "heightExponent": 1.3,
+    "source": "JRC Global Surface Water 2021, monthly water occurrence",
+    "sourceUrl": "https://global-surface-water.appspot.com/",
+    "license": "Free, © European Commission JRC / Copernicus",
+    "year": 2021
+  }
+]

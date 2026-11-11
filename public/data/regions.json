@@ -1,0 +1,4474 @@
+[
+  {
+    "id": 1,
+    "name": "Barishal",
+    "bbox": [
+      89.875,
+      21.7868,
+      90.9903,
+      23.0453
+    ],
+    "centroid": [
+      22.403,
+      90.2786
+    ],
+    "areaKm2": 9560.9,
+    "divisionId": 1,
+    "stats": {
+      "population": {
+        "mean": 825.4089,
+        "min": 0.0,
+        "max": 26111.8848,
+        "population": 8128678
+      },
+      "forest": {
+        "mean": 42.52,
+        "min": 0.0,
+        "max": 100.0
+      },
+      "landuse": {
+        "mean": 1.8657,
+        "min": 1.0,
+        "max": 7.0,
+        "dominant": 1
+      },
+      "elevation": {
+        "mean": 3.7281,
+        "min": 0.0,
+        "max": 15.9851
+      },
+      "rivers": {
+        "mean": 12.9784,
+        "min": 0.0,
+        "max": 100.0,
+        "riverKm": 23.5
+      },
+      "rainfall": {
+        "mean": 2411.2944,
+        "min": 0.0,
+        "max": 3011.9998
+      },
+      "airquality": {
+        "mean": 68.0083,
+        "min": 48.0774,
+        "max": 81.2122
+      },
+      "flood": {
+        "mean": 11.2378,
+        "min": 0.0,
+        "max": 99.4569
+      }
+    },
+    "districts": [
+      {
+        "id": 3,
+        "name": "Barguna",
+        "divisionId": 1,
+        "divisionName": "Barishal",
+        "bbox": [
+          89.8752,
+          21.8604,
+          90.3719,
+          22.4859
+        ],
+        "centroid": [
+          22.1726,
+          90.2035
+        ],
+        "areaKm2": 1346.6,
+        "stats": {
+          "population": {
+            "mean": 651.8737,
+            "min": 35.0909,
+            "max": 4954.6978,
+            "population": 45562683
+          },
+          "forest": {
+            "mean": 36.2888,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 1.6943,
+            "min": 1.0,
+            "max": 6.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 3.411,
+            "min": 0.0,
+            "max": 10.6245
+          },
+          "rivers": {
+            "mean": 10.6021,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 0.0
+          },
+          "rainfall": {
+            "mean": 2504.9584,
+            "min": 0.0,
+            "max": 2746.0
+          },
+          "airquality": {
+            "mean": 65.1001,
+            "min": 53.5056,
+            "max": 71.1213
+          },
+          "flood": {
+            "mean": 9.7002,
+            "min": 0.0,
+            "max": 98.7131
+          }
+        }
+      },
+      {
+        "id": 4,
+        "name": "Barishal",
+        "divisionId": 1,
+        "divisionName": "Barishal",
+        "bbox": [
+          90.0179,
+          22.4533,
+          90.6891,
+          23.0721
+        ],
+        "centroid": [
+          22.7622,
+          90.3256
+        ],
+        "areaKm2": 2217.8,
+        "stats": {
+          "population": {
+            "mean": 987.4105,
+            "min": 6.6002,
+            "max": 26111.8848,
+            "population": 16631860
+          },
+          "forest": {
+            "mean": 46.3836,
+            "min": 0.0,
+            "max": 99.25
+          },
+          "landuse": {
+            "mean": 1.9566,
+            "min": 1.0,
+            "max": 4.0,
+            "dominant": 2
+          },
+          "elevation": {
+            "mean": 4.2632,
+            "min": 0.0,
+            "max": 11.3329
+          },
+          "rivers": {
+            "mean": 13.8249,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 0.0
+          },
+          "rainfall": {
+            "mean": 2178.6365,
+            "min": 0.0,
+            "max": 2488.3335
+          },
+          "airquality": {
+            "mean": 71.9377,
+            "min": 60.837,
+            "max": 78.4959
+          },
+          "flood": {
+            "mean": 11.958,
+            "min": 0.0,
+            "max": 99.0256
+          }
+        }
+      },
+      {
+        "id": 5,
+        "name": "Bhola",
+        "divisionId": 1,
+        "divisionName": "Barishal",
+        "bbox": [
+          90.5252,
+          21.8559,
+          91.024,
+          22.8448
+        ],
+        "centroid": [
+          22.4051,
+          90.7684
+        ],
+        "areaKm2": 1941.1,
+        "stats": {
+          "population": {
+            "mean": 1017.9222,
+            "min": 0.0,
+            "max": 14533.2764,
+            "population": 12165282
+          },
+          "forest": {
+            "mean": 44.0508,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 2.0892,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 2
+          },
+          "elevation": {
+            "mean": 3.5636,
+            "min": 0.0,
+            "max": 14.9988
+          },
+          "rivers": {
+            "mean": 17.7158,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 0.0
+          },
+          "rainfall": {
+            "mean": 2608.59,
+            "min": 0.0,
+            "max": 3011.9998
+          },
+          "airquality": {
+            "mean": 65.3171,
+            "min": 48.0774,
+            "max": 81.2122
+          },
+          "flood": {
+            "mean": 14.5931,
+            "min": 0.0,
+            "max": 99.1575
+          }
+        }
+      },
+      {
+        "id": 24,
+        "name": "Jhalokathi",
+        "divisionId": 1,
+        "divisionName": "Barishal",
+        "bbox": [
+          90.019,
+          22.3369,
+          90.3849,
+          22.7865
+        ],
+        "centroid": [
+          22.5628,
+          90.1735
+        ],
+        "areaKm2": 738.6,
+        "stats": {
+          "population": {
+            "mean": 921.8279,
+            "min": 248.9973,
+            "max": 8471.9502,
+            "population": 0
+          },
+          "forest": {
+            "mean": 53.9902,
+            "min": 1.25,
+            "max": 99.75
+          },
+          "landuse": {
+            "mean": 1.8926,
+            "min": 1.0,
+            "max": 4.0,
+            "dominant": 2
+          },
+          "elevation": {
+            "mean": 4.4861,
+            "min": 0.464,
+            "max": 7.4663
+          },
+          "rivers": {
+            "mean": 6.8377,
+            "min": 0.0,
+            "max": 90.75,
+            "riverKm": 0.0
+          },
+          "rainfall": {
+            "mean": 2270.9769,
+            "min": 2160.4446,
+            "max": 2399.0
+          },
+          "airquality": {
+            "mean": 71.3492,
+            "min": 65.1009,
+            "max": 75.9397
+          },
+          "flood": {
+            "mean": 5.3793,
+            "min": 0.0,
+            "max": 84.8094
+          }
+        }
+      },
+      {
+        "id": 51,
+        "name": "Patuakhali",
+        "divisionId": 1,
+        "divisionName": "Barishal",
+        "bbox": [
+          90.0828,
+          21.7692,
+          90.6625,
+          22.5926
+        ],
+        "centroid": [
+          22.2593,
+          90.46
+        ],
+        "areaKm2": 2612.0,
+        "stats": {
+          "population": {
+            "mean": 617.7111,
+            "min": 0.0,
+            "max": 12172.9434,
+            "population": 0
+          },
+          "forest": {
+            "mean": 32.7287,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 1.7209,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 2.9864,
+            "min": 0.0,
+            "max": 15.9851
+          },
+          "rivers": {
+            "mean": 14.1246,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 0.0
+          },
+          "rainfall": {
+            "mean": 2597.0842,
+            "min": 0.0,
+            "max": 2934.8333
+          },
+          "airquality": {
+            "mean": 65.3138,
+            "min": 49.0673,
+            "max": 79.1288
+          },
+          "flood": {
+            "mean": 12.6455,
+            "min": 0.0,
+            "max": 99.4569
+          }
+        }
+      },
+      {
+        "id": 52,
+        "name": "Pirojpur",
+        "divisionId": 1,
+        "divisionName": "Barishal",
+        "bbox": [
+          89.8579,
+          22.1582,
+          90.1886,
+          22.871
+        ],
+        "centroid": [
+          22.5149,
+          89.9957
+        ],
+        "areaKm2": 1269.7,
+        "stats": {
+          "population": {
+            "mean": 851.7988,
+            "min": 0.0,
+            "max": 6933.3271,
+            "population": 0
+          },
+          "forest": {
+            "mean": 52.463,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 1.8769,
+            "min": 1.0,
+            "max": 4.0,
+            "dominant": 2
+          },
+          "elevation": {
+            "mean": 4.3835,
+            "min": 0.0,
+            "max": 9.1624
+          },
+          "rivers": {
+            "mean": 9.4427,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 23.5
+          },
+          "rainfall": {
+            "mean": 2174.0898,
+            "min": 0.0,
+            "max": 2421.3335
+          },
+          "airquality": {
+            "mean": 71.0637,
+            "min": 61.9231,
+            "max": 77.4845
+          },
+          "flood": {
+            "mean": 8.1275,
+            "min": 0.0,
+            "max": 99.1794
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Chattogram",
+    "bbox": [
+      90.5771,
+      20.6215,
+      92.6909,
+      24.2444
+    ],
+    "centroid": [
+      22.4826,
+      92.1307
+    ],
+    "areaKm2": 30503.8,
+    "divisionId": 2,
+    "stats": {
+      "population": {
+        "mean": 1025.934,
+        "min": 0.0,
+        "max": 82832.6328,
+        "population": 31355474
+      },
+      "forest": {
+        "mean": 67.9955,
+        "min": 0.0,
+        "max": 100.0
+      },
+      "landuse": {
+        "mean": 1.8979,
+        "min": 1.0,
+        "max": 7.0,
+        "dominant": 2
+      },
+      "elevation": {
+        "mean": 73.0819,
+        "min": 0.0,
+        "max": 885.5399
+      },
+      "rivers": {
+        "mean": 4.4657,
+        "min": 0.0,
+        "max": 100.0,
+        "riverKm": 613.5
+      },
+      "rainfall": {
+        "mean": 2848.7626,
+        "min": 0.0,
+        "max": 4811.3335
+      },
+      "airquality": {
+        "mean": 51.2199,
+        "min": 25.5672,
+        "max": 86.6304
+      },
+      "flood": {
+        "mean": 4.4286,
+        "min": 0.0,
+        "max": 99.2763
+      }
+    },
+    "districts": [
+      {
+        "id": 2,
+        "name": "Bandarban",
+        "divisionId": 2,
+        "divisionName": "Chattogram",
+        "bbox": [
+          92.0597,
+          21.1843,
+          92.6803,
+          22.3557
+        ],
+        "centroid": [
+          21.7711,
+          92.3873
+        ],
+        "areaKm2": 4595.3,
+        "stats": {
+          "population": {
+            "mean": 101.2734,
+            "min": 0.0,
+            "max": 3473.228,
+            "population": 31355474
+          },
+          "forest": {
+            "mean": 93.4413,
+            "min": 35.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 2.0087,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 2
+          },
+          "elevation": {
+            "mean": 198.2622,
+            "min": 5.7494,
+            "max": 885.5399
+          },
+          "rivers": {
+            "mean": 0.1571,
+            "min": 0.0,
+            "max": 12.0,
+            "riverKm": 108.4
+          },
+          "rainfall": {
+            "mean": 3727.6642,
+            "min": 3007.6667,
+            "max": 4811.3335
+          },
+          "airquality": {
+            "mean": 31.526,
+            "min": 25.5672,
+            "max": 42.6091
+          },
+          "flood": {
+            "mean": 0.0419,
+            "min": 0.0,
+            "max": 3.87
+          }
+        }
+      },
+      {
+        "id": 7,
+        "name": "Brahmanbaria",
+        "divisionId": 2,
+        "divisionName": "Chattogram",
+        "bbox": [
+          90.7218,
+          23.6467,
+          91.3289,
+          24.268
+        ],
+        "centroid": [
+          23.9585,
+          91.1132
+        ],
+        "areaKm2": 1923.1,
+        "stats": {
+          "population": {
+            "mean": 1736.4384,
+            "min": 0.0,
+            "max": 18015.4004,
+            "population": 17735555
+          },
+          "forest": {
+            "mean": 22.3937,
+            "min": 0.0,
+            "max": 98.25
+          },
+          "landuse": {
+            "mean": 1.177,
+            "min": 1.0,
+            "max": 5.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 5.3866,
+            "min": 0.0894,
+            "max": 31.1233
+          },
+          "rivers": {
+            "mean": 2.3676,
+            "min": 0.0,
+            "max": 84.25,
+            "riverKm": 92.6
+          },
+          "rainfall": {
+            "mean": 2203.574,
+            "min": 2113.6667,
+            "max": 2291.6667
+          },
+          "airquality": {
+            "mean": 69.1128,
+            "min": 55.5403,
+            "max": 82.9064
+          },
+          "flood": {
+            "mean": 12.4055,
+            "min": 0.0,
+            "max": 83.0044
+          }
+        }
+      },
+      {
+        "id": 8,
+        "name": "Chandpur",
+        "divisionId": 2,
+        "divisionName": "Chattogram",
+        "bbox": [
+          90.5387,
+          22.9844,
+          91.03,
+          23.5037
+        ],
+        "centroid": [
+          23.2437,
+          90.8419
+        ],
+        "areaKm2": 1468.4,
+        "stats": {
+          "population": {
+            "mean": 1641.2519,
+            "min": 0.0,
+            "max": 21362.1582,
+            "population": 12110776
+          },
+          "forest": {
+            "mean": 49.4614,
+            "min": 0.0,
+            "max": 97.25
+          },
+          "landuse": {
+            "mean": 1.8778,
+            "min": 1.0,
+            "max": 4.0,
+            "dominant": 2
+          },
+          "elevation": {
+            "mean": 5.2713,
+            "min": 0.0,
+            "max": 11.3068
+          },
+          "rivers": {
+            "mean": 10.7027,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 27.2
+          },
+          "rainfall": {
+            "mean": 2230.2051,
+            "min": 0.0,
+            "max": 2552.3335
+          },
+          "airquality": {
+            "mean": 74.0557,
+            "min": 55.6134,
+            "max": 80.2071
+          },
+          "flood": {
+            "mean": 9.5717,
+            "min": 0.0,
+            "max": 99.2763
+          }
+        }
+      },
+      {
+        "id": 10,
+        "name": "Chattogram",
+        "divisionId": 2,
+        "divisionName": "Chattogram",
+        "bbox": [
+          91.3111,
+          21.858,
+          92.2161,
+          22.9888
+        ],
+        "centroid": [
+          22.4238,
+          92.0408
+        ],
+        "areaKm2": 4449.9,
+        "stats": {
+          "population": {
+            "mean": 1950.4339,
+            "min": 0.0,
+            "max": 82832.6328,
+            "population": 0
+          },
+          "forest": {
+            "mean": 63.0396,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 1.9888,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 2
+          },
+          "elevation": {
+            "mean": 21.7967,
+            "min": 0.0,
+            "max": 222.9623
+          },
+          "rivers": {
+            "mean": 4.5175,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 110.5
+          },
+          "rainfall": {
+            "mean": 2932.6111,
+            "min": 0.0,
+            "max": 3519.9998
+          },
+          "airquality": {
+            "mean": 55.0979,
+            "min": 34.5333,
+            "max": 86.6304
+          },
+          "flood": {
+            "mean": 2.9438,
+            "min": 0.0,
+            "max": 93.1675
+          }
+        }
+      },
+      {
+        "id": 12,
+        "name": "Cox's Bazar",
+        "divisionId": 2,
+        "divisionName": "Chattogram",
+        "bbox": [
+          91.8294,
+          20.5906,
+          92.3522,
+          21.9241
+        ],
+        "centroid": [
+          21.3325,
+          92.0923
+        ],
+        "areaKm2": 2171.7,
+        "stats": {
+          "population": {
+            "mean": 1117.0228,
+            "min": 0.0,
+            "max": 8819.9453,
+            "population": 0
+          },
+          "forest": {
+            "mean": 54.5229,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 2.2535,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 2
+          },
+          "elevation": {
+            "mean": 16.6527,
+            "min": 0.0,
+            "max": 161.6494
+          },
+          "rivers": {
+            "mean": 16.6183,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 33.4
+          },
+          "rainfall": {
+            "mean": 3654.4883,
+            "min": 0.0,
+            "max": 4602.167
+          },
+          "airquality": {
+            "mean": 45.2703,
+            "min": 32.4871,
+            "max": 63.5756
+          },
+          "flood": {
+            "mean": 13.1927,
+            "min": 0.0,
+            "max": 99.2562
+          }
+        }
+      },
+      {
+        "id": 13,
+        "name": "Cumilla",
+        "divisionId": 2,
+        "divisionName": "Chattogram",
+        "bbox": [
+          90.63,
+          23.0482,
+          91.3719,
+          23.7955
+        ],
+        "centroid": [
+          23.4217,
+          91.0768
+        ],
+        "areaKm2": 3087.4,
+        "stats": {
+          "population": {
+            "mean": 1974.4998,
+            "min": 157.5445,
+            "max": 22808.1934,
+            "population": 0
+          },
+          "forest": {
+            "mean": 41.6077,
+            "min": 0.0,
+            "max": 97.75
+          },
+          "landuse": {
+            "mean": 1.381,
+            "min": 1.0,
+            "max": 5.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 6.9784,
+            "min": 0.0,
+            "max": 37.218
+          },
+          "rivers": {
+            "mean": 1.1638,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 45.0
+          },
+          "rainfall": {
+            "mean": 2338.0935,
+            "min": 2156.6667,
+            "max": 2697.6665
+          },
+          "airquality": {
+            "mean": 72.5712,
+            "min": 64.2032,
+            "max": 81.3645
+          },
+          "flood": {
+            "mean": 1.8297,
+            "min": 0.0,
+            "max": 97.8412
+          }
+        }
+      },
+      {
+        "id": 17,
+        "name": "Feni",
+        "divisionId": 2,
+        "divisionName": "Chattogram",
+        "bbox": [
+          91.2467,
+          22.7569,
+          91.5771,
+          23.2853
+        ],
+        "centroid": [
+          23.0206,
+          91.4018
+        ],
+        "areaKm2": 906.5,
+        "stats": {
+          "population": {
+            "mean": 1734.5831,
+            "min": 0.0,
+            "max": 23064.5195,
+            "population": 0
+          },
+          "forest": {
+            "mean": 49.5442,
+            "min": 0.0,
+            "max": 86.25
+          },
+          "landuse": {
+            "mean": 1.7591,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 2
+          },
+          "elevation": {
+            "mean": 8.5324,
+            "min": 0.327,
+            "max": 29.3743
+          },
+          "rivers": {
+            "mean": 3.0188,
+            "min": 0.0,
+            "max": 89.5,
+            "riverKm": 42.7
+          },
+          "rainfall": {
+            "mean": 2661.963,
+            "min": 2402.5,
+            "max": 2861.7498
+          },
+          "airquality": {
+            "mean": 65.1716,
+            "min": 54.5767,
+            "max": 73.0869
+          },
+          "flood": {
+            "mean": 1.5933,
+            "min": 0.0,
+            "max": 52.2188
+          }
+        }
+      },
+      {
+        "id": 27,
+        "name": "Khagrachhari",
+        "divisionId": 2,
+        "divisionName": "Chattogram",
+        "bbox": [
+          91.7119,
+          22.6876,
+          92.1811,
+          23.7342
+        ],
+        "centroid": [
+          23.211,
+          91.9621
+        ],
+        "areaKm2": 2855.3,
+        "stats": {
+          "population": {
+            "mean": 263.8797,
+            "min": 0.0,
+            "max": 5427.6191,
+            "population": 0
+          },
+          "forest": {
+            "mean": 91.6073,
+            "min": 3.25,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 1.9809,
+            "min": 1.0,
+            "max": 5.0,
+            "dominant": 2
+          },
+          "elevation": {
+            "mean": 94.5619,
+            "min": 16.9876,
+            "max": 408.4338
+          },
+          "rivers": {
+            "mean": 0.059,
+            "min": 0.0,
+            "max": 16.25,
+            "riverKm": 0.0
+          },
+          "rainfall": {
+            "mean": 2439.6182,
+            "min": 2156.3057,
+            "max": 3382.1108
+          },
+          "airquality": {
+            "mean": 44.1098,
+            "min": 35.4032,
+            "max": 55.5568
+          },
+          "flood": {
+            "mean": 0.1348,
+            "min": 0.0,
+            "max": 38.7738
+          }
+        }
+      },
+      {
+        "id": 32,
+        "name": "Lakshmipur",
+        "divisionId": 2,
+        "divisionName": "Chattogram",
+        "bbox": [
+          90.6433,
+          22.497,
+          91.0174,
+          23.1739
+        ],
+        "centroid": [
+          22.8707,
+          90.8679
+        ],
+        "areaKm2": 1243.4,
+        "stats": {
+          "population": {
+            "mean": 1692.1019,
+            "min": 220.3375,
+            "max": 11286.0596,
+            "population": 0
+          },
+          "forest": {
+            "mean": 58.1649,
+            "min": 0.0,
+            "max": 99.5
+          },
+          "landuse": {
+            "mean": 1.8734,
+            "min": 1.0,
+            "max": 4.0,
+            "dominant": 2
+          },
+          "elevation": {
+            "mean": 6.4126,
+            "min": 0.0,
+            "max": 12.4481
+          },
+          "rivers": {
+            "mean": 7.0053,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 0.0
+          },
+          "rainfall": {
+            "mean": 2565.7595,
+            "min": 0.0,
+            "max": 2887.4443
+          },
+          "airquality": {
+            "mean": 71.5894,
+            "min": 53.0744,
+            "max": 79.6792
+          },
+          "flood": {
+            "mean": 3.8809,
+            "min": 0.0,
+            "max": 94.7469
+          }
+        }
+      },
+      {
+        "id": 48,
+        "name": "Noakhali",
+        "divisionId": 2,
+        "divisionName": "Chattogram",
+        "bbox": [
+          90.8866,
+          22.0231,
+          91.4241,
+          23.1332
+        ],
+        "centroid": [
+          22.7878,
+          91.1304
+        ],
+        "areaKm2": 2675.4,
+        "stats": {
+          "population": {
+            "mean": 1564.5015,
+            "min": 0.0,
+            "max": 17464.3027,
+            "population": 0
+          },
+          "forest": {
+            "mean": 50.7561,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 1.8934,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 2
+          },
+          "elevation": {
+            "mean": 5.6669,
+            "min": 0.0,
+            "max": 12.6501
+          },
+          "rivers": {
+            "mean": 7.5717,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 4.2
+          },
+          "rainfall": {
+            "mean": 2780.417,
+            "min": 0.0,
+            "max": 3078.4167
+          },
+          "airquality": {
+            "mean": 69.4651,
+            "min": 41.2514,
+            "max": 82.0265
+          },
+          "flood": {
+            "mean": 5.9193,
+            "min": 0.0,
+            "max": 98.2669
+          }
+        }
+      },
+      {
+        "id": 55,
+        "name": "Rangamati",
+        "divisionId": 2,
+        "divisionName": "Chattogram",
+        "bbox": [
+          91.9257,
+          21.8519,
+          92.6343,
+          23.7403
+        ],
+        "centroid": [
+          22.7961,
+          92.2233
+        ],
+        "areaKm2": 5764.1,
+        "stats": {
+          "population": {
+            "mean": 129.8573,
+            "min": 0.0,
+            "max": 5262.3154,
+            "population": 0
+          },
+          "forest": {
+            "mean": 88.3215,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 2.0911,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 2
+          },
+          "elevation": {
+            "mean": 142.5802,
+            "min": 6.6862,
+            "max": 827.9367
+          },
+          "rivers": {
+            "mean": 4.7097,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 149.5
+          },
+          "rainfall": {
+            "mean": 2748.6386,
+            "min": 2130.7778,
+            "max": 4175.25
+          },
+          "airquality": {
+            "mean": 34.8792,
+            "min": 26.4751,
+            "max": 54.3443
+          },
+          "flood": {
+            "mean": 5.3014,
+            "min": 0.0,
+            "max": 98.8519
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Dhaka",
+    "bbox": [
+      89.2553,
+      22.8344,
+      91.2569,
+      24.7916
+    ],
+    "centroid": [
+      23.8137,
+      90.278
+    ],
+    "areaKm2": 20924.9,
+    "divisionId": 3,
+    "stats": {
+      "population": {
+        "mean": 2205.5577,
+        "min": 0.0,
+        "max": 212173.0938,
+        "population": 45562683
+      },
+      "forest": {
+        "mean": 34.638,
+        "min": 0.0,
+        "max": 100.0
+      },
+      "landuse": {
+        "mean": 1.5594,
+        "min": 1.0,
+        "max": 7.0,
+        "dominant": 1
+      },
+      "elevation": {
+        "mean": 7.7624,
+        "min": 0.0,
+        "max": 32.1854
+      },
+      "rivers": {
+        "mean": 6.758,
+        "min": 0.0,
+        "max": 100.0,
+        "riverKm": 675.0
+      },
+      "rainfall": {
+        "mean": 2036.6749,
+        "min": 1589.111,
+        "max": 2684.8335
+      },
+      "airquality": {
+        "mean": 73.6056,
+        "min": 52.2662,
+        "max": 96.6677
+      },
+      "flood": {
+        "mean": 9.7238,
+        "min": 0.0,
+        "max": 98.9894
+      }
+    },
+    "districts": [
+      {
+        "id": 14,
+        "name": "Dhaka",
+        "divisionId": 3,
+        "divisionName": "Dhaka",
+        "bbox": [
+          90.0046,
+          23.5221,
+          90.5128,
+          24.0443
+        ],
+        "centroid": [
+          23.7818,
+          90.357
+        ],
+        "areaKm2": 1475.6,
+        "stats": {
+          "population": {
+            "mean": 11905.4755,
+            "min": 0.0,
+            "max": 212173.0938,
+            "population": 0
+          },
+          "forest": {
+            "mean": 31.4165,
+            "min": 0.0,
+            "max": 95.75
+          },
+          "landuse": {
+            "mean": 2.0097,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 7.1705,
+            "min": 0.8579,
+            "max": 18.424
+          },
+          "rivers": {
+            "mean": 5.0593,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 62.4
+          },
+          "rainfall": {
+            "mean": 2061.6573,
+            "min": 1894.4446,
+            "max": 2176.0
+          },
+          "airquality": {
+            "mean": 82.553,
+            "min": 70.0841,
+            "max": 96.6677
+          },
+          "flood": {
+            "mean": 5.7842,
+            "min": 0.0,
+            "max": 85.8581
+          }
+        }
+      },
+      {
+        "id": 16,
+        "name": "Faridpur",
+        "divisionId": 3,
+        "divisionName": "Dhaka",
+        "bbox": [
+          89.4897,
+          23.2104,
+          90.182,
+          23.722
+        ],
+        "centroid": [
+          23.4658,
+          89.8714
+        ],
+        "areaKm2": 2044.8,
+        "stats": {
+          "population": {
+            "mean": 1006.4501,
+            "min": 0.0,
+            "max": 8986.1729,
+            "population": 0
+          },
+          "forest": {
+            "mean": 32.9507,
+            "min": 0.0,
+            "max": 95.25
+          },
+          "landuse": {
+            "mean": 1.4221,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 6.6864,
+            "min": 2.0,
+            "max": 14.3158
+          },
+          "rivers": {
+            "mean": 5.7816,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 18.1
+          },
+          "rainfall": {
+            "mean": 1907.1882,
+            "min": 1740.7778,
+            "max": 2043.5833
+          },
+          "airquality": {
+            "mean": 72.8413,
+            "min": 63.7101,
+            "max": 84.0871
+          },
+          "flood": {
+            "mean": 7.6212,
+            "min": 0.0,
+            "max": 93.2331
+          }
+        }
+      },
+      {
+        "id": 19,
+        "name": "Gazipur",
+        "divisionId": 3,
+        "divisionName": "Dhaka",
+        "bbox": [
+          90.1471,
+          23.8438,
+          90.703,
+          24.3411
+        ],
+        "centroid": [
+          24.0927,
+          90.4076
+        ],
+        "areaKm2": 1817.1,
+        "stats": {
+          "population": {
+            "mean": 3426.3455,
+            "min": 90.6081,
+            "max": 43078.4766,
+            "population": 0
+          },
+          "forest": {
+            "mean": 56.2355,
+            "min": 0.0,
+            "max": 99.75
+          },
+          "landuse": {
+            "mean": 1.8417,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 2
+          },
+          "elevation": {
+            "mean": 11.3023,
+            "min": 2.526,
+            "max": 21.7449
+          },
+          "rivers": {
+            "mean": 1.1795,
+            "min": 0.0,
+            "max": 59.5,
+            "riverKm": 80.1
+          },
+          "rainfall": {
+            "mean": 2111.5432,
+            "min": 1953.1666,
+            "max": 2215.6665
+          },
+          "airquality": {
+            "mean": 76.1189,
+            "min": 69.2196,
+            "max": 91.0229
+          },
+          "flood": {
+            "mean": 3.1934,
+            "min": 0.0,
+            "max": 46.0275
+          }
+        }
+      },
+      {
+        "id": 20,
+        "name": "Gopalganj",
+        "divisionId": 3,
+        "divisionName": "Dhaka",
+        "bbox": [
+          89.6726,
+          22.8529,
+          90.1438,
+          23.3604
+        ],
+        "centroid": [
+          23.1071,
+          89.8623
+        ],
+        "areaKm2": 1475.6,
+        "stats": {
+          "population": {
+            "mean": 780.6571,
+            "min": 112.5237,
+            "max": 5546.5991,
+            "population": 0
+          },
+          "forest": {
+            "mean": 27.3737,
+            "min": 0.0,
+            "max": 97.25
+          },
+          "landuse": {
+            "mean": 1.1974,
+            "min": 1.0,
+            "max": 5.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 3.4853,
+            "min": 1.1992,
+            "max": 11.0027
+          },
+          "rivers": {
+            "mean": 1.3537,
+            "min": 0.0,
+            "max": 41.75,
+            "riverKm": 23.2
+          },
+          "rainfall": {
+            "mean": 1976.6678,
+            "min": 1880.0,
+            "max": 2077.1665
+          },
+          "airquality": {
+            "mean": 75.7382,
+            "min": 70.8905,
+            "max": 78.8672
+          },
+          "flood": {
+            "mean": 1.8612,
+            "min": 0.0,
+            "max": 44.3625
+          }
+        }
+      },
+      {
+        "id": 29,
+        "name": "Kishoreganj",
+        "divisionId": 3,
+        "divisionName": "Dhaka",
+        "bbox": [
+          90.5738,
+          24.0306,
+          91.2558,
+          24.6431
+        ],
+        "centroid": [
+          24.3364,
+          90.9281
+        ],
+        "areaKm2": 2564.3,
+        "stats": {
+          "population": {
+            "mean": 1258.6064,
+            "min": 84.2956,
+            "max": 19600.5684,
+            "population": 0
+          },
+          "forest": {
+            "mean": 18.4911,
+            "min": 0.0,
+            "max": 82.5
+          },
+          "landuse": {
+            "mean": 1.2089,
+            "min": 1.0,
+            "max": 5.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 5.6117,
+            "min": 0.0109,
+            "max": 12.8017
+          },
+          "rivers": {
+            "mean": 5.6868,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 162.8
+          },
+          "rainfall": {
+            "mean": 2362.3788,
+            "min": 2200.3333,
+            "max": 2684.8335
+          },
+          "airquality": {
+            "mean": 66.335,
+            "min": 52.2662,
+            "max": 87.1897
+          },
+          "flood": {
+            "mean": 27.4456,
+            "min": 0.0,
+            "max": 96.5462
+          }
+        }
+      },
+      {
+        "id": 34,
+        "name": "Madaripur",
+        "divisionId": 3,
+        "divisionName": "Dhaka",
+        "bbox": [
+          89.9361,
+          22.9643,
+          90.3545,
+          23.498
+        ],
+        "centroid": [
+          23.2328,
+          90.1306
+        ],
+        "areaKm2": 1135.2,
+        "stats": {
+          "population": {
+            "mean": 1056.689,
+            "min": 0.0,
+            "max": 6587.228,
+            "population": 0
+          },
+          "forest": {
+            "mean": 33.0411,
+            "min": 0.0,
+            "max": 93.5
+          },
+          "landuse": {
+            "mean": 1.4168,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 4.7217,
+            "min": 1.6293,
+            "max": 9.9936
+          },
+          "rivers": {
+            "mean": 7.3243,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 11.4
+          },
+          "rainfall": {
+            "mean": 2054.0918,
+            "min": 1980.8334,
+            "max": 2109.3889
+          },
+          "airquality": {
+            "mean": 75.5495,
+            "min": 69.4633,
+            "max": 83.3893
+          },
+          "flood": {
+            "mean": 6.2142,
+            "min": 0.0,
+            "max": 77.5069
+          }
+        }
+      },
+      {
+        "id": 36,
+        "name": "Manikganj",
+        "divisionId": 3,
+        "divisionName": "Dhaka",
+        "bbox": [
+          89.6839,
+          23.6349,
+          90.2557,
+          24.036
+        ],
+        "centroid": [
+          23.8355,
+          89.9415
+        ],
+        "areaKm2": 1374.3,
+        "stats": {
+          "population": {
+            "mean": 1132.695,
+            "min": 0.0,
+            "max": 8756.2012,
+            "population": 0
+          },
+          "forest": {
+            "mean": 30.0992,
+            "min": 0.0,
+            "max": 86.25
+          },
+          "landuse": {
+            "mean": 1.5813,
+            "min": 1.0,
+            "max": 4.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 7.5733,
+            "min": 2.0,
+            "max": 13.8307
+          },
+          "rivers": {
+            "mean": 12.6795,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 27.6
+          },
+          "rainfall": {
+            "mean": 1887.4189,
+            "min": 1670.4165,
+            "max": 2076.5557
+          },
+          "airquality": {
+            "mean": 74.6384,
+            "min": 61.9282,
+            "max": 84.6265
+          },
+          "flood": {
+            "mean": 11.1506,
+            "min": 0.0,
+            "max": 96.0756
+          }
+        }
+      },
+      {
+        "id": 39,
+        "name": "Munshiganj",
+        "divisionId": 3,
+        "divisionName": "Dhaka",
+        "bbox": [
+          90.1583,
+          23.3793,
+          90.7108,
+          23.6739
+        ],
+        "centroid": [
+          23.526,
+          90.4379
+        ],
+        "areaKm2": 932.2,
+        "stats": {
+          "population": {
+            "mean": 1703.0099,
+            "min": 0.0,
+            "max": 18061.502,
+            "population": 0
+          },
+          "forest": {
+            "mean": 29.4431,
+            "min": 0.0,
+            "max": 94.0
+          },
+          "landuse": {
+            "mean": 1.608,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 4.2673,
+            "min": 0.0,
+            "max": 10.1594
+          },
+          "rivers": {
+            "mean": 11.9806,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 34.6
+          },
+          "rainfall": {
+            "mean": 2140.3089,
+            "min": 2034.0555,
+            "max": 2250.75
+          },
+          "airquality": {
+            "mean": 79.6732,
+            "min": 66.0876,
+            "max": 86.5181
+          },
+          "flood": {
+            "mean": 12.4924,
+            "min": 0.0,
+            "max": 98.9894
+          }
+        }
+      },
+      {
+        "id": 43,
+        "name": "Narayanganj",
+        "divisionId": 3,
+        "divisionName": "Dhaka",
+        "bbox": [
+          90.429,
+          23.5339,
+          90.7412,
+          23.8969
+        ],
+        "centroid": [
+          23.7164,
+          90.6156
+        ],
+        "areaKm2": 704.5,
+        "stats": {
+          "population": {
+            "mean": 5516.8479,
+            "min": 86.3596,
+            "max": 44227.1602,
+            "population": 0
+          },
+          "forest": {
+            "mean": 29.5744,
+            "min": 0.0,
+            "max": 88.75
+          },
+          "landuse": {
+            "mean": 2.1836,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 4.8861,
+            "min": 0.0,
+            "max": 11.3265
+          },
+          "rivers": {
+            "mean": 11.2227,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 79.2
+          },
+          "rainfall": {
+            "mean": 2194.1208,
+            "min": 2147.3889,
+            "max": 2239.7222
+          },
+          "airquality": {
+            "mean": 80.9247,
+            "min": 63.7687,
+            "max": 90.3254
+          },
+          "flood": {
+            "mean": 10.8778,
+            "min": 0.0,
+            "max": 97.6781
+          }
+        }
+      },
+      {
+        "id": 44,
+        "name": "Narsingdi",
+        "divisionId": 3,
+        "divisionName": "Dhaka",
+        "bbox": [
+          90.5604,
+          23.7628,
+          90.986,
+          24.2516
+        ],
+        "centroid": [
+          24.0087,
+          90.8085
+        ],
+        "areaKm2": 1167.4,
+        "stats": {
+          "population": {
+            "mean": 2230.4288,
+            "min": 125.6792,
+            "max": 25722.1621,
+            "population": 0
+          },
+          "forest": {
+            "mean": 42.9824,
+            "min": 0.0,
+            "max": 98.0
+          },
+          "landuse": {
+            "mean": 1.6985,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 2
+          },
+          "elevation": {
+            "mean": 6.8774,
+            "min": 0.0,
+            "max": 20.9265
+          },
+          "rivers": {
+            "mean": 6.9081,
+            "min": 0.0,
+            "max": 99.25,
+            "riverKm": 75.1
+          },
+          "rainfall": {
+            "mean": 2223.1255,
+            "min": 2168.5835,
+            "max": 2264.7776
+          },
+          "airquality": {
+            "mean": 76.5902,
+            "min": 67.4151,
+            "max": 89.6958
+          },
+          "flood": {
+            "mean": 8.9374,
+            "min": 0.0,
+            "max": 95.1594
+          }
+        }
+      },
+      {
+        "id": 53,
+        "name": "Rajbari",
+        "divisionId": 3,
+        "divisionName": "Dhaka",
+        "bbox": [
+          89.2982,
+          23.5599,
+          89.8649,
+          23.9107
+        ],
+        "centroid": [
+          23.7352,
+          89.5759
+        ],
+        "areaKm2": 1139.0,
+        "stats": {
+          "population": {
+            "mean": 982.7808,
+            "min": 0.0,
+            "max": 6704.7314,
+            "population": 0
+          },
+          "forest": {
+            "mean": 33.9583,
+            "min": 0.0,
+            "max": 93.5
+          },
+          "landuse": {
+            "mean": 1.634,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 9.1416,
+            "min": 2.0,
+            "max": 14.8212
+          },
+          "rivers": {
+            "mean": 11.9489,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 34.5
+          },
+          "rainfall": {
+            "mean": 1713.1275,
+            "min": 1589.111,
+            "max": 1839.3889
+          },
+          "airquality": {
+            "mean": 68.7608,
+            "min": 60.3924,
+            "max": 80.3683
+          },
+          "flood": {
+            "mean": 10.4475,
+            "min": 0.0,
+            "max": 97.89
+          }
+        }
+      },
+      {
+        "id": 58,
+        "name": "Shariatpur",
+        "divisionId": 3,
+        "divisionName": "Dhaka",
+        "bbox": [
+          90.2205,
+          23.004,
+          90.6078,
+          23.4516
+        ],
+        "centroid": [
+          23.2287,
+          90.4224
+        ],
+        "areaKm2": 1185.8,
+        "stats": {
+          "population": {
+            "mean": 981.8264,
+            "min": 0.0,
+            "max": 4242.8218,
+            "population": 0
+          },
+          "forest": {
+            "mean": 32.5453,
+            "min": 0.0,
+            "max": 93.75
+          },
+          "landuse": {
+            "mean": 1.6268,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 4.5018,
+            "min": 0.0,
+            "max": 10.5429
+          },
+          "rivers": {
+            "mean": 13.7049,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 30.0
+          },
+          "rainfall": {
+            "mean": 2106.1257,
+            "min": 2040.1429,
+            "max": 2159.0
+          },
+          "airquality": {
+            "mean": 74.494,
+            "min": 61.8383,
+            "max": 83.0953
+          },
+          "flood": {
+            "mean": 14.2948,
+            "min": 0.0,
+            "max": 96.1488
+          }
+        }
+      },
+      {
+        "id": 63,
+        "name": "Tangail",
+        "divisionId": 3,
+        "divisionName": "Dhaka",
+        "bbox": [
+          89.7341,
+          23.9636,
+          90.3008,
+          24.7879
+        ],
+        "centroid": [
+          24.3683,
+          89.9972
+        ],
+        "areaKm2": 3366.1,
+        "stats": {
+          "population": {
+            "mean": 1136.2445,
+            "min": 0.0,
+            "max": 13148.5498,
+            "population": 0
+          },
+          "forest": {
+            "mean": 43.01,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 1.5203,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 13.6425,
+            "min": 4.0,
+            "max": 32.1854
+          },
+          "rivers": {
+            "mean": 4.3611,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 36.0
+          },
+          "rainfall": {
+            "mean": 1868.8352,
+            "min": 1700.8333,
+            "max": 2038.2222
+          },
+          "airquality": {
+            "mean": 69.958,
+            "min": 54.2857,
+            "max": 80.2991
+          },
+          "flood": {
+            "mean": 4.2295,
+            "min": 0.0,
+            "max": 91.3594
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Khulna",
+    "bbox": [
+      88.5565,
+      21.6226,
+      89.9815,
+      24.1885
+    ],
+    "centroid": [
+      22.9012,
+      89.3457
+    ],
+    "areaKm2": 21489.2,
+    "divisionId": 4,
+    "stats": {
+      "population": {
+        "mean": 778.3354,
+        "min": 0.0,
+        "max": 36244.5117,
+        "population": 16631860
+      },
+      "forest": {
+        "mean": 44.4347,
+        "min": 0.0,
+        "max": 100.0
+      },
+      "landuse": {
+        "mean": 2.556,
+        "min": 1.0,
+        "max": 7.0,
+        "dominant": 1
+      },
+      "elevation": {
+        "mean": 6.687,
+        "min": 0.0,
+        "max": 20.9951
+      },
+      "rivers": {
+        "mean": 12.4206,
+        "min": 0.0,
+        "max": 100.0,
+        "riverKm": 121.9
+      },
+      "rainfall": {
+        "mean": 1785.0846,
+        "min": 0.0,
+        "max": 2409.5
+      },
+      "airquality": {
+        "mean": 71.4262,
+        "min": 47.2444,
+        "max": 89.5619
+      },
+      "flood": {
+        "mean": 10.6939,
+        "min": 0.0,
+        "max": 99.1012
+      }
+    },
+    "districts": [
+      {
+        "id": 1,
+        "name": "Bagerhat",
+        "divisionId": 4,
+        "divisionName": "Khulna",
+        "bbox": [
+          89.5309,
+          21.7136,
+          89.9696,
+          22.9834
+        ],
+        "centroid": [
+          22.5304,
+          89.7568
+        ],
+        "areaKm2": 3646.5,
+        "stats": {
+          "population": {
+            "mean": 355.2641,
+            "min": 0.0,
+            "max": 6135.4639,
+            "population": 8128678
+          },
+          "forest": {
+            "mean": 59.2912,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 3.7971,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 6
+          },
+          "elevation": {
+            "mean": 5.1395,
+            "min": 0.0,
+            "max": 14.4088
+          },
+          "rivers": {
+            "mean": 15.6172,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 14.8
+          },
+          "rainfall": {
+            "mean": 2092.2188,
+            "min": 0.0,
+            "max": 2409.5
+          },
+          "airquality": {
+            "mean": 69.8411,
+            "min": 47.2444,
+            "max": 85.5217
+          },
+          "flood": {
+            "mean": 13.79,
+            "min": 0.0,
+            "max": 98.9919
+          }
+        }
+      },
+      {
+        "id": 11,
+        "name": "Chuadanga",
+        "divisionId": 4,
+        "divisionName": "Khulna",
+        "bbox": [
+          88.6349,
+          23.3628,
+          89.0173,
+          23.8397
+        ],
+        "centroid": [
+          23.5999,
+          88.8203
+        ],
+        "areaKm2": 1165.2,
+        "stats": {
+          "population": {
+            "mean": 1086.1264,
+            "min": 0.0,
+            "max": 8463.873,
+            "population": 0
+          },
+          "forest": {
+            "mean": 44.8405,
+            "min": 0.0,
+            "max": 97.0
+          },
+          "landuse": {
+            "mean": 1.4505,
+            "min": 1.0,
+            "max": 4.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 12.4673,
+            "min": 7.4303,
+            "max": 17.2428
+          },
+          "rivers": {
+            "mean": 0.5168,
+            "min": 0.0,
+            "max": 39.5,
+            "riverKm": 0.0
+          },
+          "rainfall": {
+            "mean": 1507.9292,
+            "min": 1445.5,
+            "max": 1544.0
+          },
+          "airquality": {
+            "mean": 67.3938,
+            "min": 61.9758,
+            "max": 82.3682
+          },
+          "flood": {
+            "mean": 0.4232,
+            "min": 0.0,
+            "max": 20.2319
+          }
+        }
+      },
+      {
+        "id": 23,
+        "name": "Jashore",
+        "divisionId": 4,
+        "divisionName": "Khulna",
+        "bbox": [
+          88.845,
+          22.7953,
+          89.5628,
+          23.3745
+        ],
+        "centroid": [
+          23.085,
+          89.1262
+        ],
+        "areaKm2": 2584.3,
+        "stats": {
+          "population": {
+            "mean": 1202.5771,
+            "min": 0.0,
+            "max": 20925.0586,
+            "population": 0
+          },
+          "forest": {
+            "mean": 39.3673,
+            "min": 0.0,
+            "max": 99.0
+          },
+          "landuse": {
+            "mean": 1.4663,
+            "min": 1.0,
+            "max": 5.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 7.1664,
+            "min": 0.5434,
+            "max": 13.3474
+          },
+          "rivers": {
+            "mean": 3.7122,
+            "min": 0.0,
+            "max": 99.0,
+            "riverKm": 1.1
+          },
+          "rainfall": {
+            "mean": 1678.7214,
+            "min": 1569.2778,
+            "max": 1819.0
+          },
+          "airquality": {
+            "mean": 75.6816,
+            "min": 66.6951,
+            "max": 85.3473
+          },
+          "flood": {
+            "mean": 2.6788,
+            "min": 0.0,
+            "max": 64.3662
+          }
+        }
+      },
+      {
+        "id": 25,
+        "name": "Jhenaidah",
+        "divisionId": 4,
+        "divisionName": "Khulna",
+        "bbox": [
+          88.6962,
+          23.2183,
+          89.3767,
+          23.7716
+        ],
+        "centroid": [
+          23.4949,
+          89.1231
+        ],
+        "areaKm2": 1956.5,
+        "stats": {
+          "population": {
+            "mean": 979.1051,
+            "min": 0.0,
+            "max": 9086.4004,
+            "population": 0
+          },
+          "forest": {
+            "mean": 39.5372,
+            "min": 0.0,
+            "max": 95.25
+          },
+          "landuse": {
+            "mean": 1.3619,
+            "min": 1.0,
+            "max": 4.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 9.7533,
+            "min": 4.2244,
+            "max": 14.909
+          },
+          "rivers": {
+            "mean": 0.6978,
+            "min": 0.0,
+            "max": 47.0,
+            "riverKm": 0.0
+          },
+          "rainfall": {
+            "mean": 1574.7343,
+            "min": 1492.7778,
+            "max": 1661.3334
+          },
+          "airquality": {
+            "mean": 71.0749,
+            "min": 65.4154,
+            "max": 86.6133
+          },
+          "flood": {
+            "mean": 0.5857,
+            "min": 0.0,
+            "max": 28.9969
+          }
+        }
+      },
+      {
+        "id": 28,
+        "name": "Khulna",
+        "divisionId": 4,
+        "divisionName": "Khulna",
+        "bbox": [
+          89.2342,
+          21.6963,
+          89.7523,
+          23.0102
+        ],
+        "centroid": [
+          22.5015,
+          89.4193
+        ],
+        "areaKm2": 3624.9,
+        "stats": {
+          "population": {
+            "mean": 596.1809,
+            "min": 0.0,
+            "max": 36244.5117,
+            "population": 0
+          },
+          "forest": {
+            "mean": 47.7099,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 3.5524,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 6
+          },
+          "elevation": {
+            "mean": 3.8658,
+            "min": 0.0,
+            "max": 13.0315
+          },
+          "rivers": {
+            "mean": 19.9505,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 31.6
+          },
+          "rainfall": {
+            "mean": 1879.1724,
+            "min": 0.0,
+            "max": 2138.9446
+          },
+          "airquality": {
+            "mean": 73.7836,
+            "min": 56.8888,
+            "max": 89.5619
+          },
+          "flood": {
+            "mean": 18.6758,
+            "min": 0.0,
+            "max": 99.1012
+          }
+        }
+      },
+      {
+        "id": 31,
+        "name": "Kushtia",
+        "divisionId": 4,
+        "divisionName": "Khulna",
+        "bbox": [
+          88.693,
+          23.6922,
+          89.3632,
+          24.1939
+        ],
+        "centroid": [
+          23.9426,
+          89.0248
+        ],
+        "areaKm2": 1615.4,
+        "stats": {
+          "population": {
+            "mean": 1320.7618,
+            "min": 0.0,
+            "max": 20023.2207,
+            "population": 0
+          },
+          "forest": {
+            "mean": 36.8931,
+            "min": 0.0,
+            "max": 93.5
+          },
+          "landuse": {
+            "mean": 1.5349,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 13.6277,
+            "min": 5.0,
+            "max": 20.9951
+          },
+          "rivers": {
+            "mean": 5.3305,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 48.9
+          },
+          "rainfall": {
+            "mean": 1563.3229,
+            "min": 1519.8889,
+            "max": 1614.5001
+          },
+          "airquality": {
+            "mean": 64.5292,
+            "min": 53.1423,
+            "max": 74.6387
+          },
+          "flood": {
+            "mean": 4.2548,
+            "min": 0.0,
+            "max": 93.6669
+          }
+        }
+      },
+      {
+        "id": 35,
+        "name": "Magura",
+        "divisionId": 4,
+        "divisionName": "Khulna",
+        "bbox": [
+          89.244,
+          23.2572,
+          89.6454,
+          23.6815
+        ],
+        "centroid": [
+          23.471,
+          89.4563
+        ],
+        "areaKm2": 1048.2,
+        "stats": {
+          "population": {
+            "mean": 963.1474,
+            "min": 152.2133,
+            "max": 6965.9429,
+            "population": 0
+          },
+          "forest": {
+            "mean": 35.2042,
+            "min": 0.0,
+            "max": 93.5
+          },
+          "landuse": {
+            "mean": 1.3076,
+            "min": 1.0,
+            "max": 4.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 7.313,
+            "min": 1.7121,
+            "max": 13.9048
+          },
+          "rivers": {
+            "mean": 2.1042,
+            "min": 0.0,
+            "max": 67.25,
+            "riverKm": 0.0
+          },
+          "rainfall": {
+            "mean": 1731.4987,
+            "min": 1639.5,
+            "max": 1857.1665
+          },
+          "airquality": {
+            "mean": 72.7412,
+            "min": 67.2268,
+            "max": 77.2351
+          },
+          "flood": {
+            "mean": 1.9004,
+            "min": 0.0,
+            "max": 31.8719
+          }
+        }
+      },
+      {
+        "id": 37,
+        "name": "Meherpur",
+        "divisionId": 4,
+        "divisionName": "Khulna",
+        "bbox": [
+          88.5558,
+          23.6004,
+          88.8845,
+          23.9762
+        ],
+        "centroid": [
+          23.789,
+          88.7012
+        ],
+        "areaKm2": 722.0,
+        "stats": {
+          "population": {
+            "mean": 962.3062,
+            "min": 0.0,
+            "max": 6866.3486,
+            "population": 0
+          },
+          "forest": {
+            "mean": 37.8296,
+            "min": 0.0,
+            "max": 94.5
+          },
+          "landuse": {
+            "mean": 1.3547,
+            "min": 1.0,
+            "max": 3.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 14.563,
+            "min": 10.4907,
+            "max": 19.0384
+          },
+          "rivers": {
+            "mean": 0.2847,
+            "min": 0.0,
+            "max": 30.25,
+            "riverKm": 0.0
+          },
+          "rainfall": {
+            "mean": 1490.0918,
+            "min": 1426.7223,
+            "max": 1548.6945
+          },
+          "airquality": {
+            "mean": 64.1338,
+            "min": 59.2366,
+            "max": 67.1326
+          },
+          "flood": {
+            "mean": 0.2954,
+            "min": 0.0,
+            "max": 17.2194
+          }
+        }
+      },
+      {
+        "id": 42,
+        "name": "Narail",
+        "divisionId": 4,
+        "divisionName": "Khulna",
+        "bbox": [
+          89.3782,
+          22.9413,
+          89.8064,
+          23.3234
+        ],
+        "centroid": [
+          23.1322,
+          89.5287
+        ],
+        "areaKm2": 995.7,
+        "stats": {
+          "population": {
+            "mean": 768.2028,
+            "min": 221.7737,
+            "max": 2045.3035,
+            "population": 0
+          },
+          "forest": {
+            "mean": 32.4089,
+            "min": 0.0,
+            "max": 94.5
+          },
+          "landuse": {
+            "mean": 1.3383,
+            "min": 1.0,
+            "max": 4.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 4.6464,
+            "min": 1.0891,
+            "max": 11.156
+          },
+          "rivers": {
+            "mean": 4.5856,
+            "min": 0.0,
+            "max": 61.75,
+            "riverKm": 25.0
+          },
+          "rainfall": {
+            "mean": 1843.6628,
+            "min": 1756.3334,
+            "max": 1954.4445
+          },
+          "airquality": {
+            "mean": 77.9017,
+            "min": 72.8784,
+            "max": 85.2339
+          },
+          "flood": {
+            "mean": 3.6862,
+            "min": 0.0,
+            "max": 58.4688
+          }
+        }
+      },
+      {
+        "id": 57,
+        "name": "Satkhira",
+        "divisionId": 4,
+        "divisionName": "Khulna",
+        "bbox": [
+          88.8953,
+          21.6527,
+          89.3598,
+          22.9468
+        ],
+        "centroid": [
+          22.4741,
+          89.1382
+        ],
+        "areaKm2": 3391.3,
+        "stats": {
+          "population": {
+            "mean": 595.212,
+            "min": 0.0,
+            "max": 11056.2158,
+            "population": 0
+          },
+          "forest": {
+            "mean": 42.9354,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 3.3839,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 4
+          },
+          "elevation": {
+            "mean": 3.2949,
+            "min": 0.0,
+            "max": 9.9419
+          },
+          "rivers": {
+            "mean": 28.0345,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 0.5
+          },
+          "rainfall": {
+            "mean": 1796.8661,
+            "min": 0.0,
+            "max": 2042.778
+          },
+          "airquality": {
+            "mean": 71.2882,
+            "min": 53.8475,
+            "max": 83.5734
+          },
+          "flood": {
+            "mean": 22.7333,
+            "min": 0.0,
+            "max": 98.9381
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Mymensingh",
+    "bbox": [
+      89.6612,
+      24.2816,
+      91.2596,
+      25.3909
+    ],
+    "centroid": [
+      24.833,
+      90.4326
+    ],
+    "areaKm2": 10436.9,
+    "divisionId": 5,
+    "stats": {
+      "population": {
+        "mean": 1144.7399,
+        "min": 0.0,
+        "max": 31300.875,
+        "population": 12165282
+      },
+      "forest": {
+        "mean": 29.413,
+        "min": 0.0,
+        "max": 100.0
+      },
+      "landuse": {
+        "mean": 1.2192,
+        "min": 1.0,
+        "max": 7.0,
+        "dominant": 1
+      },
+      "elevation": {
+        "mean": 13.5166,
+        "min": 1.8397,
+        "max": 99.2542
+      },
+      "rivers": {
+        "mean": 2.3834,
+        "min": 0.0,
+        "max": 100.0,
+        "riverKm": 180.5
+      },
+      "rainfall": {
+        "mean": 2255.9376,
+        "min": 1790.2778,
+        "max": 3125.7776
+      },
+      "airquality": {
+        "mean": 56.8281,
+        "min": 35.0154,
+        "max": 84.4108
+      },
+      "flood": {
+        "mean": 5.9755,
+        "min": 0.0,
+        "max": 81.7387
+      }
+    },
+    "districts": [
+      {
+        "id": 22,
+        "name": "Jamalpur",
+        "divisionId": 5,
+        "divisionName": "Mymensingh",
+        "bbox": [
+          89.6386,
+          24.5667,
+          90.2017,
+          25.4327
+        ],
+        "centroid": [
+          25.0012,
+          89.7771
+        ],
+        "areaKm2": 2065.8,
+        "stats": {
+          "population": {
+            "mean": 1164.6696,
+            "min": 0.0,
+            "max": 11235.1465,
+            "population": 0
+          },
+          "forest": {
+            "mean": 26.7114,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 1.3288,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 17.7055,
+            "min": 7.2893,
+            "max": 65.3623
+          },
+          "rivers": {
+            "mean": 6.8031,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 30.3
+          },
+          "rainfall": {
+            "mean": 2036.6271,
+            "min": 1790.2778,
+            "max": 2414.0
+          },
+          "airquality": {
+            "mean": 64.7338,
+            "min": 48.5682,
+            "max": 84.4108
+          },
+          "flood": {
+            "mean": 6.4103,
+            "min": 0.0,
+            "max": 81.7387
+          }
+        }
+      },
+      {
+        "id": 40,
+        "name": "Mymensingh",
+        "divisionId": 5,
+        "divisionName": "Mymensingh",
+        "bbox": [
+          90.0758,
+          24.2465,
+          90.822,
+          25.1985
+        ],
+        "centroid": [
+          24.7222,
+          90.4169
+        ],
+        "areaKm2": 4348.4,
+        "stats": {
+          "population": {
+            "mean": 1339.0204,
+            "min": 349.4209,
+            "max": 31300.875,
+            "population": 0
+          },
+          "forest": {
+            "mean": 36.4119,
+            "min": 0.0,
+            "max": 98.0
+          },
+          "landuse": {
+            "mean": 1.2316,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 12.5181,
+            "min": 4.726,
+            "max": 53.6297
+          },
+          "rivers": {
+            "mean": 0.9872,
+            "min": 0.0,
+            "max": 33.0,
+            "riverKm": 25.6
+          },
+          "rainfall": {
+            "mean": 2189.5429,
+            "min": 1979.6666,
+            "max": 2734.6943
+          },
+          "airquality": {
+            "mean": 60.8565,
+            "min": 37.6761,
+            "max": 76.2183
+          },
+          "flood": {
+            "mean": 1.8695,
+            "min": 0.0,
+            "max": 31.6719
+          }
+        }
+      },
+      {
+        "id": 46,
+        "name": "Netrokona",
+        "divisionId": 5,
+        "divisionName": "Mymensingh",
+        "bbox": [
+          90.4927,
+          24.5755,
+          91.242,
+          25.198
+        ],
+        "centroid": [
+          24.8871,
+          90.778
+        ],
+        "areaKm2": 2804.2,
+        "stats": {
+          "population": {
+            "mean": 870.021,
+            "min": 71.7417,
+            "max": 8205.7031,
+            "population": 0
+          },
+          "forest": {
+            "mean": 19.3067,
+            "min": 0.0,
+            "max": 99.5
+          },
+          "landuse": {
+            "mean": 1.1581,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 8.5792,
+            "min": 1.8397,
+            "max": 99.2542
+          },
+          "rivers": {
+            "mean": 2.3252,
+            "min": 0.0,
+            "max": 56.75,
+            "riverKm": 124.6
+          },
+          "rainfall": {
+            "mean": 2537.1511,
+            "min": 2303.6667,
+            "max": 3125.7776
+          },
+          "airquality": {
+            "mean": 46.3792,
+            "min": 35.0154,
+            "max": 58.2115
+          },
+          "flood": {
+            "mean": 13.8793,
+            "min": 0.0,
+            "max": 79.3975
+          }
+        }
+      },
+      {
+        "id": 59,
+        "name": "Sherpur",
+        "divisionId": 5,
+        "divisionName": "Mymensingh",
+        "bbox": [
+          89.8798,
+          24.881,
+          90.3048,
+          25.3038
+        ],
+        "centroid": [
+          25.0922,
+          90.0952
+        ],
+        "areaKm2": 1325.7,
+        "stats": {
+          "population": {
+            "mean": 1086.2243,
+            "min": 202.7663,
+            "max": 12507.6445,
+            "population": 0
+          },
+          "forest": {
+            "mean": 32.4218,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 1.153,
+            "min": 1.0,
+            "max": 3.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 20.489,
+            "min": 12.0536,
+            "max": 77.6052
+          },
+          "rivers": {
+            "mean": 0.5551,
+            "min": 0.0,
+            "max": 24.5,
+            "riverKm": 0.0
+          },
+          "rainfall": {
+            "mean": 2197.187,
+            "min": 2031.1666,
+            "max": 2467.25
+          },
+          "airquality": {
+            "mean": 54.7238,
+            "min": 41.5999,
+            "max": 64.4466
+          },
+          "flood": {
+            "mean": 1.8822,
+            "min": 0.0,
+            "max": 34.7894
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Rajshahi",
+    "bbox": [
+      88.0208,
+      23.7602,
+      89.8182,
+      25.2713
+    ],
+    "centroid": [
+      24.5157,
+      88.9337
+    ],
+    "areaKm2": 18518.8,
+    "divisionId": 6,
+    "stats": {
+      "population": {
+        "mean": 1131.9497,
+        "min": 0.0,
+        "max": 24516.3516,
+        "population": 20795189
+      },
+      "forest": {
+        "mean": 27.5975,
+        "min": 0.0,
+        "max": 100.0
+      },
+      "landuse": {
+        "mean": 1.3849,
+        "min": 1.0,
+        "max": 7.0,
+        "dominant": 1
+      },
+      "elevation": {
+        "mean": 16.6795,
+        "min": 2.1765,
+        "max": 45.5736
+      },
+      "rivers": {
+        "mean": 5.5942,
+        "min": 0.0,
+        "max": 100.0,
+        "riverKm": 531.5
+      },
+      "rainfall": {
+        "mean": 1601.7735,
+        "min": 1298.0555,
+        "max": 1984.4445
+      },
+      "airquality": {
+        "mean": 65.2994,
+        "min": 47.3158,
+        "max": 80.3554
+      },
+      "flood": {
+        "mean": 6.4428,
+        "min": 0.0,
+        "max": 91.165
+      }
+    },
+    "districts": [
+      {
+        "id": 6,
+        "name": "Bogura",
+        "divisionId": 6,
+        "divisionName": "Rajshahi",
+        "bbox": [
+          88.9624,
+          24.5363,
+          89.7303,
+          25.1232
+        ],
+        "centroid": [
+          24.8323,
+          89.3307
+        ],
+        "areaKm2": 2913.5,
+        "stats": {
+          "population": {
+            "mean": 1325.1568,
+            "min": 0.0,
+            "max": 24063.7578,
+            "population": 20795189
+          },
+          "forest": {
+            "mean": 26.0136,
+            "min": 0.0,
+            "max": 86.25
+          },
+          "landuse": {
+            "mean": 1.3835,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 16.3942,
+            "min": 8.0,
+            "max": 24.6334
+          },
+          "rivers": {
+            "mean": 6.7258,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 55.4
+          },
+          "rainfall": {
+            "mean": 1779.9828,
+            "min": 1563.6666,
+            "max": 1984.4445
+          },
+          "airquality": {
+            "mean": 66.2228,
+            "min": 52.3976,
+            "max": 73.0353
+          },
+          "flood": {
+            "mean": 5.3514,
+            "min": 0.0,
+            "max": 90.97
+          }
+        }
+      },
+      {
+        "id": 9,
+        "name": "Chapainawabganj",
+        "divisionId": 6,
+        "divisionName": "Rajshahi",
+        "bbox": [
+          88.0086,
+          24.4164,
+          88.5117,
+          24.9661
+        ],
+        "centroid": [
+          24.6959,
+          88.2617
+        ],
+        "areaKm2": 1685.2,
+        "stats": {
+          "population": {
+            "mean": 1119.0269,
+            "min": 0.0,
+            "max": 17012.4082,
+            "population": 0
+          },
+          "forest": {
+            "mean": 39.2731,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 1.6089,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 24.7906,
+            "min": 14.0,
+            "max": 45.2909
+          },
+          "rivers": {
+            "mean": 6.4305,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 103.5
+          },
+          "rainfall": {
+            "mean": 1347.0956,
+            "min": 1298.0555,
+            "max": 1443.889
+          },
+          "airquality": {
+            "mean": 61.3135,
+            "min": 49.4327,
+            "max": 64.8579
+          },
+          "flood": {
+            "mean": 6.3688,
+            "min": 0.0,
+            "max": 75.8138
+          }
+        }
+      },
+      {
+        "id": 26,
+        "name": "Joypurhat",
+        "divisionId": 6,
+        "divisionName": "Rajshahi",
+        "bbox": [
+          88.9196,
+          24.8489,
+          89.2801,
+          25.2776
+        ],
+        "centroid": [
+          25.0615,
+          89.0919
+        ],
+        "areaKm2": 959.8,
+        "stats": {
+          "population": {
+            "mean": 997.9949,
+            "min": 564.0375,
+            "max": 8867.9219,
+            "population": 0
+          },
+          "forest": {
+            "mean": 21.6849,
+            "min": 0.0,
+            "max": 74.75
+          },
+          "landuse": {
+            "mean": 1.0791,
+            "min": 1.0,
+            "max": 3.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 20.9008,
+            "min": 15.4774,
+            "max": 27.4594
+          },
+          "rivers": {
+            "mean": 0.1154,
+            "min": 0.0,
+            "max": 8.5,
+            "riverKm": 0.0
+          },
+          "rainfall": {
+            "mean": 1779.9473,
+            "min": 1604.9999,
+            "max": 1914.3335
+          },
+          "airquality": {
+            "mean": 66.3745,
+            "min": 61.5084,
+            "max": 69.7065
+          },
+          "flood": {
+            "mean": 0.2353,
+            "min": 0.0,
+            "max": 4.8619
+          }
+        }
+      },
+      {
+        "id": 41,
+        "name": "Naogaon",
+        "divisionId": 6,
+        "divisionName": "Rajshahi",
+        "bbox": [
+          88.3831,
+          24.5333,
+          89.1508,
+          25.2139
+        ],
+        "centroid": [
+          24.8739,
+          88.7383
+        ],
+        "areaKm2": 3443.5,
+        "stats": {
+          "population": {
+            "mean": 818.1162,
+            "min": 0.0,
+            "max": 13038.4834,
+            "population": 0
+          },
+          "forest": {
+            "mean": 21.3465,
+            "min": 0.0,
+            "max": 76.5
+          },
+          "landuse": {
+            "mean": 1.1244,
+            "min": 1.0,
+            "max": 5.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 20.3736,
+            "min": 9.9963,
+            "max": 44.9642
+          },
+          "rivers": {
+            "mean": 0.8266,
+            "min": 0.0,
+            "max": 76.0,
+            "riverKm": 42.5
+          },
+          "rainfall": {
+            "mean": 1540.4263,
+            "min": 1381.1111,
+            "max": 1743.25
+          },
+          "airquality": {
+            "mean": 64.8105,
+            "min": 59.3923,
+            "max": 69.7968
+          },
+          "flood": {
+            "mean": 3.7784,
+            "min": 0.0,
+            "max": 80.1537
+          }
+        }
+      },
+      {
+        "id": 45,
+        "name": "Natore",
+        "divisionId": 6,
+        "divisionName": "Rajshahi",
+        "bbox": [
+          88.8468,
+          24.0992,
+          89.3415,
+          24.6875
+        ],
+        "centroid": [
+          24.3935,
+          89.0908
+        ],
+        "areaKm2": 1904.0,
+        "stats": {
+          "population": {
+            "mean": 980.4351,
+            "min": 0.0,
+            "max": 7392.1895,
+            "population": 0
+          },
+          "forest": {
+            "mean": 31.8842,
+            "min": 0.0,
+            "max": 95.0
+          },
+          "landuse": {
+            "mean": 1.3974,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 13.1373,
+            "min": 7.5573,
+            "max": 19.3484
+          },
+          "rivers": {
+            "mean": 2.1398,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 41.6
+          },
+          "rainfall": {
+            "mean": 1603.3153,
+            "min": 1551.3333,
+            "max": 1669.6666
+          },
+          "airquality": {
+            "mean": 65.2542,
+            "min": 59.6859,
+            "max": 69.6781
+          },
+          "flood": {
+            "mean": 5.3698,
+            "min": 0.0,
+            "max": 85.0888
+          }
+        }
+      },
+      {
+        "id": 49,
+        "name": "Pabna",
+        "divisionId": 6,
+        "divisionName": "Rajshahi",
+        "bbox": [
+          88.9971,
+          23.8081,
+          89.7327,
+          24.3539
+        ],
+        "centroid": [
+          24.0805,
+          89.3388
+        ],
+        "areaKm2": 2389.3,
+        "stats": {
+          "population": {
+            "mean": 1190.5891,
+            "min": 0.0,
+            "max": 18641.8066,
+            "population": 0
+          },
+          "forest": {
+            "mean": 29.789,
+            "min": 0.0,
+            "max": 99.0
+          },
+          "landuse": {
+            "mean": 1.3933,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 10.6597,
+            "min": 2.1765,
+            "max": 19.2064
+          },
+          "rivers": {
+            "mean": 5.3424,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 109.1
+          },
+          "rainfall": {
+            "mean": 1615.6894,
+            "min": 1549.6666,
+            "max": 1729.0
+          },
+          "airquality": {
+            "mean": 66.4137,
+            "min": 51.9398,
+            "max": 80.3554
+          },
+          "flood": {
+            "mean": 7.7259,
+            "min": 0.0,
+            "max": 87.8869
+          }
+        }
+      },
+      {
+        "id": 54,
+        "name": "Rajshahi",
+        "divisionId": 6,
+        "divisionName": "Rajshahi",
+        "bbox": [
+          88.2917,
+          24.1118,
+          88.9637,
+          24.7186
+        ],
+        "centroid": [
+          24.4133,
+          88.5976
+        ],
+        "areaKm2": 2438.5,
+        "stats": {
+          "population": {
+            "mean": 1193.3315,
+            "min": 0.0,
+            "max": 23013.4297,
+            "population": 0
+          },
+          "forest": {
+            "mean": 32.9329,
+            "min": 0.0,
+            "max": 99.5
+          },
+          "landuse": {
+            "mean": 1.5358,
+            "min": 1.0,
+            "max": 5.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 18.8545,
+            "min": 9.5026,
+            "max": 45.5736
+          },
+          "rivers": {
+            "mean": 7.0008,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 64.9
+          },
+          "rainfall": {
+            "mean": 1490.3788,
+            "min": 1357.5,
+            "max": 1594.5
+          },
+          "airquality": {
+            "mean": 63.7185,
+            "min": 47.3158,
+            "max": 72.6084
+          },
+          "flood": {
+            "mean": 6.0818,
+            "min": 0.0,
+            "max": 91.165
+          }
+        }
+      },
+      {
+        "id": 60,
+        "name": "Sirajganj",
+        "divisionId": 6,
+        "divisionName": "Rajshahi",
+        "bbox": [
+          89.2472,
+          24.0135,
+          89.8249,
+          24.7838
+        ],
+        "centroid": [
+          24.3981,
+          89.5234
+        ],
+        "areaKm2": 2494.5,
+        "stats": {
+          "population": {
+            "mean": 1411.5772,
+            "min": 0.0,
+            "max": 24516.3516,
+            "population": 0
+          },
+          "forest": {
+            "mean": 22.4422,
+            "min": 0.0,
+            "max": 84.5
+          },
+          "landuse": {
+            "mean": 1.5541,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 11.1355,
+            "min": 2.8172,
+            "max": 19.1187
+          },
+          "rivers": {
+            "mean": 13.7921,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 114.5
+          },
+          "rainfall": {
+            "mean": 1686.9401,
+            "min": 1608.5,
+            "max": 1879.639
+          },
+          "airquality": {
+            "mean": 67.6469,
+            "min": 58.3751,
+            "max": 76.2107
+          },
+          "flood": {
+            "mean": 13.5943,
+            "min": 0.0,
+            "max": 90.9269
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Rangpur",
+    "bbox": [
+      88.0774,
+      25.0288,
+      89.8827,
+      26.621
+    ],
+    "centroid": [
+      25.8212,
+      88.953
+    ],
+    "areaKm2": 16567.8,
+    "divisionId": 7,
+    "stats": {
+      "population": {
+        "mean": 1076.5218,
+        "min": 0.0,
+        "max": 26317.5371,
+        "population": 17735555
+      },
+      "forest": {
+        "mean": 26.421,
+        "min": 0.0,
+        "max": 98.0
+      },
+      "landuse": {
+        "mean": 1.298,
+        "min": 1.0,
+        "max": 7.0,
+        "dominant": 1
+      },
+      "elevation": {
+        "mean": 38.3727,
+        "min": 11.5944,
+        "max": 103.0845
+      },
+      "rivers": {
+        "mean": 5.1711,
+        "min": 0.0,
+        "max": 100.0,
+        "riverKm": 372.2
+      },
+      "rainfall": {
+        "mean": 2288.0397,
+        "min": 1646.5001,
+        "max": 3215.0833
+      },
+      "airquality": {
+        "mean": 60.4314,
+        "min": 37.7089,
+        "max": 72.318
+      },
+      "flood": {
+        "mean": 3.5526,
+        "min": 0.0,
+        "max": 89.6537
+      }
+    },
+    "districts": [
+      {
+        "id": 15,
+        "name": "Dinajpur",
+        "divisionId": 7,
+        "divisionName": "Rangpur",
+        "bbox": [
+          88.3827,
+          25.2223,
+          89.3037,
+          26.0629
+        ],
+        "centroid": [
+          25.6429,
+          88.7244
+        ],
+        "areaKm2": 3460.1,
+        "stats": {
+          "population": {
+            "mean": 955.3508,
+            "min": 0.0,
+            "max": 22083.0781,
+            "population": 0
+          },
+          "forest": {
+            "mean": 21.2788,
+            "min": 0.0,
+            "max": 87.5
+          },
+          "landuse": {
+            "mean": 1.0674,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 35.7005,
+            "min": 22.0949,
+            "max": 55.7055
+          },
+          "rivers": {
+            "mean": 0.608,
+            "min": 0.0,
+            "max": 31.75,
+            "riverKm": 0.0
+          },
+          "rainfall": {
+            "mean": 1928.211,
+            "min": 1646.5001,
+            "max": 2300.9167
+          },
+          "airquality": {
+            "mean": 66.4767,
+            "min": 60.7909,
+            "max": 72.2692
+          },
+          "flood": {
+            "mean": 0.3864,
+            "min": 0.0,
+            "max": 13.815
+          }
+        }
+      },
+      {
+        "id": 18,
+        "name": "Gaibandha",
+        "divisionId": 7,
+        "divisionName": "Rangpur",
+        "bbox": [
+          89.1839,
+          25.0379,
+          89.7563,
+          25.649
+        ],
+        "centroid": [
+          25.3432,
+          89.5363
+        ],
+        "areaKm2": 2166.8,
+        "stats": {
+          "population": {
+            "mean": 1228.2936,
+            "min": 17.3935,
+            "max": 9033.7188,
+            "population": 0
+          },
+          "forest": {
+            "mean": 25.5999,
+            "min": 0.0,
+            "max": 73.75
+          },
+          "landuse": {
+            "mean": 1.6277,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 21.1698,
+            "min": 11.5944,
+            "max": 27.8139
+          },
+          "rivers": {
+            "mean": 10.848,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 77.3
+          },
+          "rainfall": {
+            "mean": 2104.2744,
+            "min": 1874.3333,
+            "max": 2408.2222
+          },
+          "airquality": {
+            "mean": 62.6253,
+            "min": 50.2515,
+            "max": 72.318
+          },
+          "flood": {
+            "mean": 8.2052,
+            "min": 0.0,
+            "max": 76.3613
+          }
+        }
+      },
+      {
+        "id": 30,
+        "name": "Kurigram",
+        "divisionId": 7,
+        "divisionName": "Rangpur",
+        "bbox": [
+          89.4518,
+          25.3727,
+          89.887,
+          26.2383
+        ],
+        "centroid": [
+          25.8056,
+          89.6736
+        ],
+        "areaKm2": 2275.1,
+        "stats": {
+          "population": {
+            "mean": 1023.1111,
+            "min": 0.0,
+            "max": 10119.2803,
+            "population": 0
+          },
+          "forest": {
+            "mean": 24.0043,
+            "min": 0.0,
+            "max": 79.0
+          },
+          "landuse": {
+            "mean": 1.8155,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 26.3976,
+            "min": 15.0586,
+            "max": 36.505
+          },
+          "rivers": {
+            "mean": 18.3414,
+            "min": 0.0,
+            "max": 100.0,
+            "riverKm": 204.3
+          },
+          "rainfall": {
+            "mean": 2666.3603,
+            "min": 2254.0,
+            "max": 3215.0833
+          },
+          "airquality": {
+            "mean": 54.5729,
+            "min": 38.2372,
+            "max": 64.4589
+          },
+          "flood": {
+            "mean": 13.8842,
+            "min": 0.0,
+            "max": 89.6537
+          }
+        }
+      },
+      {
+        "id": 33,
+        "name": "Lalmonirhat",
+        "divisionId": 7,
+        "divisionName": "Rangpur",
+        "bbox": [
+          88.9039,
+          25.7839,
+          89.5709,
+          26.4603
+        ],
+        "centroid": [
+          26.1213,
+          89.165
+        ],
+        "areaKm2": 1274.9,
+        "stats": {
+          "population": {
+            "mean": 1103.6223,
+            "min": 0.0,
+            "max": 9036.1084,
+            "population": 0
+          },
+          "forest": {
+            "mean": 31.0248,
+            "min": 0.0,
+            "max": 81.25
+          },
+          "landuse": {
+            "mean": 1.2909,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 43.4668,
+            "min": 27.1807,
+            "max": 70.4714
+          },
+          "rivers": {
+            "mean": 4.7522,
+            "min": 0.0,
+            "max": 96.75,
+            "riverKm": 42.7
+          },
+          "rainfall": {
+            "mean": 2756.7542,
+            "min": 2523.75,
+            "max": 3069.3335
+          },
+          "airquality": {
+            "mean": 54.8641,
+            "min": 41.6802,
+            "max": 67.2935
+          },
+          "flood": {
+            "mean": 2.1452,
+            "min": 0.0,
+            "max": 41.775
+          }
+        }
+      },
+      {
+        "id": 47,
+        "name": "Nilphamari",
+        "divisionId": 7,
+        "divisionName": "Rangpur",
+        "bbox": [
+          88.7346,
+          25.7311,
+          89.1418,
+          26.3101
+        ],
+        "centroid": [
+          26.0203,
+          88.9216
+        ],
+        "areaKm2": 1588.4,
+        "stats": {
+          "population": {
+            "mean": 1267.7781,
+            "min": 0.0,
+            "max": 17217.1523,
+            "population": 0
+          },
+          "forest": {
+            "mean": 28.9917,
+            "min": 0.0,
+            "max": 80.0
+          },
+          "landuse": {
+            "mean": 1.171,
+            "min": 1.0,
+            "max": 4.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 48.9426,
+            "min": 36.1031,
+            "max": 67.9826
+          },
+          "rivers": {
+            "mean": 2.9397,
+            "min": 0.0,
+            "max": 93.5,
+            "riverKm": 12.2
+          },
+          "rainfall": {
+            "mean": 2466.9881,
+            "min": 2073.5835,
+            "max": 2813.1665
+          },
+          "airquality": {
+            "mean": 58.887,
+            "min": 46.053,
+            "max": 68.0782
+          },
+          "flood": {
+            "mean": 0.9815,
+            "min": 0.0,
+            "max": 44.0788
+          }
+        }
+      },
+      {
+        "id": 50,
+        "name": "Panchagarh",
+        "divisionId": 7,
+        "divisionName": "Rangpur",
+        "bbox": [
+          88.3214,
+          26.0063,
+          88.7978,
+          26.6345
+        ],
+        "centroid": [
+          26.321,
+          88.5475
+        ],
+        "areaKm2": 1362.3,
+        "stats": {
+          "population": {
+            "mean": 822.4825,
+            "min": 0.0,
+            "max": 12850.7441,
+            "population": 0
+          },
+          "forest": {
+            "mean": 32.5827,
+            "min": 0.25,
+            "max": 98.0
+          },
+          "landuse": {
+            "mean": 1.1579,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 69.786,
+            "min": 48.8859,
+            "max": 103.0845
+          },
+          "rivers": {
+            "mean": 1.2097,
+            "min": 0.0,
+            "max": 34.5,
+            "riverKm": 7.8
+          },
+          "rainfall": {
+            "mean": 2609.9458,
+            "min": 2255.6667,
+            "max": 3083.5833
+          },
+          "airquality": {
+            "mean": 49.0271,
+            "min": 37.7089,
+            "max": 62.712
+          },
+          "flood": {
+            "mean": 0.4858,
+            "min": 0.0,
+            "max": 12.885
+          }
+        }
+      },
+      {
+        "id": 56,
+        "name": "Rangpur",
+        "divisionId": 7,
+        "divisionName": "Rangpur",
+        "bbox": [
+          88.9303,
+          25.2992,
+          89.5359,
+          25.9665
+        ],
+        "centroid": [
+          25.6329,
+          89.2626
+        ],
+        "areaKm2": 2344.0,
+        "stats": {
+          "population": {
+            "mean": 1354.8397,
+            "min": 580.2729,
+            "max": 26317.5371,
+            "population": 0
+          },
+          "forest": {
+            "mean": 29.8118,
+            "min": 0.0,
+            "max": 92.75
+          },
+          "landuse": {
+            "mean": 1.1958,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 31.2799,
+            "min": 20.9683,
+            "max": 43.37
+          },
+          "rivers": {
+            "mean": 2.1439,
+            "min": 0.0,
+            "max": 93.75,
+            "riverKm": 27.9
+          },
+          "rainfall": {
+            "mean": 2241.9264,
+            "min": 1981.0,
+            "max": 2571.1665
+          },
+          "airquality": {
+            "mean": 64.6627,
+            "min": 59.5938,
+            "max": 69.9329
+          },
+          "flood": {
+            "mean": 1.1181,
+            "min": 0.0,
+            "max": 42.8162
+          }
+        }
+      },
+      {
+        "id": 64,
+        "name": "Thakurgaon",
+        "divisionId": 7,
+        "divisionName": "Rangpur",
+        "bbox": [
+          88.0858,
+          25.6678,
+          88.6465,
+          26.205
+        ],
+        "centroid": [
+          25.9384,
+          88.3115
+        ],
+        "areaKm2": 1813.8,
+        "stats": {
+          "population": {
+            "mean": 835.8875,
+            "min": 0.0,
+            "max": 10512.4092,
+            "population": 0
+          },
+          "forest": {
+            "mean": 25.0902,
+            "min": 0.0,
+            "max": 84.0
+          },
+          "landuse": {
+            "mean": 1.0724,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 50.2448,
+            "min": 33.4715,
+            "max": 67.4931
+          },
+          "rivers": {
+            "mean": 0.2605,
+            "min": 0.0,
+            "max": 13.0,
+            "riverKm": 0.0
+          },
+          "rainfall": {
+            "mean": 2035.5952,
+            "min": 1709.1666,
+            "max": 2436.3335
+          },
+          "airquality": {
+            "mean": 62.1846,
+            "min": 50.3937,
+            "max": 69.017
+          },
+          "flood": {
+            "mean": 0.1858,
+            "min": 0.0,
+            "max": 7.3369
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Sylhet",
+    "bbox": [
+      90.967,
+      23.992,
+      92.4897,
+      25.2162
+    ],
+    "centroid": [
+      24.6056,
+      91.703
+    ],
+    "areaKm2": 12224.9,
+    "divisionId": 8,
+    "stats": {
+      "population": {
+        "mean": 970.9987,
+        "min": 0.0,
+        "max": 40173.6172,
+        "population": 12110776
+      },
+      "forest": {
+        "mean": 28.4722,
+        "min": 0.0,
+        "max": 100.0
+      },
+      "landuse": {
+        "mean": 1.5273,
+        "min": 1.0,
+        "max": 7.0,
+        "dominant": 1
+      },
+      "elevation": {
+        "mean": 12.6812,
+        "min": 1.2062,
+        "max": 238.1638
+      },
+      "rivers": {
+        "mean": 3.2921,
+        "min": 0.0,
+        "max": 97.0,
+        "riverKm": 547.3
+      },
+      "rainfall": {
+        "mean": 3075.3371,
+        "min": 2050.9722,
+        "max": 4597.0557
+      },
+      "airquality": {
+        "mean": 44.8797,
+        "min": 31.1243,
+        "max": 77.5219
+      },
+      "flood": {
+        "mean": 15.2528,
+        "min": 0.0,
+        "max": 94.0863
+      }
+    },
+    "districts": [
+      {
+        "id": 21,
+        "name": "Habiganj",
+        "divisionId": 8,
+        "divisionName": "Sylhet",
+        "bbox": [
+          91.15,
+          23.9754,
+          91.6676,
+          24.6953
+        ],
+        "centroid": [
+          24.3398,
+          91.4299
+        ],
+        "areaKm2": 2582.9,
+        "stats": {
+          "population": {
+            "mean": 951.4872,
+            "min": 0.0,
+            "max": 10465.7363,
+            "population": 0
+          },
+          "forest": {
+            "mean": 26.9926,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 1.2267,
+            "min": 1.0,
+            "max": 5.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 11.7977,
+            "min": 2.2683,
+            "max": 93.6642
+          },
+          "rivers": {
+            "mean": 1.0469,
+            "min": 0.0,
+            "max": 26.25,
+            "riverKm": 32.9
+          },
+          "rainfall": {
+            "mean": 2473.4889,
+            "min": 2050.9722,
+            "max": 3153.6667
+          },
+          "airquality": {
+            "mean": 57.3368,
+            "min": 44.0182,
+            "max": 77.5219
+          },
+          "flood": {
+            "mean": 8.8722,
+            "min": 0.0,
+            "max": 64.4106
+          }
+        }
+      },
+      {
+        "id": 38,
+        "name": "Moulvibazar",
+        "divisionId": 8,
+        "divisionName": "Sylhet",
+        "bbox": [
+          91.6016,
+          24.1366,
+          92.2959,
+          24.8362
+        ],
+        "centroid": [
+          24.4845,
+          91.882
+        ],
+        "areaKm2": 2679.2,
+        "stats": {
+          "population": {
+            "mean": 843.2643,
+            "min": 0.0,
+            "max": 9508.958,
+            "population": 0
+          },
+          "forest": {
+            "mean": 49.3927,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 1.6292,
+            "min": 1.0,
+            "max": 5.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 23.0628,
+            "min": 3.4399,
+            "max": 188.0592
+          },
+          "rivers": {
+            "mean": 1.4342,
+            "min": 0.0,
+            "max": 95.75,
+            "riverKm": 76.4
+          },
+          "rainfall": {
+            "mean": 2830.0983,
+            "min": 2202.2222,
+            "max": 3648.1389
+          },
+          "airquality": {
+            "mean": 44.8929,
+            "min": 34.3086,
+            "max": 55.2366
+          },
+          "flood": {
+            "mean": 5.1131,
+            "min": 0.0,
+            "max": 94.0863
+          }
+        }
+      },
+      {
+        "id": 61,
+        "name": "Sunamganj",
+        "divisionId": 8,
+        "divisionName": "Sylhet",
+        "bbox": [
+          90.9278,
+          24.569,
+          91.735,
+          25.2074
+        ],
+        "centroid": [
+          24.888,
+          91.3907
+        ],
+        "areaKm2": 3694.2,
+        "stats": {
+          "population": {
+            "mean": 779.017,
+            "min": 0.0,
+            "max": 8806.5635,
+            "population": 0
+          },
+          "forest": {
+            "mean": 13.1766,
+            "min": 0.0,
+            "max": 97.75
+          },
+          "landuse": {
+            "mean": 1.8333,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 6.1545,
+            "min": 1.2062,
+            "max": 142.2551
+          },
+          "rivers": {
+            "mean": 6.38,
+            "min": 0.0,
+            "max": 97.0,
+            "riverKm": 202.2
+          },
+          "rainfall": {
+            "mean": 3082.2633,
+            "min": 2635.1387,
+            "max": 3907.9165
+          },
+          "airquality": {
+            "mean": 42.2073,
+            "min": 34.4617,
+            "max": 57.0443
+          },
+          "flood": {
+            "mean": 32.4921,
+            "min": 0.0,
+            "max": 88.9469
+          }
+        }
+      },
+      {
+        "id": 62,
+        "name": "Sylhet",
+        "divisionId": 8,
+        "divisionName": "Sylhet",
+        "bbox": [
+          91.6316,
+          24.5934,
+          92.4967,
+          25.1871
+        ],
+        "centroid": [
+          24.8909,
+          91.9589
+        ],
+        "areaKm2": 3418.2,
+        "stats": {
+          "population": {
+            "mean": 1274.3251,
+            "min": 0.0,
+            "max": 40173.6172,
+            "population": 0
+          },
+          "forest": {
+            "mean": 31.3007,
+            "min": 0.0,
+            "max": 100.0
+          },
+          "landuse": {
+            "mean": 1.3389,
+            "min": 1.0,
+            "max": 7.0,
+            "dominant": 1
+          },
+          "elevation": {
+            "mean": 13.0637,
+            "min": 4.6971,
+            "max": 238.1638
+          },
+          "rivers": {
+            "mean": 2.8307,
+            "min": 0.0,
+            "max": 83.5,
+            "riverKm": 235.8
+          },
+          "rainfall": {
+            "mean": 3644.9208,
+            "min": 3074.1108,
+            "max": 4597.0557
+          },
+          "airquality": {
+            "mean": 39.2252,
+            "min": 31.1243,
+            "max": 46.8182
+          },
+          "flood": {
+            "mean": 8.3348,
+            "min": 0.0,
+            "max": 81.8394
+          }
+        }
+      }
+    ]
+  }
+]
