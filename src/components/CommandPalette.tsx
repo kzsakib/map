@@ -34,6 +34,7 @@ function matches(haystack: string, query: string) {
 export default function CommandPalette({ open, onClose }: { open: boolean; onClose: () => void }) {
   const setSelection = useStore((s) => s.setSelection)
   const active = useStore((s) => s.activeLayer)
+  const dataLoaded = useStore((s) => s.dataLoaded)
   const [query, setQuery] = useState('')
   const [cursor, setCursor] = useState(0)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -63,7 +64,9 @@ export default function CommandPalette({ open, onClose }: { open: boolean; onClo
       }
     }
     return out
-  }, [open, active])
+    // dataLoaded belongs here: opening the palette mid-load used to memoise an
+    // empty list and never refresh once the regions arrived
+  }, [open, active, dataLoaded])
 
   const results = useMemo(() => {
     const list = rows.filter((r) => matches(r.name, query))

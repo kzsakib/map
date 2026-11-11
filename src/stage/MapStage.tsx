@@ -121,14 +121,14 @@ export default function MapStage() {
 
       {/* inset frame + fixed ticks */}
       <div className="pointer-events-none absolute inset-3 z-10 border border-ink/15 md:inset-6" aria-hidden="true">
-        <div className="absolute left-[22%] top-1 flex gap-10">
+        <div className="absolute left-[3%] top-1 flex gap-8">
           {['88°E', '90°E', '92°E'].map((t) => (
             <span key={t} className="mono-label bg-cream/80 !text-[11px] !tracking-[0.3em] text-[#5f5f5f]">
               {t}
             </span>
           ))}
         </div>
-        <div className="absolute left-1 top-[11%] flex flex-col gap-5">
+        <div className="absolute left-1 top-[16%] flex flex-col gap-5">
           {['26°N', '22°N'].map((t) => (
             <span
               key={t}
