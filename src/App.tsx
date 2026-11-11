@@ -69,12 +69,10 @@ export default function App() {
           splashCount={overMap ? 6 : 10}
           morph={0.35}
           morphSpeed={0.35}
-          trail={12}
           lag={0.6}
           stretch={0.55}
           wobble={0.9}
           splash
-          splashCount={10}
           splashSize={0.4}
           hideCursor
         />
