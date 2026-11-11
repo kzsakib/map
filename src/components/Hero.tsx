@@ -66,7 +66,7 @@ export default function Hero() {
     <section
       ref={root}
       id="top"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-cream"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-cream md:cursor-none"
     >
       {/* drifting green / rose mesh, 30s linear loop — dimmed so the type can read */}
       <div
@@ -137,14 +137,20 @@ export default function Hero() {
         />
       </div>
 
-      {/* black blob: difference against cream reads as ink, and whatever it
-          covers loses its colour, so the page shows through it */}
-      <div className="pointer-events-none absolute inset-0 z-20 hidden md:block" aria-hidden="true">
+      {/* Black blob. The blend has to live on this wrapper: a z-indexed wrapper
+          forms a stacking context, so a child with mix-blend-mode would have an
+          empty backdrop and paint as plain white. Blending here inverts the
+          hero beneath it, which is what makes the blob read as black. */}
+      <div
+        className="pointer-events-none absolute inset-0 z-20 hidden md:block"
+        style={{ mixBlendMode: 'difference' }}
+        aria-hidden="true"
+      >
         <BlobCursor
           material="ink"
           color="#ffffff"
-          blend="difference"
-          size={120}
+          blend="normal"
+          size={88}
           morph={0.35}
           morphSpeed={0.35}
           trail={12}
