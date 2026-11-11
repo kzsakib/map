@@ -1,4 +1,4 @@
-import { db, formatValue, layerDef, type RegionStats } from '../lib/data'
+import { db, formatValue, layerDef, regionPopulation, type RegionStats } from '../lib/data'
 import { useStore } from '../store'
 
 function Cell({ label, value }: { label: string; value: string }) {
@@ -27,7 +27,8 @@ export default function SelectionCard() {
   if (!target) return null
 
   const stats = target.stats?.[active] as RegionStats | undefined
-  const population = (division ?? target).stats?.population?.population ?? 0
+  // the selected region's own population: districts store unusable totals
+  const population = regionPopulation(target)
   const area = target.areaKm2
   const peak = stats?.max ?? null
   const mean = stats?.mean ?? null

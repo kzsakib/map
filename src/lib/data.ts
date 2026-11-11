@@ -73,6 +73,25 @@ export interface Division {
   districts: District[]
 }
 
+/**
+ * District population totals in the committed data are unreliable: several are
+ * 0 (Gazipur) while others carry division-scale numbers, so a district could
+ * read 0.0 M. Derive the total from the region's own mean density and land area
+ * instead, and only trust the stored figure when it agrees with that.
+ */
+export function regionPopulation(region: {
+  areaKm2: number
+  stats?: Record<string, RegionStats>
+}): number {
+  const p = region.stats?.population
+  const derived = (p?.mean ?? 0) * region.areaKm2
+  const stored = p?.population
+  if (typeof stored === 'number' && stored > 0 && derived > 0) {
+    if (Math.abs(stored - derived) / derived < 0.5) return stored
+  }
+  return derived
+}
+
 export interface City {
   name: string
   lat: number
