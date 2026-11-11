@@ -31,19 +31,19 @@ export default function Footer() {
         className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(46%_84%_at_62%_0%,rgba(244,163,168,0.14),transparent_74%),radial-gradient(62%_100%_at_40%_0%,rgba(111,207,155,0.18),transparent_72%)]"
       />
 
-      <div className="relative mx-auto max-w-[1500px] px-5 md:px-10">
-        <p className="mono-label text-cream/40">Coda</p>
-        <blockquote className="mt-8 max-w-4xl font-serif text-[clamp(1.9rem,4.4vw,3.6rem)] leading-[1.08]">
+      <div className="relative mx-auto max-w-[1180px] px-5 md:px-10">
+        <p className="mono-label text-center text-cream/40">Coda</p>
+        <blockquote className="mx-auto mt-8 max-w-4xl text-center font-serif text-[clamp(1.9rem,4.4vw,3.6rem)] leading-[1.08]">
           The rivers do not leave this land — they <span className="italic text-green-400">gather</span> it.
           Every life in the delta is a promise the water keeps returning to.
         </blockquote>
 
-        <div className="mt-20 grid gap-12 border-t border-white/10 pt-12 md:grid-cols-3">
+        <div className="mt-20 grid gap-12 border-t border-white/10 pt-12 text-center md:grid-cols-3">
           <div>
             <p className="mono-label text-cream/40">Data</p>
             <ul className="mt-5 space-y-2.5">
               {DATA.map(([name, license]) => (
-                <li key={name} className="flex flex-wrap items-baseline justify-between gap-x-4">
+                <li key={name} className="flex flex-wrap items-baseline justify-center gap-x-3">
                   <span className="text-[13px] text-cream/75">{name}</span>
                   <span className="mono-label !text-[11px] !tracking-[0.16em] text-cream/35">
                     {license}
@@ -92,7 +92,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6">
+        <div className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-white/10 pt-6 text-center">
           <p className="mono-label !text-[11px] !tracking-[0.24em] text-cream/35">
             Bangladesh in Relief · eight layers · 64 districts
           </p>
