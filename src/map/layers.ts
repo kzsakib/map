@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { db, type LayerDef } from '../lib/data'
 import {
+  CLASS_COLOR_OVERRIDE,
   GROUND_MIX_OVERRIDE,
   GROUND_RAMP_MIX,
   GROUND_TINT,
@@ -38,6 +39,8 @@ export function hexToRgb(hex: string): [number, number, number] {
 export function rampColorAt(layer: LayerDef, t: number): [number, number, number] {
   if (layer.type === 'categorical') {
     const id = Math.round(t * 255)
+    const override = CLASS_COLOR_OVERRIDE[layer.id]?.[id]
+    if (override) return hexToRgb(override)
     const cls = layer.classes?.find((c) => c.id === id)
     return cls ? hexToRgb(cls.color) : [252, 251, 249]
   }

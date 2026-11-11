@@ -31,6 +31,10 @@ export const SHAPE_OVERRIDES: Record<string, { flat: boolean; scale: number; exp
   // curve and then too tall at a shallow one; this keeps the delta readable
   // without the coast turning into a wall of blades
   rivers: { flat: false, scale: 0.42, exp: 1.9 },
+  // the delta sits at 2-15 m against a 1,150 m maximum, so a straight value
+  // curve flattened the whole country except the Chittagong hills; an exponent
+  // below 1 lifts the plains into readable relief and still lets the hills run
+  elevation: { flat: false, scale: 0.65, exp: 0.35 },
 }
 
 export function rampOf(layer: LayerDef): string[] {
@@ -67,6 +71,25 @@ export const GROUND_MIX_OVERRIDE: Record<string, number> = {
  */
 export const COLOR_POW_OVERRIDE: Record<string, number> = {
   rivers: 1,
+  // the elevation ramp is pale by design; compressing it further lost the relief
+  elevation: 1,
+}
+
+/**
+ * Land use is mostly cropland, so one tan filled the country and the other
+ * classes were invisible at 1 km. Cropland is pushed almost to the paper tone
+ * so the remaining classes read as coloured regions against it.
+ */
+export const CLASS_COLOR_OVERRIDE: Record<string, Record<number, string>> = {
+  landuse: {
+    1: '#efe9d8', // cropland: the paper ground
+    2: '#2f6b45', // trees
+    3: '#8a2f4a', // built-up
+    4: '#1f5f8b', // water
+    5: '#2f8a8a', // wetland
+    6: '#123f2c', // mangrove
+    7: '#cbd6bb', // grass / bare
+  },
 }
 
 export function groundTintOf(layer: LayerDef): string {
