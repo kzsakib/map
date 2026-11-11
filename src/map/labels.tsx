@@ -4,6 +4,18 @@ import { cellFromLonLat, db, districtAt, layerDef } from '../lib/data'
 import { useStore } from '../store'
 import { CELL_KM, heightFor } from './layers'
 
+/** hand-tuned spread so the two Khulna-division labels never sit on top of each other */
+const OFFSETS: Record<string, [number, number]> = {
+  Barishal: [46, 34],
+  Khulna: [40, -16],
+  Rajshahi: [-46, -10],
+  Rangpur: [-30, -34],
+  Sylhet: [44, -10],
+  Mymensingh: [-6, -30],
+  Dhaka: [36, -22],
+  Chattogram: [44, 10],
+}
+
 type Item = {
   name: string
   anchor: [number, number, number]
@@ -42,6 +54,7 @@ export default function CityLabels() {
       const z = (best.row + 0.5 - meta.rows / 2) * CELL_KM
       const h = heightFor(def, best.q) + 1.5
       const side = idx % 2 === 0 ? 1 : -1
+      const off = OFFSETS[city.name]
       const cityDistrict = districtAt(city.lon, city.lat)
       const covered =
         !selectedDivision && !selectedDistrict
@@ -54,7 +67,11 @@ export default function CityLabels() {
       return {
         name: city.name,
         anchor: [x, h, z] as [number, number, number],
-        label: [x + side * 30, h + 15, z - 8] as [number, number, number],
+        label: [x + (off ? off[0] : side * 30), h + (off ? off[1] : 15), z - 8] as [
+          number,
+          number,
+          number,
+        ],
         covered,
       }
     })
@@ -69,7 +86,7 @@ export default function CityLabels() {
           <group key={item.name}>
             <Line
               points={[item.anchor, item.label]}
-              color="#5c1f38"
+              color="#171717"
               lineWidth={0.75}
               transparent
               opacity={0.4}
@@ -81,7 +98,7 @@ export default function CityLabels() {
               zIndexRange={[9, 0]}
               style={{ pointerEvents: 'none', whiteSpace: 'nowrap' }}
             >
-              <span className="font-serif text-[13px] italic text-[#3b0a1e] drop-shadow-[0_1px_0_rgba(252,251,249,0.9)] md:text-[14px]">
+              <span className="whitespace-nowrap rounded-[2px] bg-cream/70 px-1 font-serif text-[15px] italic text-ink [text-shadow:0_0_10px_rgba(252,251,249,0.9)] md:text-[16px]">
                 {item.name}
               </span>
             </Html>

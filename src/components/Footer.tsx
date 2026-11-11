@@ -28,13 +28,13 @@ export default function Footer() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(42%_82%_at_63%_0%,rgba(111,207,155,0.16),transparent_72%),radial-gradient(60%_100%_at_40%_0%,rgba(67,56,202,0.42),transparent_70%)]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(46%_84%_at_62%_0%,rgba(244,163,168,0.14),transparent_74%),radial-gradient(62%_100%_at_40%_0%,rgba(111,207,155,0.18),transparent_72%)]"
       />
 
       <div className="relative mx-auto max-w-[1500px] px-5 md:px-10">
         <p className="mono-label text-cream/40">Coda</p>
         <blockquote className="mt-8 max-w-4xl font-serif text-[clamp(1.9rem,4.4vw,3.6rem)] leading-[1.08]">
-          The rivers do not leave this land — they <span className="italic text-indigo-200">gather</span> it.
+          The rivers do not leave this land — they <span className="italic text-green-400">gather</span> it.
           Every life in the delta is a promise the water keeps returning to.
         </blockquote>
 

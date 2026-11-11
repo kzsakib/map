@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import SoftAurora from './reactbits/SoftAurora'
 import ShapeBlur from './reactbits/ShapeBlur'
+import BlobCursor from './reactbits/BlobCursor'
 import BlurText from './reactbits/BlurText'
 import Magnet from './reactbits/Magnet'
 import Wave from './Wave'
@@ -67,18 +68,18 @@ export default function Hero() {
       id="top"
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-cream"
     >
-      {/* drifting indigo / purple mesh, 30s linear loop — dimmed so green can read */}
+      {/* drifting green / rose mesh, 30s linear loop — dimmed so the type can read */}
       <div
         className="hero-mesh pointer-events-none absolute inset-0 opacity-60"
         aria-hidden="true"
       >
-        <div className="mesh-field animate-mesh-drift -left-[10%] top-[6%] h-[46vw] w-[46vw] bg-[radial-gradient(circle,rgba(199,210,254,0.75),transparent_68%)]" />
+        <div className="mesh-field animate-mesh-drift -left-[10%] top-[6%] h-[46vw] w-[46vw] bg-[radial-gradient(circle,rgba(191,232,208,0.7),transparent_68%)]" />
         <div
-          className="mesh-field animate-mesh-drift right-[-6%] top-[18%] h-[38vw] w-[38vw] bg-[radial-gradient(circle,rgba(233,213,255,0.7),transparent_66%)]"
+          className="mesh-field animate-mesh-drift right-[-6%] top-[18%] h-[38vw] w-[38vw] bg-[radial-gradient(circle,rgba(111,207,155,0.42),transparent_66%)]"
           style={{ animationDelay: '-10s' }}
         />
         <div
-          className="mesh-field animate-mesh-drift left-[24%] top-[44%] h-[34vw] w-[34vw] bg-[radial-gradient(circle,rgba(252,231,243,0.8),transparent_70%)]"
+          className="mesh-field animate-mesh-drift left-[24%] top-[44%] h-[34vw] w-[34vw] bg-[radial-gradient(circle,rgba(244,163,168,0.32),transparent_70%)]"
           style={{ animationDelay: '-20s' }}
         />
       </div>
@@ -136,6 +137,26 @@ export default function Hero() {
         />
       </div>
 
+      {/* the blob cursor inverts whatever it passes over */}
+      <div className="pointer-events-none absolute inset-0 z-20 hidden md:block" aria-hidden="true">
+        <BlobCursor
+          material="ink"
+          color="#ffffff"
+          blend="difference"
+          size={120}
+          morph={0.35}
+          morphSpeed={0.35}
+          trail={12}
+          lag={0.6}
+          stretch={0.55}
+          wobble={0.9}
+          splash
+          splashCount={10}
+          splashSize={0.4}
+          hideCursor
+        />
+      </div>
+
       <div className="relative z-10 mt-[-4vh] w-full px-5 text-center">
         <p className="mono-label mb-7 !text-[9px] !tracking-[0.22em] text-ink/45 md:!text-[11px] md:!tracking-[0.3em]">
           A data landscape · 1 km grid · eight layers
@@ -183,7 +204,7 @@ export default function Hero() {
               type="button"
               data-hero-rise
               onClick={() => scrollToSection('#map')}
-              className="group inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-sm text-cream transition-colors duration-500 premium-ease hover:bg-[#372fa8] md:px-8 md:py-4"
+              className="group inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-sm text-cream transition-colors duration-500 premium-ease hover:bg-green-900 md:px-8 md:py-4"
             >
               <span className="mono-label !text-[10px] !tracking-[0.28em] text-cream">
                 Explore the map

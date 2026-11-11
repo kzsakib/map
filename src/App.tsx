@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
-import MapSection from './components/MapSection'
+import MapStage from './stage/MapStage'
 import Footer from './components/Footer'
 import { initData } from './lib/data'
 import { initScroll } from './lib/scroll'
@@ -30,7 +30,7 @@ export default function App() {
       <Header />
       <main>
         <Hero />
-        <MapSection />
+        <MapStage />
       </main>
       <Footer />
     </div>

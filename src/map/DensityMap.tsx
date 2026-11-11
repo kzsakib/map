@@ -30,6 +30,9 @@ import CityLabels from './labels'
 
 const EASE = 'power3.inOut'
 
+/** categorical and flat layers must keep their exact classes; continuous ramps compress */
+const COLOR_POW = (def: LayerDef) => (def.type === 'categorical' || def.heightMode === 'flat' ? 1 : 2.6)
+
 type HoverPayload = { id: number; label: string; value: string; x: number; y: number } | null
 
 function useLayerBin(id: string) {
@@ -153,6 +156,7 @@ function Spikes({ bin }: { bin: Uint8Array }) {
       u.uTexB.value = tex
       u.uRampB.value = ramp
       u.uHeight.value = [def.heightScale, def.heightScale]
+      u.uColorPow.value = [COLOR_POW(def), COLOR_POW(def)]
       u.uExp.value = [def.heightExponent * HEIGHT_CONTRAST, def.heightExponent * HEIGHT_CONTRAST]
       u.uFlat.value = [def.heightMode === 'flat' ? 1 : 0, def.heightMode === 'flat' ? 1 : 0]
       u.uSink.value = [def.sink ? 1 : 0, def.sink ? 1 : 0]
@@ -164,6 +168,7 @@ function Spikes({ bin }: { bin: Uint8Array }) {
     u.uTexB.value = tex
     u.uRampB.value = ramp
     u.uHeight.value = [u.uHeight.value[0], def.heightScale]
+    u.uColorPow.value = [u.uColorPow.value[0], COLOR_POW(def)]
     u.uExp.value = [u.uExp.value[0], def.heightExponent * HEIGHT_CONTRAST]
     u.uFlat.value = [u.uFlat.value[0], def.heightMode === 'flat' ? 1 : 0]
     u.uSink.value = [u.uSink.value[0], def.sink ? 1 : 0]
@@ -185,6 +190,8 @@ function Spikes({ bin }: { bin: Uint8Array }) {
         u.uTexA.value = tex
         u.uRampA.value = ramp
         u.uHeight.value = [def.heightScale, def.heightScale]
+        u.uColorPow.value = [COLOR_POW(def), COLOR_POW(def)]
+      u.uColorPow.value = [COLOR_POW(def), COLOR_POW(def)]
         u.uExp.value = [def.heightExponent * HEIGHT_CONTRAST, def.heightExponent * HEIGHT_CONTRAST]
         u.uFlat.value = [def.heightMode === 'flat' ? 1 : 0, def.heightMode === 'flat' ? 1 : 0]
         u.uSink.value = [def.sink ? 1 : 0, def.sink ? 1 : 0]
@@ -340,27 +347,18 @@ function CameraRig() {
       dragging = false
       if (el.hasPointerCapture(e.pointerId)) el.releasePointerCapture(e.pointerId)
     }
-    const wheel = (e: WheelEvent) => {
-      e.preventDefault()
-      state.current.radius = THREE.MathUtils.clamp(
-        state.current.radius * (1 + e.deltaY * 0.0012),
-        250,
-        2600,
-      )
-      invalidate()
-    }
+    // wheel-zoom is deliberately gone: it hijacked the page scroll and made the
+    // stage zoom out under Lenis. Drag or orbit, scroll scrolls the page.
 
     el.addEventListener('pointerdown', down)
     el.addEventListener('pointermove', move)
     el.addEventListener('pointerup', up)
     el.addEventListener('pointercancel', up)
-    el.addEventListener('wheel', wheel, { passive: false })
     return () => {
       el.removeEventListener('pointerdown', down)
       el.removeEventListener('pointermove', move)
       el.removeEventListener('pointerup', up)
       el.removeEventListener('pointercancel', up)
-      el.removeEventListener('wheel', wheel)
     }
   }, [gl, invalidate])
 
@@ -475,7 +473,7 @@ export default function DensityMap() {
       <div
         ref={tip}
         aria-hidden="true"
-        className="pointer-events-none fixed left-0 top-0 z-[70] rounded-card border border-line bg-cream/95 px-3 py-2 opacity-0 shadow-[0_20px_50px_-24px_rgba(67,56,202,0.35)] backdrop-blur-sm transition-opacity duration-300 premium-ease"
+        className="pointer-events-none fixed left-0 top-0 z-[70] rounded-card border border-line bg-cream/95 px-3 py-2 opacity-0 shadow-[0_20px_50px_-24px_rgba(31,122,84,0.35)] backdrop-blur-sm transition-opacity duration-300 premium-ease"
       >
         <div
           ref={tipName}

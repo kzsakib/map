@@ -3,19 +3,22 @@
 @tailwind utilities;
 
 :root {
+  --bg: #fcfbf9;
   --cream: #fcfbf9;
   --ink: #171717;
-  --indigo: #4338ca;
   --line: #e5e5e5;
+  --muted: #6b6b6b;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* palette extension: green is ambient, red is the flag-sun accent */
   --green-50: #effaf4;
   --green-200: #bfe8d0;
   --green-400: #6fcf9b;
+  --green-700: #1f7a54;
   --green-900: #0f3d2e;
-  --red-300: #f4a3a8;
-  --red-500: #e5484d;
+  --rose-50: #fff1f1;
+  --rose-300: #f4a3a8;
+  --rose-500: #e5484d;
+  --maroon-900: #2a0716;
 }
 
 @layer base {
@@ -35,12 +38,12 @@
   }
 
   ::selection {
-    background: rgba(67, 56, 202, 0.16);
+    background: rgba(111, 207, 155, 0.28);
   }
 
   :focus-visible {
-    outline: 2px solid var(--indigo);
-    outline-offset: 3px;
+    outline: 2px solid var(--green-700);
+    outline-offset: 2px;
   }
 
   button,
@@ -109,7 +112,7 @@
   width: clamp(12px, 0.45em, 34px);
   height: clamp(12px, 0.45em, 34px);
   border-radius: 9999px;
-  background: var(--red-500);
+  background: var(--rose-500);
   box-shadow: 0 0 20px rgba(229, 72, 77, 0.3);
   pointer-events: none;
 }
@@ -124,9 +127,9 @@
 
 .hero-mesh {
   background:
-    radial-gradient(60% 60% at 30% 30%, rgba(199, 210, 254, 0.55), transparent 70%),
-    radial-gradient(50% 50% at 74% 40%, rgba(233, 213, 255, 0.45), transparent 72%),
-    radial-gradient(55% 55% at 50% 78%, rgba(252, 231, 243, 0.55), transparent 70%);
+    radial-gradient(58% 58% at 28% 30%, rgba(191, 232, 208, 0.5), transparent 70%),
+    radial-gradient(52% 52% at 74% 38%, rgba(111, 207, 155, 0.34), transparent 72%),
+    radial-gradient(46% 46% at 78% 82%, rgba(244, 163, 168, 0.26), transparent 72%);
 }
 
 /* fine map frame ticks */
@@ -160,7 +163,7 @@
 }
 .card-hover:hover {
   transform: translateY(-16px) scale(1.02);
-  box-shadow: 0 30px 60px -30px rgba(67, 56, 202, 0.25);
+  box-shadow: 0 30px 60px -30px rgba(31, 122, 84, 0.28);
 }
 
 .lenis.lenis-smooth {

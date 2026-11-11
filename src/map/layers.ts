@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { db, type LayerDef } from '../lib/data'
+import { GROUND_RAMP_MIX, GROUND_TINT, HEIGHT_BOOST, rampOf } from '../lib/look'
 
 /** world units: 1 unit = 1 km */
 export const CELL_KM = 1.11
@@ -33,7 +34,7 @@ export function rampColorAt(layer: LayerDef, t: number): [number, number, number
     const cls = layer.classes?.find((c) => c.id === id)
     return cls ? hexToRgb(cls.color) : [252, 251, 249]
   }
-  const stops = layer.ramp
+  const stops = rampOf(layer)
   if (!stops.length) return [252, 251, 249]
   const scaled = Math.min(1, Math.max(0, t)) * (stops.length - 1)
   const i = Math.min(stops.length - 2, Math.floor(scaled))
@@ -95,7 +96,10 @@ export function heightFor(layer: LayerDef, q: number): number {
   if (layer.heightMode === 'flat') {
     return layer.heightScale * BASE_HEIGHT - (layer.sink ? t * 0.55 : 0)
   }
-  return Math.pow(t, layer.heightExponent * HEIGHT_CONTRAST) * layer.heightScale * BASE_HEIGHT
+  const boost = HEIGHT_BOOST[layer.id]
+  const exponent = (layer.heightExponent + (boost?.exp ?? 0)) * HEIGHT_CONTRAST
+  const scale = layer.heightScale * (boost?.scale ?? 1)
+  return Math.pow(t, exponent) * scale * BASE_HEIGHT
 }
 
 /**
@@ -115,13 +119,19 @@ export function groundTexture(layer: LayerDef): THREE.CanvasTexture | null {
   const lctx = low.getContext('2d')
   if (!lctx) return null
 
+  const tint = hexToRgb(GROUND_TINT[layer.id] ?? '#eef6f0')
+  const crisp = layer.type === 'categorical' || layer.heightMode === 'flat'
   for (let r = 0; r < meta.rows; r++) {
     for (let c = 0; c < meta.cols; c++) {
       const i = r * meta.cols + c
       if (!regions[i]) continue
       const q = bin[i]
       const [rr, gg, bb] = q ? rampColorAt(layer, q / 255) : [246, 243, 236]
-      lctx.fillStyle = `rgb(${rr},${gg},${bb})`
+      // continuous layers wash into the pale tint; classes keep their own hue
+      const mix = crisp ? 0 : GROUND_RAMP_MIX
+      lctx.fillStyle = `rgb(${Math.round(tint[0] + (rr - tint[0]) * mix)},${Math.round(
+        tint[1] + (gg - tint[1]) * mix,
+      )},${Math.round(tint[2] + (bb - tint[2]) * mix)})`
       lctx.fillRect(c, r, 1, 1)
     }
   }
@@ -147,7 +157,6 @@ export function groundTexture(layer: LayerDef): THREE.CanvasTexture | null {
   ctx.restore()
 
   // the layer wash: flat and class layers stay crisp so the categories read
-  const crisp = layer.type === 'categorical' || layer.heightMode === 'flat'
   ctx.save()
   ctx.globalAlpha = crisp ? 1 : 0.88
   ctx.filter = `blur(${crisp ? 0.4 : 1.6}px)`

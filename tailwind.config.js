@@ -6,19 +6,24 @@ export default {
       colors: {
         cream: '#fcfbf9',
         ink: '#171717',
-        accent: '#4338ca',
         line: '#e5e5e5',
-        clay: '#7b1e3f',
-        // extended palette: green is the ambient delta hue, red is the sun accent
+        muted: '#6b6b6b',
+        // green leads: 700 is the action colour, white text on it passes AA
+        accent: '#1f7a54',
         green: {
           50: '#effaf4',
           200: '#bfe8d0',
           400: '#6fcf9b',
+          700: '#1f7a54',
           900: '#0f3d2e',
         },
-        red: {
+        rose: {
+          50: '#fff1f1',
           300: '#f4a3a8',
           500: '#e5484d',
+        },
+        maroon: {
+          900: '#2a0716',
         },
       },
       fontFamily: {
@@ -39,9 +44,17 @@ export default {
           '50%': { transform: 'translate3d(4%, 3%, 0) scale(1.08)' },
           '100%': { transform: 'translate3d(-4%, -2%, 0) scale(1)' },
         },
+        'rise-in': {
+          from: { opacity: '0', transform: 'translateY(40px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        'card-in': {
+          from: { opacity: '0', transform: 'translateY(40px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
         'cta-pulse': {
-          '0%, 100%': { transform: 'scale(1)', boxShadow: '0 0 0 0 rgba(67,56,202,0)' },
-          '50%': { transform: 'scale(1.02)', boxShadow: '0 12px 40px 20px rgba(67,56,202,0.16)' },
+          '0%, 100%': { transform: 'scale(1)', boxShadow: '0 0 0 0 rgba(111,207,155,0)' },
+          '50%': { transform: 'scale(1.02)', boxShadow: '0 12px 40px 20px rgba(111,207,155,0.22)' },
         },
         'dot-pulse': {
           '0%, 100%': { opacity: '1', transform: 'scale(1)' },

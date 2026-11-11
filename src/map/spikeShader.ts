@@ -14,6 +14,7 @@ uniform sampler2D uDivisions;
 uniform vec2 uGrid;
 uniform float uCellSize;
 uniform float uBaseHeight;
+uniform vec2 uColorPow;
 uniform float uMix;
 uniform float uMorph;
 uniform float uWidth;
@@ -68,7 +69,11 @@ void main() {
   vKeep = keep;
   vSelected = isSel * hasSel;
   vHover = (uHoverDistrict > 0.5 && abs(region - uHoverDistrict) < 0.6) ? 1.0 : 0.0;
-  vColor = mix(ramp(uRampA, tA), ramp(uRampB, tB), uMix);
+  // colour compression: only the tall cells take the saturated end of the ramp,
+  // so the field stays pale like a printed relief instead of a red carpet
+  float cA = pow(clamp(tA, 0.0, 1.0), uColorPow.x);
+  float cB = pow(clamp(tB, 0.0, 1.0), uColorPow.y);
+  vColor = mix(ramp(uRampA, cA), ramp(uRampB, cB), uMix);
   vNormalW = normalize(normal + vec3(0.0, 0.18, 0.0));
 
   vec3 local = position;
@@ -106,7 +111,7 @@ void main() {
   // slightly darker flanks, brighter tips: makes thin columns read as relief
   vec3 col = vColor * shade * mix(0.90, 1.06, up) + vec3(0.04, 0.03, 0.02) * tip;
   col = mix(CREAM, col, mix(0.16, 1.0, vKeep));
-  col = mix(col, vec3(0.263, 0.220, 0.792), vHover * 0.30);
+  col = mix(col, vec3(0.122, 0.478, 0.329), vHover * 0.30);
   col = mix(col, col * 1.04 + vec3(0.02), vSelected * 0.5);
 
   gl_FragColor = vec4(col, 1.0);
@@ -132,6 +137,7 @@ export function spikeUniforms() {
     uHoverDistrict: { value: 0 },
     uHeight: { value: [1, 1] },
     uExp: { value: [1.4, 1.4] },
+    uColorPow: { value: [1, 1] },
     uFlat: { value: [0, 0] },
     uSink: { value: [0, 0] },
   }

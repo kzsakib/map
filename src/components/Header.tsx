@@ -3,7 +3,7 @@ import { useStore } from '../store'
 
 const LINKS = [
   { label: 'Map', target: '#map' },
-  { label: 'Regions', target: '#regions' },
+  { label: 'Regions', target: '#map' },
   { label: 'Data', target: '#data' },
 ]
 
