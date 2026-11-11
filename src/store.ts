@@ -38,9 +38,11 @@ export const useStore = create<Store>((set) => ({
   setLayerLoading: (layerLoading) => set({ layerLoading }),
 }))
 
-/** True when the user asked the OS to reduce motion. */
-export const prefersReducedMotion = () =>
-  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+/**
+ * Motion is always on: this stays false for every visitor, by request.
+ * Kept as a function so call sites read explicitly rather than magically.
+ */
+export const prefersReducedMotion = () => false
 
 /** True on narrow screens (the map downsamples the grid by 2). */
 export const isCoarse = () =>

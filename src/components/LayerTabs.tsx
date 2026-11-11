@@ -48,8 +48,8 @@ export default function LayerTabs() {
             tabIndex={isActive ? 0 : -1}
             onKeyDown={(e) => onKey(e, i)}
             onClick={() => setLayer(layer.id)}
-            className={`mono-label whitespace-nowrap rounded-full px-3 py-2 !text-[9px] !tracking-[0.22em] transition-colors duration-500 premium-ease ${
-              isActive ? 'bg-ink/[0.055] text-ink' : 'text-ink/45 hover:text-ink'
+            className={`mono-label whitespace-nowrap rounded-full px-3 py-2 !text-[11px] !tracking-[0.22em] transition-colors duration-500 premium-ease ${
+              isActive ? 'bg-ink/[0.055] text-ink' : 'text-[#5f5f5f] hover:text-ink'
             }`}
           >
             {layer.label.replace(' & ', ' / ')}

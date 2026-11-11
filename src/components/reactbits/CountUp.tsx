@@ -32,11 +32,6 @@ export default function CountUp({
     let raf = 0
     let started = false
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      el.textContent = `${prefix}${fmt(value, decimals)}${suffix}`
-      return
-    }
-
     const run = () => {
       const start = performance.now()
       const tick = (now: number) => {

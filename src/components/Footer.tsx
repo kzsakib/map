@@ -45,7 +45,7 @@ export default function Footer() {
               {DATA.map(([name, license]) => (
                 <li key={name} className="flex flex-wrap items-baseline justify-between gap-x-4">
                   <span className="text-[13px] text-cream/75">{name}</span>
-                  <span className="mono-label !text-[8px] !tracking-[0.16em] text-cream/35">
+                  <span className="mono-label !text-[11px] !tracking-[0.16em] text-cream/35">
                     {license}
                   </span>
                 </li>
@@ -93,10 +93,10 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6">
-          <p className="mono-label !text-[8.5px] !tracking-[0.24em] text-cream/35">
+          <p className="mono-label !text-[11px] !tracking-[0.24em] text-cream/35">
             Bangladesh in Relief · eight layers · 64 districts
           </p>
-          <p className="mono-label !text-[8.5px] !tracking-[0.24em] text-cream/25">
+          <p className="mono-label !text-[11px] !tracking-[0.24em] text-cream/25">
             Data are indicative; read every number with its source.
           </p>
         </div>

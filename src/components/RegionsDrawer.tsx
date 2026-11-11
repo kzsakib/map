@@ -15,10 +15,10 @@ export default function RegionsDrawer({ open, onToggle }: { open: boolean; onTog
           open ? 'translate-x-[420px]' : 'translate-x-0'
         }`}
       >
-        <span className="mono-label !text-[9px] !tracking-[0.26em] text-ink/60 [writing-mode:vertical-rl]">
+        <span className="mono-label !text-[11px] !tracking-[0.26em] text-[#4a4a4a] [writing-mode:vertical-rl]">
           Regions
         </span>
-        <span aria-hidden="true" className="text-ink/35">
+        <span aria-hidden="true" className="text-[#5f5f5f]">
           ‹
         </span>
       </button>
@@ -34,7 +34,7 @@ export default function RegionsDrawer({ open, onToggle }: { open: boolean; onTog
         <div className="flex h-full flex-col pt-24">
           <div className="flex items-end justify-between gap-4 px-6">
             <div>
-              <p className="mono-label !text-[8px] !tracking-[0.26em] text-ink/35">Sixty-four districts</p>
+              <p className="mono-label !text-[11px] !tracking-[0.26em] text-[#5f5f5f]">Sixty-four districts</p>
               <h2 className="mt-2 font-serif text-[30px] leading-none">
                 Explore the <span className="italic text-accent">Regions</span>
               </h2>
@@ -42,12 +42,12 @@ export default function RegionsDrawer({ open, onToggle }: { open: boolean; onTog
             <button
               type="button"
               onClick={clearSelection}
-              className="mono-label whitespace-nowrap !text-[8.5px] !tracking-[0.2em] text-ink/45 transition-colors duration-500 premium-ease hover:text-accent"
+              className="mono-label whitespace-nowrap !text-[11px] !tracking-[0.2em] text-[#5f5f5f] transition-colors duration-500 premium-ease hover:text-accent"
             >
               Reset view →
             </button>
           </div>
-          <div className="mt-6 min-h-0 flex-1 overflow-y-auto px-6 pb-10">
+          <div data-lenis-prevent className="mt-6 min-h-0 flex-1 overflow-y-auto px-6 pb-10">
             <Accordion />
           </div>
         </div>

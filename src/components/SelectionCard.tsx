@@ -4,7 +4,7 @@ import { useStore } from '../store'
 function Cell({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="mono-label !text-[8px] !tracking-[0.22em] text-ink/35">{label}</p>
+      <p className="mono-label !text-[11px] !tracking-[0.22em] text-[#5f5f5f]">{label}</p>
       <p className="mt-1 font-serif text-[19px] leading-tight text-ink">{value}</p>
     </div>
   )
@@ -35,10 +35,10 @@ export default function SelectionCard() {
 
   return (
     <div className="pointer-events-auto absolute bottom-24 left-5 z-30 w-[min(320px,calc(100vw-2.5rem))] md:bottom-8 md:left-auto md:right-6">
-      <div className="animate-card-in rounded-card border border-line bg-cream/90 p-5 shadow-[0_30px_70px_-40px_rgba(31,122,84,0.45)] backdrop-blur-md">
+      <div className="stat-rise rounded-card border border-line bg-cream/90 p-5 shadow-[0_30px_70px_-40px_rgba(31,122,84,0.45)] backdrop-blur-md">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="mono-label !text-[8px] !tracking-[0.24em] text-green-700">
+            <p className="mono-label !text-[11px] !tracking-[0.24em] text-green-700">
               {district ? division?.name : 'Division'}
             </p>
             <h3 className="mt-1 font-serif text-[26px] leading-none text-ink">{target.name}</h3>
@@ -47,7 +47,7 @@ export default function SelectionCard() {
             type="button"
             onClick={clear}
             aria-label="Clear selection"
-            className="mono-label -mt-1 rounded-full border border-line px-2 py-1 !text-[9px] !tracking-[0.14em] text-ink/45 transition-colors duration-300 premium-ease hover:border-green-400 hover:text-green-700"
+            className="mono-label -mt-1 rounded-full border border-line px-2 py-1 !text-[11px] !tracking-[0.14em] text-[#5f5f5f] transition-colors duration-300 premium-ease hover:border-green-400 hover:text-green-700"
           >
             ×
           </button>

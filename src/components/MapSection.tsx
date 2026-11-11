@@ -32,7 +32,7 @@ export default function MapSection() {
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <p className="mono-label text-ink/35">Chapter one · the landscape</p>
+              <p className="mono-label text-[#5f5f5f]">Chapter one · the landscape</p>
               <h2 className="serif-display mt-4 text-[clamp(2.6rem,6vw,5rem)]">
                 Explore the <span className="italic text-accent">delta</span>
               </h2>
@@ -40,7 +40,7 @@ export default function MapSection() {
             <button
               type="button"
               onClick={() => scrollToSection('#regions')}
-              className="mono-label group inline-flex items-center gap-2 !text-[9.5px] !tracking-[0.26em] text-ink/50 transition-colors duration-500 premium-ease hover:text-accent"
+              className="mono-label group inline-flex items-center gap-2 !text-[9.5px] !tracking-[0.26em] text-[#5f5f5f] transition-colors duration-500 premium-ease hover:text-accent"
             >
               Explore the regions
               <span
@@ -62,19 +62,19 @@ export default function MapSection() {
 
               {/* map chrome */}
               <div className="pointer-events-none absolute left-5 top-4 z-10">
-                <p className="mono-label !text-[8.5px] !tracking-[0.28em] text-ink/45">
+                <p className="mono-label !text-[11px] !tracking-[0.28em] text-[#5f5f5f]">
                   Bangladesh · {layer?.label ?? '—'}
                 </p>
-                <p className="mono-label mt-1 !text-[8px] !tracking-[0.22em] text-ink/25">
+                <p className="mono-label mt-1 !text-[11px] !tracking-[0.22em] text-[#5f5f5f]">
                   {selected ? selectionName(null, selectedDistrict) : 'Full country'} · 1 km grid
                 </p>
               </div>
 
               <div className="pointer-events-none absolute right-5 top-4 z-10 text-right">
-                <p className="mono-label !text-[8.5px] !tracking-[0.22em] text-ink/40">
+                <p className="mono-label !text-[11px] !tracking-[0.22em] text-[#5f5f5f]">
                   {hovered ? `${Math.abs(hovered.lat).toFixed(2)}° N` : '23.81° N'}
                 </p>
-                <p className="mono-label mt-1 !text-[8.5px] !tracking-[0.22em] text-ink/40">
+                <p className="mono-label mt-1 !text-[11px] !tracking-[0.22em] text-[#5f5f5f]">
                   {hovered ? `${hovered.lon.toFixed(2)}° E` : '90.41° E'}
                 </p>
               </div>
@@ -85,17 +85,17 @@ export default function MapSection() {
                   onClick={clearSelection}
                   className="absolute bottom-4 right-4 z-20 inline-flex items-center gap-2 rounded-full border border-line bg-cream/95 px-3 py-1.5 backdrop-blur-sm transition-colors duration-500 premium-ease hover:border-accent/40"
                 >
-                  <span className="mono-label !text-[8.5px] !tracking-[0.2em] text-ink/60">
+                  <span className="mono-label !text-[11px] !tracking-[0.2em] text-[#4a4a4a]">
                     Reset view
                   </span>
-                  <span aria-hidden="true" className="text-ink/40">
+                  <span aria-hidden="true" className="text-[#5f5f5f]">
                     ×
                   </span>
                 </button>
               )}
 
               <div className="pointer-events-none absolute bottom-4 left-5 z-10">
-                <p className="mono-label !text-[8px] !tracking-[0.22em] text-ink/30">
+                <p className="mono-label !text-[11px] !tracking-[0.22em] text-[#5f5f5f]">
                   Drag to orbit · scroll to zoom · click a district
                 </p>
               </div>
@@ -115,13 +115,13 @@ export default function MapSection() {
               <button
                 type="button"
                 onClick={clearSelection}
-                className="mono-label whitespace-nowrap !text-[9px] !tracking-[0.24em] text-ink/45 transition-colors duration-500 premium-ease hover:text-accent"
+                className="mono-label whitespace-nowrap !text-[11px] !tracking-[0.24em] text-[#5f5f5f] transition-colors duration-500 premium-ease hover:text-accent"
               >
                 Reset view →
               </button>
             </div>
 
-            <p className="mb-6 max-w-sm text-sm leading-relaxed text-ink/55">
+            <p className="mb-6 max-w-sm text-sm leading-relaxed text-[#4a4a4a]">
               Eight divisions, sixty-four districts. Open one to read its numbers for the
               layer you are looking at — the map follows every choice.
             </p>

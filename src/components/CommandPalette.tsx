@@ -141,23 +141,23 @@ export default function CommandPalette({ open, onClose }: { open: boolean; onClo
         className="w-full max-w-xl overflow-hidden rounded-card border border-line bg-cream shadow-[0_40px_90px_-40px_rgba(31,122,84,0.35)]"
       >
         <div className="flex items-center gap-3 border-b border-line px-5 py-4">
-          <span className="mono-label !text-[9px] !tracking-[0.24em] text-ink/35">Find</span>
+          <span className="mono-label !text-[11px] !tracking-[0.24em] text-[#5f5f5f]">Find</span>
           <input
             ref={inputRef}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Division or district"
             aria-label="Search divisions and districts"
-            className="flex-1 bg-transparent font-serif text-[20px] text-ink placeholder:text-ink/25 focus:outline-none"
+            className="flex-1 bg-transparent font-serif text-[20px] text-ink placeholder:text-[#5f5f5f] focus:outline-none"
           />
-          <kbd className="mono-label rounded border border-line px-1.5 py-0.5 !text-[8px] !tracking-[0.2em] text-ink/40">
+          <kbd className="mono-label rounded border border-line px-1.5 py-0.5 !text-[11px] !tracking-[0.2em] text-[#5f5f5f]">
             Esc
           </kbd>
         </div>
 
-        <ul className="max-h-[46vh] overflow-y-auto py-2" role="listbox" aria-label="Results">
+        <ul data-lenis-prevent className="max-h-[46vh] overflow-y-auto py-2" role="listbox" aria-label="Results">
           {results.length === 0 && (
-            <li className="px-5 py-4 text-sm text-ink/45">No region matches “{query}”.</li>
+            <li className="px-5 py-4 text-sm text-[#5f5f5f]">No region matches “{query}”.</li>
           )}
           {results.map((row, i) => (
             <li key={`${row.kind}-${row.id}`}>
@@ -180,9 +180,9 @@ export default function CommandPalette({ open, onClose }: { open: boolean; onClo
               >
                 <span className="flex items-baseline gap-3">
                   <span className="font-serif text-[19px] text-ink">{row.name}</span>
-                  <span className="mono-label !text-[8px] !tracking-[0.2em] text-ink/35">{row.parent}</span>
+                  <span className="mono-label !text-[11px] !tracking-[0.2em] text-[#5f5f5f]">{row.parent}</span>
                 </span>
-                <span className="mono-label !text-[9px] !tracking-[0.18em] text-ink/45">
+                <span className="mono-label !text-[11px] !tracking-[0.18em] text-[#5f5f5f]">
                   {row.mean === null ? '—' : formatValue(layer, row.mean)}
                 </span>
               </button>

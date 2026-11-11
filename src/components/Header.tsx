@@ -50,7 +50,7 @@ export default function Header() {
             }`}
             aria-hidden="true"
           />
-          <span className="mono-label !text-[9px] !tracking-[0.24em]">
+          <span className="mono-label !text-[11px] !tracking-[0.24em]">
             {dataLoaded ? 'Data Loaded' : 'Loading Data'}
           </span>
         </div>

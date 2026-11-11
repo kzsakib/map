@@ -284,7 +284,7 @@ const BlobCursor = ({
     const spot = new THREE.Vector3();
     const extent = new THREE.Vector3();
 
-    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    const reducedMotion = false;
     const view = { width: 1, height: 1 };
     const pointer = { x: 0, y: 0, inside: false, down: false, hover: false, seen: false };
     const anchor = createBody();

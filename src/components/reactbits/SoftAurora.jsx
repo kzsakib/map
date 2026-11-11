@@ -314,7 +314,7 @@ const SoftAurora = ({
     const shader = gl ? link(gl) : null;
     if (!gl || !shader) return;
 
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reduced = false;
     const vao = gl.createVertexArray();
     const size = { width: 1, height: 1 };
     const pointer = { x: 0.5, y: 0.5, inside: false };
@@ -362,7 +362,7 @@ const SoftAurora = ({
       const s = settingsRef.current;
       const dt = clamp((now - last) / 1000 || 0, 0, 0.05);
       last = Math.max(last, now);
-      const pace = reduced ? 0.35 : 1;
+      const pace = 1;
       flow += dt * s.speed * pace;
       hue += dt * s.speed * s.colorSpeed * pace;
       if (opening < 1) opening = Math.min(1, opening + dt / 2);

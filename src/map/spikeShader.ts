@@ -26,6 +26,12 @@ uniform vec2 uExp;
 uniform vec2 uFlat;
 uniform vec2 uSink;
 
+// district pop-up: uPop runs 0..1, the shader staggers cells by distance
+uniform float uPop;
+uniform vec2 uPopCenter;
+uniform float uPopRadius;
+uniform float uPlinth;
+
 varying vec3 vColor;
 varying vec3 vNormalW;
 varying float vKeep;
@@ -63,7 +69,7 @@ void main() {
   if (uSelDivision > 0.5 && abs(division - uSelDivision) < 0.6) isSel = 1.0;
   float hasSel = clamp(uSelDistrict + uSelDivision, 0.0, 1.0);
 
-  float keep = mix(1.0, mix(1.0, 0.035, uMorph * (1.0 - isSel)), hasSel);
+  float keep = mix(1.0, mix(1.0, 0.2, uMorph * (1.0 - isSel)), hasSel);
   h *= keep;
 
   vKeep = keep;
@@ -76,12 +82,18 @@ void main() {
   vColor = mix(ramp(uRampA, cA), ramp(uRampB, cB), uMix);
   vNormalW = normalize(normal + vec3(0.0, 0.18, 0.0));
 
+  float cx = (aCell.x + 0.5 - uGrid.x * 0.5) * uCellSize;
+  float cz = (aCell.y + 0.5 - uGrid.y * 0.5) * uCellSize;
+
+  // ripple: cells nearer the district centre start lifting sooner
+  float delay = clamp(distance(vec2(cx, cz), uPopCenter) / max(uPopRadius, 1.0), 0.0, 1.0) * 0.45;
+  float pop = smoothstep(delay, delay + 0.55, uPop) * isSel * hasSel;
+
   vec3 local = position;
   local.xz *= uWidth;
   local.y *= max(h, 0.02 * keep);
-
-  float cx = (aCell.x + 0.5 - uGrid.x * 0.5) * uCellSize;
-  float cz = (aCell.y + 0.5 - uGrid.y * 0.5) * uCellSize;
+  local.y *= 1.0 + 0.5 * pop;
+  local.y += uPlinth * pop;
 
   vec3 world = vec3(cx + local.x, local.y, cz + local.z);
   gl_Position = projectionMatrix * viewMatrix * vec4(world, 1.0);
@@ -138,6 +150,10 @@ export function spikeUniforms() {
     uHeight: { value: [1, 1] },
     uExp: { value: [1.4, 1.4] },
     uColorPow: { value: [1, 1] },
+    uPop: { value: 0 },
+    uPopCenter: { value: [0, 0] as [number, number] },
+    uPopRadius: { value: 400 },
+    uPlinth: { value: 26 },
     uFlat: { value: [0, 0] },
     uSink: { value: [0, 0] },
   }

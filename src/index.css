@@ -7,8 +7,14 @@
   --cream: #fcfbf9;
   --ink: #171717;
   --line: #e5e5e5;
-  --muted: #6b6b6b;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* text ramp: nothing lighter than --text-faint on cream */
+  --text: #171717;
+  --text-muted: #4a4a4a;
+  --text-faint: #5f5f5f;
+  --text-on-dark: #f4f2ee;
+  --text-on-dark-muted: #c9c6bf;
 
   --green-50: #effaf4;
   --green-200: #bfe8d0;
@@ -26,14 +32,18 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    /* Lenis owns the scroll: never let the browser smooth-scroll as well */
+    scroll-behavior: auto;
   }
 
   body {
     background: var(--cream);
-    color: var(--ink);
+    color: var(--text);
     font-family: 'Inter', system-ui, sans-serif;
     font-weight: 400;
+    font-size: 16px;
     line-height: 1.5;
+    /* the page is the scroller: no fixed height, no overflow lock */
     overflow-x: hidden;
   }
 
@@ -62,7 +72,8 @@
     font-family: 'JetBrains Mono', ui-monospace, monospace;
     text-transform: uppercase;
     letter-spacing: 0.3em;
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 500;
     line-height: 1.4;
   }
 
@@ -71,6 +82,7 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
     font-size: 12px;
+    font-weight: 500;
   }
 
   .serif-display {
@@ -117,7 +129,7 @@
   pointer-events: none;
 }
 
-/* hero mesh: three soft blurred fields drifting on a 30s linear loop */
+/* hero mesh: soft green fields drifting on a 30s linear loop */
 .mesh-field {
   position: absolute;
   border-radius: 9999px;
@@ -166,6 +178,85 @@
   box-shadow: 0 30px 60px -30px rgba(31, 122, 84, 0.28);
 }
 
+/* buttons: a fill sweeps in from the left on hover and focus */
+.btn-sweep {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    color 500ms var(--ease),
+    border-color 500ms var(--ease),
+    background-color 500ms var(--ease);
+}
+.btn-sweep::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--green-50);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 500ms var(--ease);
+}
+.btn-sweep:hover::before,
+.btn-sweep:focus-visible::before {
+  transform: scaleX(1);
+}
+.btn-sweep:active {
+  transform: scale(0.97);
+  transition-timing-function: var(--ease);
+}
+.btn-sweep .nudge {
+  transition: transform 500ms var(--ease);
+}
+.btn-sweep:hover .nudge {
+  transform: translateX(4px);
+}
+
+/* links: a 1px underline grows left to right */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 500ms var(--ease);
+}
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* map labels sit on a cream halo instead of a box */
+.label-halo {
+  paint-order: stroke;
+  stroke: rgba(252, 251, 249, 0.92);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+/* the stats card waits for the district pop to reach about 60% */
+.stat-rise {
+  animation: stat-rise 700ms var(--ease) 700ms both;
+}
+@keyframes stat-rise {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
@@ -183,18 +274,4 @@
   background: #ddd9d1;
   border-radius: 999px;
   border: 3px solid var(--cream);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
-  .card-hover:hover {
-    transform: none;
-  }
 }

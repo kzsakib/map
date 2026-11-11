@@ -18,7 +18,7 @@ export default function Magnet({ children, strength = 0.22, className = '' }: Pr
     const el = outer.current
     const target = inner.current
     if (!el || !target) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (false) return
     const rect = el.getBoundingClientRect()
     const dx = e.clientX - (rect.left + rect.width / 2)
     const dy = e.clientY - (rect.top + rect.height / 2)

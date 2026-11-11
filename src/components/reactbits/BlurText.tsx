@@ -21,7 +21,7 @@ export default function BlurText({ text, className = '', delay = 0, stagger = 0.
       const el = ref.current
       if (!el) return
       const chars = el.querySelectorAll<HTMLSpanElement>('[data-char]')
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (false) {
         gsap.set(chars, { opacity: 1, y: 0, filter: 'none' })
         return
       }

@@ -20,7 +20,7 @@ function StatCell({
 }) {
   return (
     <div>
-      <p className="mono-label !text-[8.5px] !tracking-[0.22em] text-ink/35">{label}</p>
+      <p className="mono-label !text-[11px] !tracking-[0.22em] text-[#5f5f5f]">{label}</p>
       <p className="mt-1.5 font-serif text-[20px] leading-tight text-ink">{children}</p>
     </div>
   )
@@ -53,13 +53,13 @@ function Row({ division, open, onToggle }: { division: Division; open: boolean; 
             }`}
           >
             {division.name}
-            <span className="mono-label ml-3 align-middle !text-[8.5px] !tracking-[0.2em] text-ink/30">
+            <span className="mono-label ml-3 align-middle !text-[11px] !tracking-[0.2em] text-[#5f5f5f]">
               {division.districts.length} districts
             </span>
           </span>
           <span
             aria-hidden="true"
-            className={`mono-label shrink-0 !text-[11px] text-ink/40 transition-transform duration-500 premium-ease ${
+            className={`mono-label shrink-0 !text-[11px] text-[#5f5f5f] transition-transform duration-500 premium-ease ${
               open ? 'rotate-45' : ''
             }`}
           >
@@ -110,7 +110,7 @@ function Row({ division, open, onToggle }: { division: Division; open: boolean; 
                 className={`mono-tight rounded-full border px-2.5 py-1 !text-[10px] !tracking-[0.14em] transition-all duration-500 premium-ease ${
                   on
                     ? 'border-accent bg-accent text-cream'
-                    : 'border-line text-ink/55 hover:border-green-400/70 hover:bg-green-50 hover:text-green-900'
+                    : 'border-line text-[#4a4a4a] hover:border-green-400/70 hover:bg-green-50 hover:text-green-900'
                 }`}
               >
                 [{district.name}]
@@ -122,7 +122,7 @@ function Row({ division, open, onToggle }: { division: Division; open: boolean; 
         <button
           type="button"
           onClick={() => setSelection({ division: isSelected ? null : division.id, district: null })}
-          className="mono-label mt-6 inline-flex items-center gap-2 !text-[9px] !tracking-[0.24em] text-accent underline decoration-transparent decoration-2 underline-offset-4 transition-colors duration-500 premium-ease hover:decoration-green-400"
+          className="mono-label mt-6 inline-flex items-center gap-2 !text-[11px] !tracking-[0.24em] text-accent underline decoration-transparent decoration-2 underline-offset-4 transition-colors duration-500 premium-ease hover:decoration-green-400"
         >
           {isSelected ? 'Clear division' : 'Fly to division'}
           <span aria-hidden="true">→</span>

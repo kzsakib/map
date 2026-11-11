@@ -2,15 +2,15 @@ import { useEffect, useMemo } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import { LineMaterial, LineSegments2, LineSegmentsGeometry } from 'three-stdlib'
 import { db } from '../lib/data'
-import { prefersReducedMotion, useStore } from '../store'
+import { useStore } from '../store'
 import { lonToX, latToZ } from './camera'
 
 const RIVER_Y = 1.4
 
 const BINS = [
-  { min: 8000, width: 4.8, color: '#3730a3', opacity: 0.97 },
-  { min: 2000, width: 3.0, color: '#4f46e5', opacity: 0.92 },
-  { min: 0, width: 1.6, color: '#6d6cb4', opacity: 0.82 },
+  { min: 8000, width: 4.8, color: '#0f3d2e', opacity: 0.97 },
+  { min: 2000, width: 3.0, color: '#1f7a54', opacity: 0.92 },
+  { min: 0, width: 1.6, color: '#6fcf9b', opacity: 0.82 },
 ]
 
 type LineMat = LineMaterial & { dashOffset?: number }
@@ -18,7 +18,6 @@ type LineMat = LineMaterial & { dashOffset?: number }
 export default function Rivers() {
   const { size, invalidate } = useThree()
   const active = useStore((s) => s.activeLayer)
-  const reduced = prefersReducedMotion()
 
   const lines = useMemo(() => {
     const features = db.rivers?.features ?? []
@@ -63,21 +62,21 @@ export default function Rivers() {
     const on = active === 'rivers'
     lines.forEach(({ mat }, i) => {
       mat.resolution.set(size.width, size.height)
-      mat.color.set(on ? BINS[i].color : '#8b8aa8')
+      mat.color.set(on ? BINS[i].color : '#bfe8d0')
       mat.opacity = on ? BINS[i].opacity : 0.22
       mat.linewidth = on ? BINS[i].width : Math.max(0.8, BINS[i].width * 0.6)
       mat.transparent = true
-      const dashed = on && !reduced
+      const dashed = on
       mat.dashed = dashed
       if (dashed) mat.defines.USE_DASH = ''
       else delete mat.defines.USE_DASH
       mat.needsUpdate = true
     })
     invalidate()
-  }, [active, lines, reduced, size, invalidate])
+  }, [active, lines, size, invalidate])
 
   useFrame((_, delta) => {
-    if (active !== 'rivers' || reduced) return
+    if (active !== 'rivers') return
     lines.forEach(({ mat }) => {
       mat.dashOffset = (mat.dashOffset ?? 0) - delta * 0.45
     })

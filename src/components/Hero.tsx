@@ -98,15 +98,15 @@ export default function Hero() {
         <SoftAurora
           lightMode
           color1="#6fcf9b"
-          color2="#e5484d"
+          color2="#f4a3a8"
           spectrum={0.1}
           speed={narrow ? 0.35 : 0.5}
           colorSpeed={0.6}
           scale={1.4}
-          brightness={1.3}
+          brightness={0.95}
           noiseFrequency={2.2}
           noiseAmplitude={1}
-          bandHeight={narrow ? 0.48 : 0.4}
+          bandHeight={narrow ? 0.43 : 0.35}
           bandSpread={0.85}
           tilt={-6}
           octaveDecay={0.12}
@@ -119,25 +119,26 @@ export default function Hero() {
         />
       </div>
 
-      {/* a soft green lens that drifts with the pointer */}
-      <div className="pointer-events-none absolute inset-0 z-[5] hidden md:block" aria-hidden="true">
+      {/* a soft green lens that drifts with the pointer (no flat grey shape) */}
+      <div className="pointer-events-none absolute inset-0 z-[5] hidden opacity-50 md:block" aria-hidden="true">
         <ShapeBlur
           shape="circle"
-          size={0.72}
+          size={0.78}
           thickness={1}
           echoes={2}
           spacing={28}
-          color="#a3d9bd"
-          blur={26}
+          color="#bfe8d0"
+          blur={44}
           lensSize={0.4}
-          lensSoftness={0.8}
-          chroma={0.4}
+          lensSoftness={0.9}
+          chroma={0.15}
           spin={3}
           idle
         />
       </div>
 
-      {/* the blob cursor inverts whatever it passes over */}
+      {/* black blob: difference against cream reads as ink, and whatever it
+          covers loses its colour, so the page shows through it */}
       <div className="pointer-events-none absolute inset-0 z-20 hidden md:block" aria-hidden="true">
         <BlobCursor
           material="ink"
@@ -158,7 +159,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 mt-[-4vh] w-full px-5 text-center">
-        <p className="mono-label mb-7 !text-[9px] !tracking-[0.22em] text-ink/45 md:!text-[11px] md:!tracking-[0.3em]">
+        <p className="mono-label mb-7 !text-[11px] !tracking-[0.22em] text-[#5f5f5f] md:!text-[11px] md:!tracking-[0.3em]">
           A data landscape · 1 km grid · eight layers
         </p>
 
@@ -172,7 +173,7 @@ export default function Hero() {
 
         <p
           data-hero-rise
-          className="mx-auto mt-10 max-w-lg text-[15px] leading-relaxed text-ink/65 md:text-base"
+          className="mx-auto mt-10 max-w-lg text-[15px] leading-relaxed text-[#4a4a4a] md:text-base"
         >
           A country written by its rivers, read through its people. Eight datasets, one
           grid, and sixty-four districts you can walk into.
@@ -189,7 +190,7 @@ export default function Hero() {
           {STATS.map((stat, i) => (
             <span key={stat} className="flex items-center gap-4">
               {i > 0 && <span className="h-3 w-px bg-line" aria-hidden="true" />}
-              <span className="mono-label !text-[10px] !tracking-[0.32em] text-ink/45">
+              <span className="mono-label !text-[10px] !tracking-[0.32em] text-[#5f5f5f]">
                 {stat}
               </span>
             </span>
@@ -221,7 +222,7 @@ export default function Hero() {
       </Wave>
 
       <div className="pointer-events-none absolute bottom-6 left-5 z-20 hidden md:block">
-        <span className="mono-label text-ink/35">Scroll</span>
+        <span className="mono-label text-[#5f5f5f]">Scroll</span>
       </div>
     </section>
   )

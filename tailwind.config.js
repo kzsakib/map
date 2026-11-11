@@ -7,7 +7,7 @@ export default {
         cream: '#fcfbf9',
         ink: '#171717',
         line: '#e5e5e5',
-        muted: '#6b6b6b',
+        muted: '#4a4a4a',
         // green leads: 700 is the action colour, white text on it passes AA
         accent: '#1f7a54',
         green: {

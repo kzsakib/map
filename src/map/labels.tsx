@@ -98,7 +98,7 @@ export default function CityLabels() {
               zIndexRange={[9, 0]}
               style={{ pointerEvents: 'none', whiteSpace: 'nowrap' }}
             >
-              <span className="whitespace-nowrap rounded-[2px] bg-cream/70 px-1 font-serif text-[15px] italic text-ink [text-shadow:0_0_10px_rgba(252,251,249,0.9)] md:text-[16px]">
+              <span className="label-halo whitespace-nowrap font-serif text-[16px] italic text-[#171717] md:text-[17px]">
                 {item.name}
               </span>
             </Html>

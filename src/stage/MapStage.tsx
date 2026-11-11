@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import DensityMap from '../map/DensityMap'
 import { db, formatValue, layerDef, selectionName } from '../lib/data'
 import { rampOf } from '../lib/look'
+import { startScroll, stopScroll } from '../lib/scroll'
 import { useStore } from '../store'
 import RegionsDrawer from '../components/RegionsDrawer'
 import CommandPalette from '../components/CommandPalette'
@@ -48,6 +49,12 @@ export default function MapStage() {
     const next = `#${mode}`
     if (window.location.hash !== next) window.history.replaceState(null, '', next)
   }, [mode])
+
+  // freeze the page while the palette is open, then hand scrolling back
+  useEffect(() => {
+    if (palette) stopScroll()
+    else startScroll()
+  }, [palette])
 
   const close = useCallback(() => {
     setPalette(false)
@@ -116,7 +123,7 @@ export default function MapStage() {
       <div className="pointer-events-none absolute inset-3 z-10 border border-ink/15 md:inset-6" aria-hidden="true">
         <div className="absolute left-[22%] top-1 flex gap-10">
           {['88°E', '90°E', '92°E'].map((t) => (
-            <span key={t} className="mono-label bg-cream/80 !text-[8px] !tracking-[0.3em] text-ink/40">
+            <span key={t} className="mono-label bg-cream/80 !text-[11px] !tracking-[0.3em] text-[#5f5f5f]">
               {t}
             </span>
           ))}
@@ -125,7 +132,7 @@ export default function MapStage() {
           {['26°N', '22°N'].map((t) => (
             <span
               key={t}
-              className="mono-label bg-cream/80 !text-[8px] !tracking-[0.3em] text-ink/40"
+              className="mono-label bg-cream/80 !text-[11px] !tracking-[0.3em] text-[#5f5f5f]"
               style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
             >
               {t}
@@ -150,16 +157,16 @@ export default function MapStage() {
                 disabled={!m.ready}
                 aria-disabled={!m.ready}
                 onClick={() => m.ready && setMode(m.id)}
-                className={`mono-label rounded-full px-3 py-1.5 !text-[8.5px] !tracking-[0.22em] transition-colors duration-500 premium-ease ${
+                className={`mono-label rounded-full px-3 py-1.5 !text-[11px] !tracking-[0.22em] transition-colors duration-500 premium-ease ${
                   on
                     ? 'bg-green-700 text-white'
                     : m.ready
-                      ? 'text-ink/55 hover:text-ink'
-                      : 'cursor-not-allowed text-ink/25'
+                      ? 'text-[#4a4a4a] hover:text-ink'
+                      : 'cursor-not-allowed text-[#5f5f5f]'
                 }`}
               >
                 {m.label}
-                {!m.ready && <span className="ml-1 !text-[7px] text-ink/20">Soon</span>}
+                {!m.ready && <span className="ml-1 !text-[11px] text-[#5f5f5f]">Soon</span>}
               </button>
             )
           })}
@@ -168,7 +175,7 @@ export default function MapStage() {
 
       {/* title block */}
       <div className="pointer-events-none absolute right-4 top-[150px] z-20 w-[300px] text-right md:right-10 md:w-[340px]">
-        <p className="mono-label !text-[8.5px] !tracking-[0.28em] text-ink/40">Chapter one · the landscape</p>
+        <p className="mono-label !text-[11px] !tracking-[0.28em] text-[#5f5f5f]">Chapter one · the landscape</p>
         <h2 className="mt-3 font-serif text-[34px] leading-[1.05] text-ink md:text-[46px]">
           Bangladesh <span className="italic text-accent">in Relief</span>
         </h2>
@@ -199,8 +206,8 @@ export default function MapStage() {
                 tabIndex={on ? 0 : -1}
                 onKeyDown={(e) => onRailKey(e, i)}
                 onClick={() => setLayer(l.id)}
-                className={`mono-label relative whitespace-nowrap text-left !text-[9px] !tracking-[0.28em] transition-colors duration-500 premium-ease ${
-                  on ? 'text-ink' : 'text-ink/40 hover:text-ink'
+                className={`mono-label relative whitespace-nowrap text-left !text-[11px] !tracking-[0.28em] transition-colors duration-500 premium-ease ${
+                  on ? 'text-ink' : 'text-[#5f5f5f] hover:text-ink'
                 }`}
               >
                 {on && (
@@ -220,7 +227,7 @@ export default function MapStage() {
       <div className="pointer-events-none absolute bottom-24 left-4 z-20 w-[240px] md:bottom-10 md:left-10 md:w-[260px]">
         {layer && (
           <>
-            <p className="mono-label !text-[8.5px] !tracking-[0.24em] text-ink/45">
+            <p className="mono-label !text-[11px] !tracking-[0.24em] text-[#5f5f5f]">
               {layer.unit} · {layer.scale}
             </p>
             {layer.type === 'categorical' && layer.classes ? (
@@ -228,7 +235,7 @@ export default function MapStage() {
                 {layer.classes.map((c) => (
                   <span key={c.id} className="flex items-center gap-1.5">
                     <span className="h-2 w-2 rounded-[2px]" style={{ background: c.color }} />
-                    <span className="mono-label !text-[7.5px] !tracking-[0.16em] text-ink/50">{c.label}</span>
+                    <span className="mono-label !text-[11px] !tracking-[0.16em] text-[#5f5f5f]">{c.label}</span>
                   </span>
                 ))}
               </div>
@@ -236,10 +243,10 @@ export default function MapStage() {
               <>
                 <div className="mt-2 h-1.5 w-full rounded-full" style={{ background: gradient }} aria-hidden="true" />
                 <div className="mt-1.5 flex justify-between">
-                  <span className="mono-label !text-[8px] !tracking-[0.18em] text-ink/45">
+                  <span className="mono-label !text-[11px] !tracking-[0.18em] text-[#5f5f5f]">
                     {formatValue(layer, layer.min)}
                   </span>
-                  <span className="mono-label !text-[8px] !tracking-[0.18em] text-ink/45">
+                  <span className="mono-label !text-[11px] !tracking-[0.18em] text-[#5f5f5f]">
                     {formatValue(layer, layer.max)}
                   </span>
                 </div>
@@ -251,12 +258,12 @@ export default function MapStage() {
               <span className="h-2 w-px bg-ink/30" />
             </div>
             <div className="mt-1 flex justify-between">
-              <span className="mono-label !text-[7.5px] !tracking-[0.18em] text-ink/35">0</span>
-              <span className="mono-label !text-[7.5px] !tracking-[0.18em] text-ink/35">200 km</span>
+              <span className="mono-label !text-[11px] !tracking-[0.18em] text-[#5f5f5f]">0</span>
+              <span className="mono-label !text-[11px] !tracking-[0.18em] text-[#5f5f5f]">200 km</span>
             </div>
-            <p className="mono-label mt-3 !text-[7.5px] !tracking-[0.18em] text-ink/30">
+            <p className="mono-label mt-3 !text-[11px] !tracking-[0.18em] text-[#5f5f5f]">
               {layer.source}
-              <span className="mt-0.5 block text-ink/25">
+              <span className="mt-0.5 block text-[#5f5f5f]">
                 {layer.year} · {layer.license}
               </span>
             </p>
@@ -265,7 +272,7 @@ export default function MapStage() {
       </div>
 
       {/* credit */}
-      <p className="pointer-events-none absolute bottom-10 right-4 z-20 max-w-[260px] text-right mono-label !text-[7.5px] !tracking-[0.2em] text-ink/30 md:right-10 md:bottom-10">
+      <p className="pointer-events-none absolute bottom-10 right-4 z-20 max-w-[260px] text-right mono-label !text-[11px] !tracking-[0.2em] text-[#5f5f5f] md:right-10 md:bottom-10">
         Visualised with three.js · Data: {layer?.source ?? '—'}
       </p>
 
@@ -275,10 +282,10 @@ export default function MapStage() {
           <button
             type="button"
             onClick={() => setPalette(true)}
-            className="mono-label rounded-full px-4 py-2 !text-[8.5px] !tracking-[0.22em] text-ink/60 transition-colors duration-500 premium-ease hover:text-ink"
+            className="mono-label rounded-full px-4 py-2 !text-[11px] !tracking-[0.22em] text-[#4a4a4a] transition-colors duration-500 premium-ease hover:text-ink"
           >
             Search 64 districts
-            <kbd className="ml-2 rounded border border-line px-1 py-0.5 !text-[7.5px] text-ink/40">⌘K</kbd>
+            <kbd className="ml-2 rounded border border-line px-1 py-0.5 !text-[11px] text-[#5f5f5f]">⌘K</kbd>
           </button>
           <button
             type="button"
@@ -286,7 +293,7 @@ export default function MapStage() {
               clearSelection()
               setDrawer(false)
             }}
-            className="mono-label rounded-full bg-ink px-4 py-2 !text-[8.5px] !tracking-[0.22em] text-cream transition-colors duration-500 premium-ease hover:bg-maroon-900"
+            className="mono-label rounded-full bg-ink px-4 py-2 !text-[11px] !tracking-[0.22em] text-cream transition-colors duration-500 premium-ease hover:bg-maroon-900"
           >
             Reset
           </button>
@@ -303,8 +310,8 @@ export default function MapStage() {
                 key={l.id}
                 type="button"
                 onClick={() => setLayer(l.id)}
-                className={`mono-label whitespace-nowrap rounded-full border px-3 py-1.5 !text-[8px] !tracking-[0.2em] transition-colors duration-500 premium-ease ${
-                  on ? 'border-green-700 bg-green-700 text-white' : 'border-line bg-cream/80 text-ink/55'
+                className={`mono-label whitespace-nowrap rounded-full border px-3 py-1.5 !text-[11px] !tracking-[0.2em] transition-colors duration-500 premium-ease ${
+                  on ? 'border-green-700 bg-green-700 text-white' : 'border-line bg-cream/80 text-[#4a4a4a]'
                 }`}
               >
                 {SHORT[l.id]}
@@ -319,7 +326,7 @@ export default function MapStage() {
       <CommandPalette open={palette} onClose={close} />
 
       {selected && (
-        <p className="pointer-events-none absolute left-4 top-[92px] z-20 mono-label !text-[8px] !tracking-[0.24em] text-green-700 md:left-10">
+        <p className="pointer-events-none absolute left-4 top-[92px] z-20 mono-label !text-[11px] !tracking-[0.24em] text-green-700 md:left-10">
           {selectionName(selectedDivision, selectedDistrict)}
         </p>
       )}

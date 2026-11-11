@@ -14,7 +14,7 @@ import {
   valueFromQ,
   type LayerDef,
 } from '../lib/data'
-import { prefersReducedMotion, useStore } from '../store'
+import { useStore } from '../store'
 import { spikeFragment, spikeUniforms, spikeVertex } from './spikeShader'
 import {
   BASE_HEIGHT,
@@ -24,7 +24,7 @@ import {
   makeDataTexture,
   makeRampTexture,
 } from './layers'
-import { HOME, applyCamera, fitState, type CamState } from './camera'
+import { HOME, applyCamera, boundsToWorld, fitState, type CamState } from './camera'
 import Rivers from './Rivers'
 import CityLabels from './labels'
 
@@ -97,7 +97,6 @@ function Spikes({ bin }: { bin: Uint8Array }) {
   const selectedDivision = useStore((s) => s.selectedDivision)
   const selectedDistrict = useStore((s) => s.selectedDistrict)
   const hovered = useStore((s) => s.hovered)
-  const reduced = prefersReducedMotion()
 
   const meta = db.meta!
   const step = db.meta && window.matchMedia('(max-width: 768px)').matches ? 2 : 1
@@ -180,7 +179,7 @@ function Spikes({ bin }: { bin: Uint8Array }) {
     gsap.killTweensOf(mix.current)
     gsap.to(mix.current, {
       v: 1,
-      duration: reduced ? 0.01 : 1.4,
+      duration: 1.4,
       ease: 'power2.inOut',
       onUpdate: () => {
         u.uMix.value = mix.current.v
@@ -191,7 +190,6 @@ function Spikes({ bin }: { bin: Uint8Array }) {
         u.uRampA.value = ramp
         u.uHeight.value = [def.heightScale, def.heightScale]
         u.uColorPow.value = [COLOR_POW(def), COLOR_POW(def)]
-      u.uColorPow.value = [COLOR_POW(def), COLOR_POW(def)]
         u.uExp.value = [def.heightExponent * HEIGHT_CONTRAST, def.heightExponent * HEIGHT_CONTRAST]
         u.uFlat.value = [def.heightMode === 'flat' ? 1 : 0, def.heightMode === 'flat' ? 1 : 0]
         u.uSink.value = [def.sink ? 1 : 0, def.sink ? 1 : 0]
@@ -204,21 +202,42 @@ function Spikes({ bin }: { bin: Uint8Array }) {
         invalidate()
       },
     })
-  }, [bin, activeLayer, meta, uniforms, invalidate, reduced])
+  }, [bin, activeLayer, meta, uniforms, invalidate])
 
-  // selection morph
+  // selection: the chosen district ripples up on a plinth while the rest sink
   useEffect(() => {
     uniforms.uSelDistrict.value = selectedDistrict ?? 0
     uniforms.uSelDivision.value = selectedDivision ?? 0
-    const target = selectedDistrict || selectedDivision ? 1 : 0
-    gsap.to(uniforms.uMorph, {
+
+    const bbox = selectedDistrict
+      ? districtById(selectedDistrict)?.bbox
+      : selectedDivision
+        ? db.regions.find((v) => v.id === selectedDivision)?.bbox
+        : null
+
+    if (bbox) {
+      const b = boundsToWorld(bbox)
+      uniforms.uPopCenter.value = [b.cx, b.cz]
+      uniforms.uPopRadius.value = Math.max(b.w, b.h) / 2
+    }
+
+    const target = bbox ? 1 : 0
+    gsap.killTweensOf([uniforms.uPop, uniforms.uMorph])
+    gsap.to(uniforms.uPop, {
       value: target,
-      duration: reduced ? 0.01 : 1.2,
+      duration: 1.2,
       ease: EASE,
       overwrite: true,
       onUpdate: invalidate,
     })
-  }, [selectedDistrict, selectedDivision, uniforms, invalidate, reduced])
+    gsap.to(uniforms.uMorph, {
+      value: target,
+      duration: 1.2,
+      ease: EASE,
+      overwrite: true,
+      onUpdate: invalidate,
+    })
+  }, [selectedDistrict, selectedDivision, uniforms, invalidate])
 
   // hover highlight
   useEffect(() => {
@@ -299,7 +318,6 @@ function CameraRig() {
   const selectedDivision = useStore((s) => s.selectedDivision)
   const selectedDistrict = useStore((s) => s.selectedDistrict)
   const state = useRef<CamState>({ ...HOME })
-  const reduced = prefersReducedMotion()
 
   useEffect(() => {
     camera.fov = 28
@@ -310,15 +328,16 @@ function CameraRig() {
 
   useEffect(() => {
     const active = Boolean(selectedDistrict || selectedDivision)
-    const target = active ? fitState(selectionBox(), 28) : HOME
+    // a slightly lower tilt so the lifted district reads as a slab
+    const target = active ? { ...fitState(selectionBox(), 28), phi: 0.78 } : HOME
     gsap.to(state.current, {
       ...target,
-      duration: reduced ? 0.01 : 1.6,
+      duration: 1.2,
       ease: EASE,
       overwrite: true,
       onUpdate: invalidate,
     })
-  }, [selectedDivision, selectedDistrict, invalidate, reduced])
+  }, [selectedDivision, selectedDistrict, invalidate])
 
   useEffect(() => {
     const el = gl.domElement
@@ -450,7 +469,7 @@ export default function DensityMap() {
   if (!dataLoaded) {
     return (
       <div className="flex h-full w-full items-center justify-center bg-cream">
-        <p className="mono-label text-ink/40">Reading the delta…</p>
+        <p className="mono-label text-[#5f5f5f]">Reading the delta…</p>
       </div>
     )
   }

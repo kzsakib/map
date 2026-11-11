@@ -23,11 +23,6 @@ export default function Reveal({ children, className = '', delay = 0, y = 40, as
     () => {
       const el = ref.current
       if (!el) return
-      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      if (reduced) {
-        gsap.set(el, { opacity: 1, y: 0 })
-        return
-      }
       gsap.fromTo(
         el,
         { y, opacity: 0 },

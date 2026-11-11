@@ -11,7 +11,7 @@ export type CamState = {
 }
 
 /** tilted 51-55 degrees, a little off-axis, like the reference plates */
-export const HOME: CamState = { tx: 0, tz: 0, radius: 1520, phi: 0.88, theta: -0.18 }
+export const HOME: CamState = { tx: 0, tz: 0, radius: 1300, phi: 0.86, theta: -0.18 }
 
 export function lonToX(lon: number): number {
   const m = db.meta!
@@ -42,11 +42,12 @@ export function fitState(bbox: number[], fovDeg: number): CamState {
   const { cx, cz, w, h } = boundsToWorld(bbox)
   const span = Math.max(w, h, 30)
   const radius = THREE.MathUtils.clamp(
-    (span / 2 / Math.tan((fovDeg * Math.PI) / 180 / 2)) * 1.85,
-    360,
-    2400,
+    // ~80% of the stage height, with 8% padding
+    (span / 2 / Math.tan((fovDeg * Math.PI) / 180 / 2)) * 1.2,
+    300,
+    2200,
   )
-  return { tx: cx, tz: cz, radius, phi: 0.86, theta: -0.18 }
+  return { tx: cx, tz: cz, radius, phi: 0.82, theta: -0.18 }
 }
 
 export function applyCamera(camera: THREE.PerspectiveCamera, s: CamState) {
