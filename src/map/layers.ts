@@ -1,6 +1,13 @@
 import * as THREE from 'three'
 import { db, type LayerDef } from '../lib/data'
-import { GROUND_RAMP_MIX, GROUND_TINT, HEIGHT_BOOST, SHAPE_OVERRIDES, rampOf } from '../lib/look'
+import {
+  GROUND_MIX_OVERRIDE,
+  GROUND_RAMP_MIX,
+  GROUND_TINT,
+  HEIGHT_BOOST,
+  SHAPE_OVERRIDES,
+  rampOf,
+} from '../lib/look'
 
 /** world units: 1 unit = 1 km */
 export const CELL_KM = 1.11
@@ -140,7 +147,7 @@ export function groundTexture(layer: LayerDef): THREE.CanvasTexture | null {
       const q = bin[i]
       const [rr, gg, bb] = q ? rampColorAt(layer, q / 255) : [246, 243, 236]
       // continuous layers wash into the pale tint; classes keep their own hue
-      const mix = crisp ? 0 : GROUND_RAMP_MIX
+      const mix = crisp ? (GROUND_MIX_OVERRIDE[layer.id] ?? 0) : GROUND_RAMP_MIX
       lctx.fillStyle = `rgb(${Math.round(tint[0] + (rr - tint[0]) * mix)},${Math.round(
         tint[1] + (gg - tint[1]) * mix,
       )},${Math.round(tint[2] + (bb - tint[2]) * mix)})`
@@ -170,7 +177,7 @@ export function groundTexture(layer: LayerDef): THREE.CanvasTexture | null {
 
   // the layer wash: flat and class layers stay crisp so the categories read
   ctx.save()
-  ctx.globalAlpha = crisp ? 1 : 0.88
+  ctx.globalAlpha = crisp ? 0.94 : 0.88
   ctx.filter = `blur(${crisp ? 0.4 : 1.6}px)`
   ctx.drawImage(low, 0, 0, W, H)
   ctx.restore()

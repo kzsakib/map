@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef } from 'react'
-import { useFrame, useThree } from '@react-three/fiber'
+import { useEffect, useMemo } from 'react'
+import { useThree } from '@react-three/fiber'
 import { LineMaterial, LineSegments2, LineSegmentsGeometry } from 'three-stdlib'
 import { db } from '../lib/data'
 import { useStore } from '../store'
@@ -10,9 +10,9 @@ const RIVER_Y = 1.4
 // the rivers layer leans on these lines, so they get a touch more weight: a
 // deep trunk, a mid channel and pale distributaries
 const BINS = [
-  { min: 8000, width: 6, color: '#0b2f24', opacity: 1 },
-  { min: 2000, width: 4, color: '#1f7a54', opacity: 1 },
-  { min: 0, width: 2.2, color: '#6fcf9b', opacity: 0.9 },
+  { min: 8000, width: 5.4, color: '#0b2f24', opacity: 1 },
+  { min: 2000, width: 3.6, color: '#175c40', opacity: 0.98 },
+  { min: 0, width: 2, color: '#2f8a63', opacity: 0.9 },
 ]
 
 type LineMat = LineMaterial & { dashOffset?: number }
@@ -50,11 +50,7 @@ export default function Rivers() {
         depthWrite: false,
       })
       mat.color.set(BINS[i].color)
-      // long dashes with a short gap: the channel reads as one continuous river
-      // rather than the string of dots the old 3.4/8.5 split produced
-      mat.dashSize = 34
-      mat.gapSize = 7
-      mat.dashScale = 1
+
       const line = new LineSegments2(geo, mat)
       line.computeLineDistances()
       line.frustumCulled = false
@@ -70,29 +66,17 @@ export default function Rivers() {
       mat.opacity = on ? BINS[i].opacity : 0.22
       mat.linewidth = on ? BINS[i].width : Math.max(0.8, BINS[i].width * 0.6)
       mat.transparent = true
-      const dashed = on
-      mat.dashed = dashed
-      if (dashed) mat.defines.USE_DASH = ''
-      else delete mat.defines.USE_DASH
+      // solid channels: dash lengths are measured in world units, so at country
+      // scale every dash collapsed into a dot and the network looked stippled
+      mat.dashed = false
+      delete mat.defines.USE_DASH
       mat.needsUpdate = true
     })
     invalidate()
   }, [active, lines, size, invalidate])
 
-  // flow at 30fps: the drift is slow enough that half the frames read the same,
-  // and every frame here costs a full-canvas render
-  const acc = useRef(0)
-  useFrame((_, delta) => {
-    if (active !== 'rivers') return
-    acc.current += delta
-    if (acc.current < 1 / 30) return
-    const step = acc.current
-    acc.current = 0
-    lines.forEach(({ mat }) => {
-      mat.dashOffset = (mat.dashOffset ?? 0) - step * 0.32
-    })
-    invalidate()
-  })
+  // no dash drift any more: the lines are solid, so the stage can stay on its
+  // demand loop and render only when something actually changes
 
   useEffect(() => {
     return () => {

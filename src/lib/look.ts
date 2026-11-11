@@ -25,7 +25,9 @@ export const HEIGHT_BOOST: Record<string, { scale: number; exp: number }> = {
  * as a pale carpet with no structure next to the spiky ones.
  */
 export const SHAPE_OVERRIDES: Record<string, { flat: boolean; scale: number; exp: number }> = {
-  rivers: { flat: false, scale: 0.62, exp: 3.0 },
+  // water fraction is mostly small, so a steep curve left the delta invisible;
+  // this lifts a 50% water cell to about a third of full height
+  rivers: { flat: false, scale: 0.95, exp: 1.35 },
 }
 
 export function rampOf(layer: LayerDef): string[] {
@@ -49,6 +51,11 @@ export const GROUND_TINT: Record<string, string> = {
 
 /** how much of the layer ramp survives in the ground wash (0..1) */
 export const GROUND_RAMP_MIX = 0.08
+
+/** per-layer ground wash, for layers that need the silhouette to carry them */
+export const GROUND_MIX_OVERRIDE: Record<string, number> = {
+  rivers: 0.6,
+}
 
 export function groundTintOf(layer: LayerDef): string {
   return GROUND_TINT[layer.id] ?? '#eef6f0'
