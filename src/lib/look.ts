@@ -11,7 +11,9 @@ export const RAMP_OVERRIDES: Record<string, string[]> = {
   // the shipped ramp runs pale lilac to indigo, which fought the whole palette
   // and made the rivers layer the one screen that looked off; water now reads
   // as mint through to deep green like the rest of the site
-  rivers: ['#dcefe4', '#b6e0c8', '#83cda8', '#4fae86', '#1f7a54', '#0f3d2e'],
+  // water reads as water: a clean teal-to-deep-blue ramp, kept off indigo so it
+  // still belongs beside the green-led palette
+  rivers: ['#eef6fa', '#cfe8f2', '#a3d3e4', '#6bb7d0', '#2f8fb3', '#12556f'],
 }
 
 /** Taller, more selective population spikes: only the big cities stand out. */
@@ -25,9 +27,10 @@ export const HEIGHT_BOOST: Record<string, { scale: number; exp: number }> = {
  * as a pale carpet with no structure next to the spiky ones.
  */
 export const SHAPE_OVERRIDES: Record<string, { flat: boolean; scale: number; exp: number }> = {
-  // water fraction is mostly small, so a steep curve left the delta invisible;
-  // this lifts a 50% water cell to about a third of full height
-  rivers: { flat: false, scale: 0.95, exp: 1.35 },
+  // water fraction is mostly small, so the columns were invisible at a steep
+  // curve and then too tall at a shallow one; this keeps the delta readable
+  // without the coast turning into a wall of blades
+  rivers: { flat: false, scale: 0.42, exp: 1.9 },
 }
 
 export function rampOf(layer: LayerDef): string[] {
@@ -42,7 +45,7 @@ export const GROUND_TINT: Record<string, string> = {
   population: '#eef6f0',
   forest: '#dff0e6',
   elevation: '#f3ecdf',
-  rivers: '#e2efe8',
+  rivers: '#e7f2f7',
   landuse: '#f1eee4',
   rainfall: '#e6eef4',
   airquality: '#f4ece4',

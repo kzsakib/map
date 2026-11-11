@@ -9,10 +9,12 @@ const RIVER_Y = 1.4
 
 // the rivers layer leans on these lines, so they get a touch more weight: a
 // deep trunk, a mid channel and pale distributaries
+// the HydroRIVERS network is the graphic that carries this layer, and it is
+// water, so the channels are blue-teal in three stream orders
 const BINS = [
-  { min: 8000, width: 5.4, color: '#0b2f24', opacity: 1 },
-  { min: 2000, width: 3.6, color: '#175c40', opacity: 0.98 },
-  { min: 0, width: 2, color: '#2f8a63', opacity: 0.9 },
+  { min: 8000, width: 7, color: '#0d4a63', opacity: 1 },
+  { min: 2000, width: 4.5, color: '#1d6f8c', opacity: 1 },
+  { min: 0, width: 2.6, color: '#3f9cb8', opacity: 0.95 },
 ]
 
 type LineMat = LineMaterial & { dashOffset?: number }
@@ -48,12 +50,15 @@ export default function Rivers() {
         opacity: 0.3,
         dashed: false,
         depthWrite: false,
+        // channels read through the relief rather than being buried inside it
+        depthTest: false,
       })
       mat.color.set(BINS[i].color)
 
       const line = new LineSegments2(geo, mat)
       line.computeLineDistances()
       line.frustumCulled = false
+      line.renderOrder = 4
       return { line, mat: mat as LineMat }
     })
   }, [])
@@ -62,7 +67,7 @@ export default function Rivers() {
     const on = active === 'rivers'
     lines.forEach(({ mat }, i) => {
       mat.resolution.set(size.width, size.height)
-      mat.color.set(on ? BINS[i].color : '#bfe8d0')
+      mat.color.set(on ? BINS[i].color : '#c8dfe7')
       mat.opacity = on ? BINS[i].opacity : 0.22
       mat.linewidth = on ? BINS[i].width : Math.max(0.8, BINS[i].width * 0.6)
       mat.transparent = true
