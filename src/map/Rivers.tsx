@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import { LineMaterial, LineSegments2, LineSegmentsGeometry } from 'three-stdlib'
 import { db } from '../lib/data'
@@ -10,9 +10,9 @@ const RIVER_Y = 1.4
 // the rivers layer leans on these lines, so they get a touch more weight: a
 // deep trunk, a mid channel and pale distributaries
 const BINS = [
-  { min: 8000, width: 5.6, color: '#0b2f24', opacity: 1 },
-  { min: 2000, width: 3.4, color: '#1f7a54', opacity: 0.95 },
-  { min: 0, width: 1.8, color: '#6fcf9b', opacity: 0.85 },
+  { min: 8000, width: 6, color: '#0b2f24', opacity: 1 },
+  { min: 2000, width: 4, color: '#1f7a54', opacity: 1 },
+  { min: 0, width: 2.2, color: '#6fcf9b', opacity: 0.9 },
 ]
 
 type LineMat = LineMaterial & { dashOffset?: number }
@@ -50,9 +50,11 @@ export default function Rivers() {
         depthWrite: false,
       })
       mat.color.set(BINS[i].color)
-      mat.dashSize = 3.4
-      mat.gapSize = 8.5
-      mat.dashScale = 1.1
+      // long dashes with a short gap: the channel reads as one continuous river
+      // rather than the string of dots the old 3.4/8.5 split produced
+      mat.dashSize = 9
+      mat.gapSize = 3.2
+      mat.dashScale = 1.05
       const line = new LineSegments2(geo, mat)
       line.computeLineDistances()
       line.frustumCulled = false
@@ -77,10 +79,17 @@ export default function Rivers() {
     invalidate()
   }, [active, lines, size, invalidate])
 
+  // flow at 30fps: the drift is slow enough that half the frames read the same,
+  // and every frame here costs a full-canvas render
+  const acc = useRef(0)
   useFrame((_, delta) => {
     if (active !== 'rivers') return
+    acc.current += delta
+    if (acc.current < 1 / 30) return
+    const step = acc.current
+    acc.current = 0
     lines.forEach(({ mat }) => {
-      mat.dashOffset = (mat.dashOffset ?? 0) - delta * 0.32
+      mat.dashOffset = (mat.dashOffset ?? 0) - step * 0.32
     })
     invalidate()
   })

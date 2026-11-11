@@ -11,7 +11,7 @@ export const RAMP_OVERRIDES: Record<string, string[]> = {
   // the shipped ramp runs pale lilac to indigo, which fought the whole palette
   // and made the rivers layer the one screen that looked off; water now reads
   // as mint through to deep green like the rest of the site
-  rivers: ['#f2f8f4', '#d6ecdf', '#a8dbc2', '#6fcf9b', '#1f7a54', '#0f3d2e'],
+  rivers: ['#edf6f1', '#c6e6d5', '#93d5b6', '#57b58e', '#1f7a54', '#0f3d2e'],
 }
 
 /** Taller, more selective population spikes: only the big cities stand out. */
