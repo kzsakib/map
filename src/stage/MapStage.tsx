@@ -268,7 +268,7 @@ export default function MapStage() {
       </div>
 
       {/* credit */}
-      <p className="pointer-events-none absolute bottom-10 right-4 z-20 max-w-[260px] text-right mono-label !text-[11px] !tracking-[0.2em] text-[#5f5f5f] md:right-10 md:bottom-10">
+      <p className="text-halo-soft pointer-events-none absolute bottom-10 right-4 z-20 max-w-[260px] text-right mono-label !text-[11px] !tracking-[0.2em] text-[#4a4a4a] md:right-10 md:bottom-10">
         Visualised with three.js · Data: {layer?.source ?? '—'}
       </p>
 

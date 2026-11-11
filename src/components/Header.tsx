@@ -11,7 +11,7 @@ export default function Header() {
   const dataLoaded = useStore((s) => s.dataLoaded)
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 h-20 mix-blend-difference">
+    <header className="absolute inset-x-0 top-0 z-50 h-20 mix-blend-difference">
       <div className="mx-auto flex h-full max-w-[1500px] items-center justify-between px-5 text-white md:px-10">
         <a
           href="#top"

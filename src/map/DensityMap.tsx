@@ -500,7 +500,7 @@ export default function DensityMap() {
         />
         <div
           ref={tipValue}
-          className="mono-label mt-1.5 !text-[10px] !tracking-[0.2em] text-accent"
+          className="mono-label mt-1.5 !text-[11px] !tracking-[0.2em] text-accent"
         />
       </div>
     </div>
