@@ -9,6 +9,17 @@ export default {
         accent: '#4338ca',
         line: '#e5e5e5',
         clay: '#7b1e3f',
+        // extended palette: green is the ambient delta hue, red is the sun accent
+        green: {
+          50: '#effaf4',
+          200: '#bfe8d0',
+          400: '#6fcf9b',
+          900: '#0f3d2e',
+        },
+        red: {
+          300: '#f4a3a8',
+          500: '#e5484d',
+        },
       },
       fontFamily: {
         serif: ['"Playfair Display"', 'Georgia', 'serif'],

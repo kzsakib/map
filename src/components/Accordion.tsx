@@ -110,7 +110,7 @@ function Row({ division, open, onToggle }: { division: Division; open: boolean; 
                 className={`mono-tight rounded-full border px-2.5 py-1 !text-[10px] !tracking-[0.14em] transition-all duration-500 premium-ease ${
                   on
                     ? 'border-accent bg-accent text-cream'
-                    : 'border-line text-ink/55 hover:border-accent/40 hover:text-accent'
+                    : 'border-line text-ink/55 hover:border-green-400/70 hover:bg-green-50 hover:text-green-900'
                 }`}
               >
                 [{district.name}]
@@ -122,7 +122,7 @@ function Row({ division, open, onToggle }: { division: Division; open: boolean; 
         <button
           type="button"
           onClick={() => setSelection({ division: isSelected ? null : division.id, district: null })}
-          className="mono-label mt-6 inline-flex items-center gap-2 !text-[9px] !tracking-[0.24em] text-accent"
+          className="mono-label mt-6 inline-flex items-center gap-2 !text-[9px] !tracking-[0.24em] text-accent underline decoration-transparent decoration-2 underline-offset-4 transition-colors duration-500 premium-ease hover:decoration-green-400"
         >
           {isSelected ? 'Clear division' : 'Fly to division'}
           <span aria-hidden="true">→</span>

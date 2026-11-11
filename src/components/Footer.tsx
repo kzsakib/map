@@ -28,7 +28,7 @@ export default function Footer() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(60%_100%_at_50%_0%,rgba(67,56,202,0.45),transparent_70%)]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(42%_82%_at_63%_0%,rgba(111,207,155,0.16),transparent_72%),radial-gradient(60%_100%_at_40%_0%,rgba(67,56,202,0.42),transparent_70%)]"
       />
 
       <div className="relative mx-auto max-w-[1500px] px-5 md:px-10">

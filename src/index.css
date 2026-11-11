@@ -8,6 +8,14 @@
   --indigo: #4338ca;
   --line: #e5e5e5;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* palette extension: green is ambient, red is the flag-sun accent */
+  --green-50: #effaf4;
+  --green-200: #bfe8d0;
+  --green-400: #6fcf9b;
+  --green-900: #0f3d2e;
+  --red-300: #f4a3a8;
+  --red-500: #e5484d;
 }
 
 @layer base {
@@ -90,6 +98,20 @@
   border-radius: 50% 50% 0 0;
   transform: translate(-10%, 20%);
   pointer-events: auto;
+}
+
+/* the flag-sun: a quiet red dot after the title, soft glow only */
+.hero-sun {
+  position: absolute;
+  right: -0.42em;
+  top: 0.02em;
+  display: inline-block;
+  width: clamp(12px, 0.45em, 34px);
+  height: clamp(12px, 0.45em, 34px);
+  border-radius: 9999px;
+  background: var(--red-500);
+  box-shadow: 0 0 20px rgba(229, 72, 77, 0.3);
+  pointer-events: none;
 }
 
 /* hero mesh: three soft blurred fields drifting on a 30s linear loop */

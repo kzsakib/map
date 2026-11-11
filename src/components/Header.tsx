@@ -44,7 +44,9 @@ export default function Header() {
         <div className="flex items-center gap-2 rounded-full border border-white/45 px-3 py-1.5">
           <span
             className={`h-1.5 w-1.5 rounded-full ${
-              dataLoaded ? 'animate-dot-pulse bg-green-400' : 'bg-white/60'
+              dataLoaded
+                ? 'animate-dot-pulse bg-green-400 shadow-[0_0_14px_rgba(111,207,155,0.95)]'
+                : 'bg-white/60'
             }`}
             aria-hidden="true"
           />
