@@ -44,7 +44,9 @@ function useLayerBin(id: string) {
       return
     }
     let alive = true
-    setBin(null)
+    // keep the previous field on screen while the next one arrives: blanking it
+    // unmounted the spikes, so a layer visited for the first time had nothing
+    // to morph from and simply appeared
     useStore.getState().setLayerLoading(id)
     ensureLayer(id).then((b) => {
       if (!alive) return

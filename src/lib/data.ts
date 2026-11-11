@@ -174,6 +174,21 @@ export function ensureLayer(id: string): Promise<Uint8Array> {
   return p
 }
 
+/**
+ * Warm the layer caches in the background. A layer that has never been opened
+ * used to arrive after the swap began, which is why the first switch to any
+ * layer snapped while later switches morphed.
+ */
+export function preloadLayers(): void {
+  const ids = db.layers.map((l) => l.id)
+  const load = () => {
+    for (const id of ids) void ensureLayer(id).catch(() => {})
+  }
+  const idle = (window as unknown as { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => void })
+  if (typeof idle.requestIdleCallback === 'function') idle.requestIdleCallback(load, { timeout: 2500 })
+  else window.setTimeout(load, 900)
+}
+
 export function layerDef(id: string): LayerDef {
   return db.layers.find((l) => l.id === id) ?? db.layers[0]
 }

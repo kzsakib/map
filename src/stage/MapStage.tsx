@@ -64,6 +64,9 @@ export default function MapStage() {
         return
       }
       if (typing) return
+      // never swallow browser or OS shortcuts: Ctrl+R must reload the page, not
+      // toggle the drawer, and the same goes for Cmd/Ctrl+anything else
+      if (e.metaKey || e.ctrlKey || e.altKey) return
       if (e.key === 'Escape') {
         if (palette) {
           setPalette(false)

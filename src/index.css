@@ -308,6 +308,53 @@
     0 -1px 0 rgba(252, 251, 249, 0.9);
 }
 
+/* first-load screen: a quiet sweep while the eight grids arrive */
+.loader {
+  transition:
+    opacity 800ms var(--ease),
+    transform 800ms var(--ease);
+}
+
+.loader-out {
+  opacity: 0;
+  transform: scale(1.015);
+  pointer-events: none;
+}
+
+.loader-word {
+  animation: loader-word 900ms var(--ease) both;
+}
+
+@keyframes loader-word {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.loader-fill {
+  animation: loader-fill 2.4s var(--ease) infinite;
+}
+
+@keyframes loader-fill {
+  0% {
+    transform: scaleX(0);
+    opacity: 0.4;
+  }
+  55% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+
 /* the stats card waits for the district pop to reach about 60% */
 .stat-rise {
   animation: stat-rise 700ms var(--ease) 700ms both;

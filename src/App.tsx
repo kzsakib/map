@@ -4,7 +4,8 @@ import Hero from './components/Hero'
 import MapStage from './stage/MapStage'
 import Footer from './components/Footer'
 import BlobCursor from './components/reactbits/BlobCursor'
-import { initData } from './lib/data'
+import Loader from './components/Loader'
+import { initData, preloadLayers } from './lib/data'
 import { initScroll } from './lib/scroll'
 import { useStore } from './store'
 
@@ -30,7 +31,10 @@ export default function App() {
     let alive = true
     initData()
       .then(() => {
-        if (alive) setDataLoaded(true)
+        if (!alive) return
+        setDataLoaded(true)
+        // warm the other seven layers once the first is drawable
+        preloadLayers()
       })
       .catch((err) => {
         console.error('data load failed', err)
@@ -42,6 +46,7 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-cream">
+      <Loader />
       <Header />
       <main>
         <Hero />
