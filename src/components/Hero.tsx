@@ -3,7 +3,6 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import SoftAurora from './reactbits/SoftAurora'
 import ShapeBlur from './reactbits/ShapeBlur'
-import BlobCursor from './reactbits/BlobCursor'
 import BlurText from './reactbits/BlurText'
 import Magnet from './reactbits/Magnet'
 import Wave from './Wave'
@@ -66,7 +65,7 @@ export default function Hero() {
     <section
       ref={root}
       id="top"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-cream md:cursor-none"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-cream"
     >
       {/* drifting green / rose mesh, 30s linear loop — dimmed so the type can read */}
       <div
@@ -134,33 +133,6 @@ export default function Hero() {
           chroma={0.15}
           spin={3}
           idle
-        />
-      </div>
-
-      {/* Black blob. The blend has to live on this wrapper: a z-indexed wrapper
-          forms a stacking context, so a child with mix-blend-mode would have an
-          empty backdrop and paint as plain white. Blending here inverts the
-          hero beneath it, which is what makes the blob read as black. */}
-      <div
-        className="pointer-events-none absolute inset-0 z-20 hidden md:block"
-        style={{ mixBlendMode: 'difference' }}
-        aria-hidden="true"
-      >
-        <BlobCursor
-          material="ink"
-          color="#ffffff"
-          blend="normal"
-          size={88}
-          morph={0.35}
-          morphSpeed={0.35}
-          trail={12}
-          lag={0.6}
-          stretch={0.55}
-          wobble={0.9}
-          splash
-          splashCount={10}
-          splashSize={0.4}
-          hideCursor
         />
       </div>
 

@@ -60,6 +60,20 @@
   a {
     -webkit-tap-highlight-color: transparent;
   }
+
+  /* the blob is the cursor on desktop, so the arrow must never draw on top;
+     text fields keep their I-beam so the palette stays usable */
+  @media (min-width: 768px) {
+    html,
+    body,
+    body * {
+      cursor: none;
+    }
+    input,
+    textarea {
+      cursor: text;
+    }
+  }
 }
 
 @layer utilities {
