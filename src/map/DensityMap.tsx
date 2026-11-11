@@ -15,6 +15,7 @@ import {
   type LayerDef,
 } from '../lib/data'
 import { useStore } from '../store'
+import { COLOR_POW_OVERRIDE } from '../lib/look'
 import { spikeFragment, spikeUniforms, spikeVertex } from './spikeShader'
 import {
   BASE_HEIGHT,
@@ -31,7 +32,8 @@ import CityLabels from './labels'
 const EASE = 'power3.inOut'
 
 /** categorical and flat layers must keep their exact classes; continuous ramps compress */
-const COLOR_POW = (def: LayerDef) => (def.type === 'categorical' || shapeOf(def).flat ? 1 : 2.6)
+const COLOR_POW = (def: LayerDef) =>
+  COLOR_POW_OVERRIDE[def.id] ?? (def.type === 'categorical' || shapeOf(def).flat ? 1 : 2.6)
 
 type HoverPayload = { id: number; label: string; value: string; x: number; y: number } | null
 

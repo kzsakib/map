@@ -11,7 +11,7 @@ export const RAMP_OVERRIDES: Record<string, string[]> = {
   // the shipped ramp runs pale lilac to indigo, which fought the whole palette
   // and made the rivers layer the one screen that looked off; water now reads
   // as mint through to deep green like the rest of the site
-  rivers: ['#edf6f1', '#c6e6d5', '#93d5b6', '#57b58e', '#1f7a54', '#0f3d2e'],
+  rivers: ['#dcefe4', '#b6e0c8', '#83cda8', '#4fae86', '#1f7a54', '#0f3d2e'],
 }
 
 /** Taller, more selective population spikes: only the big cities stand out. */
@@ -55,6 +55,15 @@ export const GROUND_RAMP_MIX = 0.08
 /** per-layer ground wash, for layers that need the silhouette to carry them */
 export const GROUND_MIX_OVERRIDE: Record<string, number> = {
   rivers: 0.6,
+}
+
+/**
+ * Colour compression, per layer. The default 2.6 keeps most cells near the pale
+ * end of the ramp, which suits dense layers but left rivers almost colourless;
+ * water reads at full ramp.
+ */
+export const COLOR_POW_OVERRIDE: Record<string, number> = {
+  rivers: 1,
 }
 
 export function groundTintOf(layer: LayerDef): string {
