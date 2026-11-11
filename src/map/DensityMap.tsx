@@ -447,6 +447,15 @@ function HitPlane({ onHover }: { onHover: (p: HoverPayload) => void }) {
   )
 }
 
+/** re-render once when the stage comes back on screen */
+function Wake({ on }: { on: boolean }) {
+  const invalidate = useThree((s) => s.invalidate)
+  useEffect(() => {
+    if (on) invalidate()
+  }, [on, invalidate])
+  return null
+}
+
 export default function DensityMap() {
   const dataLoaded = useStore((s) => s.dataLoaded)
   const activeLayer = useStore((s) => s.activeLayer)
@@ -454,6 +463,21 @@ export default function DensityMap() {
   const tip = useRef<HTMLDivElement>(null)
   const tipName = useRef<HTMLDivElement>(null)
   const tipValue = useRef<HTMLDivElement>(null)
+  const host = useRef<HTMLDivElement>(null)
+  const [inView, setInView] = useState(true)
+
+  // the stage slept "never" while offscreen: the rivers dash loop used to keep
+  // the whole canvas rendering even behind the hero and footer, which stole
+  // frames from the page's own scroll and hover animation
+  useEffect(() => {
+    const el = host.current
+    if (!el || typeof IntersectionObserver === 'undefined') return
+    const io = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
+      rootMargin: '160px',
+    })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
 
   const handleHover = (p: HoverPayload) => {
     const el = tip.current
@@ -477,10 +501,10 @@ export default function DensityMap() {
   }
 
   return (
-    <div className="relative h-full w-full overflow-hidden bg-cream">
+    <div ref={host} className="relative h-full w-full overflow-hidden bg-cream">
       <Canvas
-        dpr={[1, 1.75]}
-        frameloop="demand"
+        dpr={[1, 1.5]}
+        frameloop={inView ? 'demand' : 'never'}
         camera={{ fov: 28, near: 1, far: 12000, position: [0, 1400, 900] }}
         gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
       >
@@ -489,6 +513,7 @@ export default function DensityMap() {
         <Rivers />
         <HitPlane onHover={handleHover} />
         <CameraRig />
+        <Wake on={inView} />
       </Canvas>
 
       <div

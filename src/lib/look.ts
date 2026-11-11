@@ -8,6 +8,10 @@ export const RAMP_OVERRIDES: Record<string, string[]> = {
   population: ['#eef6f0', '#f4a3a8', '#e5703f', '#2a0716'],
   forest: ['#effaf4', '#bfe8d0', '#6fcf9b', '#0f3d2e'],
   airquality: ['#fcfbf9', '#e9c46a', '#e5484d', '#2a0716'],
+  // the shipped ramp runs pale lilac to indigo, which fought the whole palette
+  // and made the rivers layer the one screen that looked off; water now reads
+  // as mint through to deep green like the rest of the site
+  rivers: ['#f2f8f4', '#d6ecdf', '#a8dbc2', '#6fcf9b', '#1f7a54', '#0f3d2e'],
 }
 
 /** Taller, more selective population spikes: only the big cities stand out. */
@@ -27,7 +31,7 @@ export const GROUND_TINT: Record<string, string> = {
   population: '#eef6f0',
   forest: '#dff0e6',
   elevation: '#f3ecdf',
-  rivers: '#e8eff4',
+  rivers: '#e2efe8',
   landuse: '#f1eee4',
   rainfall: '#e6eef4',
   airquality: '#f4ece4',

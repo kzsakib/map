@@ -7,10 +7,12 @@ import { lonToX, latToZ } from './camera'
 
 const RIVER_Y = 1.4
 
+// the rivers layer leans on these lines, so they get a touch more weight: a
+// deep trunk, a mid channel and pale distributaries
 const BINS = [
-  { min: 8000, width: 4.8, color: '#0f3d2e', opacity: 0.97 },
-  { min: 2000, width: 3.0, color: '#1f7a54', opacity: 0.92 },
-  { min: 0, width: 1.6, color: '#6fcf9b', opacity: 0.82 },
+  { min: 8000, width: 5.6, color: '#0b2f24', opacity: 1 },
+  { min: 2000, width: 3.4, color: '#1f7a54', opacity: 0.95 },
+  { min: 0, width: 1.8, color: '#6fcf9b', opacity: 0.85 },
 ]
 
 type LineMat = LineMaterial & { dashOffset?: number }
@@ -48,9 +50,9 @@ export default function Rivers() {
         depthWrite: false,
       })
       mat.color.set(BINS[i].color)
-      mat.dashSize = 3
-      mat.gapSize = 7
-      mat.dashScale = 1.2
+      mat.dashSize = 3.4
+      mat.gapSize = 8.5
+      mat.dashScale = 1.1
       const line = new LineSegments2(geo, mat)
       line.computeLineDistances()
       line.frustumCulled = false
@@ -78,7 +80,7 @@ export default function Rivers() {
   useFrame((_, delta) => {
     if (active !== 'rivers') return
     lines.forEach(({ mat }) => {
-      mat.dashOffset = (mat.dashOffset ?? 0) - delta * 0.45
+      mat.dashOffset = (mat.dashOffset ?? 0) - delta * 0.32
     })
     invalidate()
   })
