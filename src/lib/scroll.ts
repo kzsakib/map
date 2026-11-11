@@ -13,7 +13,22 @@ let lenis: Lenis | null = null
 export function initScroll(): Lenis {
   if (lenis) return lenis
 
-  lenis = new Lenis({ lerp: 0.1, smoothWheel: true })
+  lenis = new Lenis({
+    lerp: 0.1,
+    smoothWheel: true,
+    wheelMultiplier: 1,
+    // Lenis defaults respectReducedMotion to true and quietly falls back to
+    // native scrolling when the OS asks for less motion (common on Windows).
+    // Smooth scroll is on for everyone here, so switch that off explicitly.
+    respectReducedMotion: false,
+    autoRaf: false,
+  })
+
+  // belt and braces: if a future Lenis default slips a non-smoothing lerp in,
+  // put it back rather than silently losing the effect
+  if (lenis.options && lenis.options.lerp === 1) lenis.options.lerp = 0.1
+
+  lenis.start()
 
   lenis.on('scroll', ScrollTrigger.update)
   gsap.ticker.add((time) => lenis?.raf(time * 1000))
