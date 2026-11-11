@@ -106,7 +106,6 @@
     padding-top: env(safe-area-inset-top);
   }
 }
-}
 
 @layer utilities {
   /* the only easing allowed anywhere in the system */
