@@ -128,8 +128,8 @@ export async function initData(): Promise<void> {
     fetchJSON<Outline>('rivers.geojson'),
   ])
   const [regionsBin, divisionsBin] = await Promise.all([
-    fetchBin('layers/regions.bin'),
-    fetchBin('layers/divisions.bin'),
+    fetchBin('regions.bin'),
+    fetchBin('divisions.bin'),
   ])
   db.meta = meta
   db.layers = layers

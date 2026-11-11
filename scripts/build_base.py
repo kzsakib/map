@@ -162,8 +162,8 @@ def main() -> None:
     inside_cells = int((dist_bin > 0).sum())
     print(f"  country cells: {inside_cells} of {shape[0] * shape[1]} "
           f"({100 * inside_cells / (shape[0] * shape[1]):.1f}%)")
-    C.write_bin("regions", dist_bin)
-    C.write_bin("divisions", div_bin)
+    C.write_bin("regions", dist_bin, C.DATA)
+    C.write_bin("divisions", div_bin, C.DATA)
 
     print("\n[5/8] population (WorldPop BGD 2020, 1 km)")
     url = ("https://data.worldpop.org/GIS/Population/Global_2000_2020_1km/2020/"

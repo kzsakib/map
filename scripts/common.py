@@ -221,15 +221,22 @@ def dequantize(q: np.ndarray, vmin: float, vmax: float, scale: str = "linear") -
     return vmin + t * (vmax - vmin)
 
 
-def write_bin(name: str, q: np.ndarray) -> int:
-    path = LAYERS_DIR / f"{name}.bin"
+def write_bin(name: str, q: np.ndarray, dest: Path | None = None) -> int:
+    """Layer rasters live in public/data/layers; the region rasters pass dest=DATA."""
+    path = (dest or LAYERS_DIR) / f"{name}.bin"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(np.ascontiguousarray(q, dtype=np.uint8).tobytes())
     return path.stat().st_size
 
 
 def read_bin(name: str, meta: dict) -> np.ndarray:
-    path = LAYERS_DIR / f"{name}.bin" if not str(name).endswith(".bin") else Path(name)
+    if str(name).endswith(".bin"):
+        path = Path(name)
+    else:
+        path = next(
+            (base / f"{name}.bin" for base in (LAYERS_DIR, DATA) if (base / f"{name}.bin").exists()),
+            LAYERS_DIR / f"{name}.bin",
+        )
     return np.frombuffer(path.read_bytes(), dtype=np.uint8).reshape(grid_shape(meta))
 
 
