@@ -126,8 +126,8 @@ export default function Hero() {
           thickness={1}
           echoes={2}
           spacing={28}
-          color="#6fcf9b"
-          blur={22}
+          color="#a3d9bd"
+          blur={26}
           lensSize={0.4}
           lensSoftness={0.8}
           chroma={0.4}
