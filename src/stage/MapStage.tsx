@@ -114,7 +114,10 @@ export default function MapStage() {
   const gradient = layer ? `linear-gradient(90deg, ${rampOf(layer).join(', ')})` : ''
 
   return (
-    <section id="map" className="relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-cream">
+    <section
+      id="map"
+      className="relative h-[100svh] min-h-[560px] w-full overflow-hidden bg-cream"
+    >
       <div className="absolute inset-0">
         <DensityMap />
       </div>
@@ -277,7 +280,7 @@ export default function MapStage() {
       </p>
 
       {/* dock */}
-      <div className="absolute inset-x-0 bottom-6 z-30 flex justify-center px-4">
+      <div className="absolute inset-x-0 bottom-[calc(1.5rem+env(safe-area-inset-bottom))] z-30 flex justify-center px-4">
         <div className="pointer-events-auto flex items-center gap-2 rounded-full border border-line bg-cream/75 p-1.5 backdrop-blur-md shadow-[0_24px_60px_-32px_rgba(31,122,84,0.45)]">
           <button
             type="button"
@@ -301,7 +304,7 @@ export default function MapStage() {
       </div>
 
       {/* mobile chip row */}
-      <div className="pointer-events-auto absolute inset-x-0 bottom-20 z-20 overflow-x-auto md:hidden">
+      <div className="pointer-events-auto absolute inset-x-0 bottom-[calc(5rem+env(safe-area-inset-bottom))] z-20 overflow-x-auto md:hidden">
         <div className="flex gap-1.5 px-4">
           {layers.map((l) => {
             const on = l.id === active

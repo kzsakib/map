@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import MapStage from './stage/MapStage'
@@ -10,6 +10,20 @@ import { useStore } from './store'
 
 export default function App() {
   const setDataLoaded = useStore((s) => s.setDataLoaded)
+  // the blob shrinks over the map so it never hides the cell you are aiming at
+  const [overMap, setOverMap] = useState(false)
+
+  useEffect(() => {
+    const stage = document.getElementById('map')
+    if (!stage) return
+    const onMove = (e: PointerEvent) => {
+      const target = e.target instanceof Element ? e.target : null
+      const inside = !!target && (stage === target || stage.contains(target))
+      setOverMap((prev) => (prev === inside ? prev : inside))
+    }
+    window.addEventListener('pointermove', onMove, { passive: true })
+    return () => window.removeEventListener('pointermove', onMove)
+  }, [])
 
   useEffect(() => {
     initScroll()
@@ -42,7 +56,7 @@ export default function App() {
         have an empty backdrop and paint flat white.
       */}
       <div
-        className="pointer-events-none fixed inset-0 z-[70] hidden md:block"
+        className="blob-host pointer-events-none fixed inset-0 z-[70] hidden md:block"
         style={{ mixBlendMode: 'difference' }}
         aria-hidden="true"
       >
@@ -50,7 +64,9 @@ export default function App() {
           material="ink"
           color="#ffffff"
           blend="normal"
-          size={88}
+          size={overMap ? 44 : 88}
+          trail={overMap ? 8 : 12}
+          splashCount={overMap ? 6 : 10}
           morph={0.35}
           morphSpeed={0.35}
           trail={12}

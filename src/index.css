@@ -45,6 +45,30 @@
     line-height: 1.5;
     /* the page is the scroller: no fixed height, no overflow lock */
     overflow-x: hidden;
+    /* macOS/iOS rubber-banding fights Lenis' own easing */
+    overscroll-behavior-y: none;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* iOS zooms in on <16px form fields; the palette input must stay legible */
+  input,
+  select,
+  textarea {
+    font-size: max(16px, 1em);
+  }
+
+  /* the map canvas: vertical swipes scroll the page, drags orbit */
+  #map canvas {
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  @media (hover: none) {
+    button,
+    a {
+      touch-action: manipulation;
+    }
   }
 
   ::selection {
@@ -63,7 +87,7 @@
 
   /* the blob is the cursor on desktop, so the arrow must never draw on top;
      text fields keep their I-beam so the palette stays usable */
-  @media (min-width: 768px) {
+  @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
     html,
     body,
     body * {
@@ -74,6 +98,14 @@
       cursor: text;
     }
   }
+
+  /* notched phones: keep fixed UI clear of the home indicator and cutouts */
+  header {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-top: env(safe-area-inset-top);
+  }
+}
 }
 
 @layer utilities {
@@ -268,6 +300,13 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* touch devices get the real cursor back: a blob under a finger is useless */
+@media (hover: none), (pointer: coarse) {
+  .blob-host {
+    display: none !important;
   }
 }
 

@@ -477,7 +477,7 @@ export default function DensityMap() {
   return (
     <div className="relative h-full w-full overflow-hidden bg-cream">
       <Canvas
-        dpr={[1, 2]}
+        dpr={[1, 1.75]}
         frameloop="demand"
         camera={{ fov: 28, near: 1, far: 12000, position: [0, 1400, 900] }}
         gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
