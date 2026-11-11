@@ -19,3 +19,7 @@ artifacts/
 *.log
 .vscode/*
 !.vscode/extensions.json
+
+# python bytecode
+__pycache__/
+*.pyc
