@@ -164,6 +164,8 @@ function Spikes({ bin }: { bin: Uint8Array }) {
       u.uExp.value = [shape.exp, shape.exp]
       u.uFlat.value = [shape.flat ? 1 : 0, shape.flat ? 1 : 0]
       u.uSink.value = [def.sink ? 1 : 0, def.sink ? 1 : 0]
+      u.uCatA.value = def.type === 'categorical' ? 1 : 0
+      u.uCatB.value = def.type === 'categorical' ? 1 : 0
       u.uWidth.value = step * (shape.flat ? 1.0 : 0.82)
       invalidate()
       return
@@ -177,6 +179,7 @@ function Spikes({ bin }: { bin: Uint8Array }) {
     u.uExp.value = [u.uExp.value[0], nextShape.exp]
     u.uFlat.value = [u.uFlat.value[0], nextShape.flat ? 1 : 0]
     u.uSink.value = [u.uSink.value[0], def.sink ? 1 : 0]
+    u.uCatB.value = def.type === 'categorical' ? 1 : 0
     u.uWidth.value = step * (nextShape.flat ? 1.0 : 0.82)
     u.uMix.value = 0
     mix.current.v = 0
@@ -199,6 +202,7 @@ function Spikes({ bin }: { bin: Uint8Array }) {
         u.uExp.value = [nextShape.exp, nextShape.exp]
         u.uFlat.value = [nextShape.flat ? 1 : 0, nextShape.flat ? 1 : 0]
         u.uSink.value = [def.sink ? 1 : 0, def.sink ? 1 : 0]
+        u.uCatA.value = def.type === 'categorical' ? 1 : 0
         u.uWidth.value = step * (nextShape.flat ? 1.0 : 0.82)
         u.uMix.value = 0
         mix.current.v = 0

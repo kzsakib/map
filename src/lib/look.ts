@@ -38,7 +38,7 @@ export const SHAPE_OVERRIDES: Record<string, { flat: boolean; scale: number; exp
   // classes are stored as ids, so a gentle value curve turns the land-use map
   // into stepped terrain: cropland barely lifts, forest, built-up and wetland
   // stand above it. Without this the layer was a flat plate of one colour.
-  landuse: { flat: false, scale: 14.5, exp: 1 },
+  landuse: { flat: false, scale: 0.62, exp: 1 },
 }
 
 export function rampOf(layer: LayerDef): string[] {
@@ -84,6 +84,15 @@ export const COLOR_POW_OVERRIDE: Record<string, number> = {
  * classes were invisible at 1 km. Cropland is pushed almost to the paper tone
  * so the remaining classes read as coloured regions against it.
  */
+/**
+ * Height per land-use class (0..1 of the max column). Cropland stays low so the
+ * forest, built-up and wetland patches rise out of the plain instead of the
+ * whole country reading as one flat sheet of tan.
+ */
+export const CLASS_HEIGHT: Record<string, Record<number, number>> = {
+  landuse: { 1: 0.12, 2: 0.72, 3: 0.5, 4: 0.2, 5: 0.55, 6: 0.9, 7: 0.62 },
+}
+
 export const CLASS_COLOR_OVERRIDE: Record<string, Record<number, string>> = {
   landuse: {
     1: '#e6d6ab', // cropland: a warm field, not the paper ground

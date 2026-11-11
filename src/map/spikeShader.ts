@@ -25,6 +25,9 @@ uniform vec2 uHeight;
 uniform vec2 uExp;
 uniform vec2 uFlat;
 uniform vec2 uSink;
+// 1 when the layer is categorical and gets its height from the ramp alpha
+uniform float uCatA;
+uniform float uCatB;
 
 // district pop-up: uPop runs 0..1, the shader staggers cells by distance
 uniform float uPop;
@@ -57,8 +60,12 @@ void main() {
   float tB = texture2D(uTexB, uv).r;
   float t = mix(tA, tB, uMix);
 
-  float hA = columnHeight(tA, uHeight.x, uExp.x, uFlat.x, uSink.x);
-  float hB = columnHeight(tB, uHeight.y, uExp.y, uFlat.y, uSink.y);
+  float hA = uCatA > 0.5
+    ? texture2D(uRampA, vec2(clamp(tA, 0.0, 1.0), 0.5)).a * uHeight.x * uBaseHeight
+    : columnHeight(tA, uHeight.x, uExp.x, uFlat.x, uSink.x);
+  float hB = uCatB > 0.5
+    ? texture2D(uRampB, vec2(clamp(tB, 0.0, 1.0), 0.5)).a * uHeight.y * uBaseHeight
+    : columnHeight(tB, uHeight.y, uExp.y, uFlat.y, uSink.y);
   float h = mix(hA, hB, uMix);
 
   float region = texture2D(uRegions, uv).r * 255.0;
@@ -136,6 +143,8 @@ export function spikeUniforms() {
     uTexB: { value: null as THREE.Texture | null },
     uRampA: { value: null as THREE.Texture | null },
     uRampB: { value: null as THREE.Texture | null },
+    uCatA: { value: 0 },
+    uCatB: { value: 0 },
     uRegions: { value: null as THREE.Texture | null },
     uDivisions: { value: null as THREE.Texture | null },
     uGrid: { value: [478, 611] as [number, number] },

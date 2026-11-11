@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import { db, type LayerDef } from '../lib/data'
 import {
   CLASS_COLOR_OVERRIDE,
+  CLASS_HEIGHT,
   GROUND_MIX_OVERRIDE,
   GROUND_RAMP_MIX,
   GROUND_TINT,
@@ -68,12 +69,15 @@ export function makeRampTexture(layer: LayerDef): THREE.CanvasTexture {
   const tex = new THREE.CanvasTexture(cv)
   if (ctx) {
     const img = ctx.createImageData(256, 1)
+    const heights = CLASS_HEIGHT[layer.id]
     for (let i = 0; i < 256; i++) {
       const [r, g, b] = i === 0 ? [252, 251, 249] : rampColorAt(layer, i / 255)
       img.data[i * 4] = r
       img.data[i * 4 + 1] = g
       img.data[i * 4 + 2] = b
-      img.data[i * 4 + 3] = 255
+      // categorical layers carry their per-class column height in alpha, so the
+      // shader can raise forest and built-up above the cropland plain
+      img.data[i * 4 + 3] = heights ? Math.round(Math.min(1, heights[i] ?? 0) * 255) : 255
     }
     ctx.putImageData(img, 0, 0)
   }
