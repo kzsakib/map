@@ -164,6 +164,11 @@ const BlobCursor = ({
   const rootRef = useRef(null);
   const settingsRef = useRef(null);
   const applyRef = useRef(null);
+  const startRef = useRef(null);
+  // the drawn size eases toward the size prop, so changing it never snaps
+  const targetSizeRef = useRef(clamp(size, 12, 400));
+  const sizeRef = useRef(clamp(size, 12, 400));
+  targetSizeRef.current = clamp(size, 12, 400);
 
   settingsRef.current = {
     material: MATERIALS.includes(material) ? material : 'chrome',
@@ -192,6 +197,7 @@ const BlobCursor = ({
 
   useEffect(() => {
     applyRef.current?.();
+    startRef.current?.();
   });
 
   useEffect(() => {
@@ -785,6 +791,12 @@ const BlobCursor = ({
       if (!alive) return;
       const dt = Math.min(1 / 30, Math.max(1 / 240, (now - last) / 1000));
       last = now;
+      // ease the size: about a second to settle, so shrinking over the map reads
+      // as a slow deflate rather than a cut
+      const targetSize = targetSizeRef.current;
+      sizeRef.current += (targetSize - sizeRef.current) * (1 - Math.exp(-dt * 2.8));
+      settingsRef.current.size = sizeRef.current;
+      const resizing = Math.abs(targetSize - sizeRef.current) > 0.25;
       step(dt);
       const built = build();
       const shown = built.blob || built.spray;
@@ -801,8 +813,8 @@ const BlobCursor = ({
       for (let c = 0; c < settingsRef.current.trail; c++) energy += Math.hypot(chain[c].vx, chain[c].vy);
       const breathing =
         pointer.inside && settingsRef.current.morph > 0 && settingsRef.current.morphSpeed > 0 && !reducedMotion;
-      calm = energy > 1.5 || breathing ? 0 : calm + dt;
-      if (!shown && !pointer.inside) return;
+      calm = energy > 1.5 || breathing || resizing ? 0 : calm + dt;
+      if (!shown && !pointer.inside && !resizing) return;
       if (calm > 0.4) return;
       raf = requestAnimationFrame(tick);
     };
@@ -814,6 +826,7 @@ const BlobCursor = ({
       raf = requestAnimationFrame(tick);
     }
 
+    startRef.current = start;
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(root);
     window.addEventListener('pointermove', onMove, { passive: true });
@@ -831,6 +844,7 @@ const BlobCursor = ({
       alive = false;
       cancelAnimationFrame(raf);
       applyRef.current = null;
+      startRef.current = null;
       restoreCursor?.();
       resizeObserver.disconnect();
       window.removeEventListener('pointermove', onMove);

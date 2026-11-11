@@ -36,19 +36,12 @@ export default function MapStage() {
   const selectedDistrict = useStore((s) => s.selectedDistrict)
   const [drawer, setDrawer] = useState(false)
   const [palette, setPalette] = useState(false)
-  const [mode, setMode] = useState<Mode>(() => {
-    const hash = typeof window !== 'undefined' ? window.location.hash.replace('#', '') : ''
-    return (MODES.find((m) => m.id === hash && m.ready)?.id ?? 'explore') as Mode
-  })
+  // no URL hash: the map must not rewrite the address bar on load or reload
+  const [mode, setMode] = useState<Mode>('explore')
 
   const layer = dataLoaded ? layerDef(active) : null
   const layers = dataLoaded ? db.layers : []
   const selected = selectedDivision || selectedDistrict
-
-  useEffect(() => {
-    const next = `#${mode}`
-    if (window.location.hash !== next) window.history.replaceState(null, '', next)
-  }, [mode])
 
   // freeze the page while the palette is open, then hand scrolling back
   useEffect(() => {

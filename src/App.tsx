@@ -65,8 +65,6 @@ export default function App() {
           color="#ffffff"
           blend="normal"
           size={overMap ? 44 : 88}
-          trail={overMap ? 8 : 12}
-          splashCount={overMap ? 6 : 10}
           morph={0.35}
           morphSpeed={0.35}
           lag={0.6}
