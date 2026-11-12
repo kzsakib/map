@@ -151,7 +151,7 @@ export default function Hero() {
 
         <p
           data-hero-rise
-          className="mx-auto mt-10 max-w-lg text-[15px] leading-relaxed text-[#4a4a4a] md:text-base"
+          className="mx-auto mt-7 max-w-lg text-[15px] leading-relaxed text-[#4a4a4a] md:mt-10 md:text-base"
         >
           A country written by its rivers, read through its people. Eight datasets, one
           grid, and sixty-four districts you can walk into.
@@ -168,7 +168,7 @@ export default function Hero() {
           {STATS.map((stat, i) => (
             <span key={stat} className="flex items-center gap-4">
               {i > 0 && <span className="h-3 w-px bg-line" aria-hidden="true" />}
-              <span className="mono-label !text-[10px] !tracking-[0.32em] text-[#5f5f5f]">
+              <span className="mono-label !text-[11px] !tracking-[0.28em] text-[#5f5f5f]">
                 {stat}
               </span>
             </span>
@@ -185,7 +185,7 @@ export default function Hero() {
               onClick={() => scrollToSection('#map')}
               className="group inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3.5 text-sm text-cream transition-colors duration-500 premium-ease hover:bg-green-900 md:px-8 md:py-4"
             >
-              <span className="mono-label !text-[10px] !tracking-[0.28em] text-cream">
+              <span className="mono-label !text-[11px] !tracking-[0.26em] text-cream">
                 Explore the map
               </span>
               <span

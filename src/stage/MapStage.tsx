@@ -141,7 +141,7 @@ export default function MapStage() {
       </div>
 
       {/* mode switcher */}
-      <div className="absolute right-4 top-[92px] z-30 md:right-10">
+      <div className="absolute left-1/2 top-[84px] z-30 -translate-x-1/2 md:left-auto md:right-10 md:top-[92px] md:translate-x-0">
         <div
           role="group"
           aria-label="View mode"
@@ -173,7 +173,9 @@ export default function MapStage() {
       </div>
 
       {/* title block */}
-      <div className="pointer-events-none absolute right-4 top-[150px] z-20 w-[300px] text-right md:right-10 md:w-[340px]">
+      {/* the phone screen is too narrow for a 300px title block: the hero already
+          carries it, and the chip row names the layer */}
+      <div className="pointer-events-none absolute right-4 top-[150px] z-20 hidden w-[300px] text-right md:right-10 md:block md:w-[340px]">
         <p className="mono-label !text-[11px] !tracking-[0.28em] text-[#5f5f5f]">Chapter one · the landscape</p>
         <h2 className="mt-3 font-serif text-[34px] leading-[1.05] text-ink md:text-[46px]">
           Bangladesh <span className="italic text-accent">in Relief</span>
@@ -223,7 +225,11 @@ export default function MapStage() {
       </div>
 
       {/* legend */}
-      <div className="pointer-events-none absolute bottom-24 left-4 z-20 w-[240px] md:bottom-10 md:left-10 md:w-[260px]">
+      <div
+        className={`pointer-events-none absolute bottom-[calc(8.5rem+env(safe-area-inset-bottom))] left-4 right-4 z-20 w-auto md:bottom-10 md:left-10 md:right-auto md:w-[260px] ${
+          selected ? 'hidden md:block' : 'block'
+        }`}
+      >
         {layer && (
           <>
             <p className="mono-label !text-[11px] !tracking-[0.24em] text-[#5f5f5f]">
@@ -260,7 +266,7 @@ export default function MapStage() {
               <span className="mono-label !text-[11px] !tracking-[0.18em] text-[#5f5f5f]">0</span>
               <span className="mono-label !text-[11px] !tracking-[0.18em] text-[#5f5f5f]">200 km</span>
             </div>
-            <p className="mono-label mt-3 !text-[11px] !tracking-[0.18em] text-[#5f5f5f]">
+            <p className="mono-label mt-3 hidden !text-[11px] !tracking-[0.18em] text-[#5f5f5f] md:block">
               {layer.source}
               <span className="mt-0.5 block text-[#5f5f5f]">
                 {layer.year} · {layer.license}
@@ -271,20 +277,30 @@ export default function MapStage() {
       </div>
 
       {/* credit */}
-      <p className="text-halo-soft pointer-events-none absolute bottom-10 right-4 z-20 max-w-[260px] text-right mono-label !text-[11px] !tracking-[0.2em] text-[#4a4a4a] md:right-10 md:bottom-10">
+      <p className="text-halo-soft pointer-events-none absolute bottom-10 right-4 z-20 hidden max-w-[260px] text-right mono-label !text-[11px] !tracking-[0.2em] text-[#4a4a4a] md:right-10 md:bottom-10 md:block">
         Visualised with three.js · Data: {layer?.source ?? '—'}
       </p>
 
       {/* dock */}
       <div className="absolute inset-x-0 bottom-[calc(1.5rem+env(safe-area-inset-bottom))] z-30 flex justify-center px-4">
-        <div className="pointer-events-auto flex items-center gap-2 rounded-full border border-line bg-cream/75 p-1.5 backdrop-blur-md shadow-[0_24px_60px_-32px_rgba(31,122,84,0.45)]">
+        <div className="pointer-events-auto flex items-center gap-1.5 rounded-full border border-line bg-cream/75 p-1.5 backdrop-blur-md shadow-[0_24px_60px_-32px_rgba(31,122,84,0.45)]">
+          {/* the drawer toggle is desktop-only at the screen edge, so the phone
+              needs its own way into the regions list */}
+          <button
+            type="button"
+            onClick={() => setDrawer(true)}
+            className="mono-label rounded-full px-3 py-2 !text-[11px] !tracking-[0.2em] text-[#4a4a4a] transition-colors duration-500 premium-ease hover:text-ink md:hidden"
+          >
+            Regions
+          </button>
           <button
             type="button"
             onClick={() => setPalette(true)}
             className="mono-label rounded-full px-4 py-2 !text-[11px] !tracking-[0.22em] text-[#4a4a4a] transition-colors duration-500 premium-ease hover:text-ink"
           >
-            Search 64 districts
-            <kbd className="ml-2 rounded border border-line px-1 py-0.5 !text-[11px] text-[#5f5f5f]">⌘K</kbd>
+            <span className="hidden md:inline">Search 64 districts</span>
+            <span className="md:hidden">Search</span>
+            <kbd className="ml-2 hidden rounded border border-line px-1 py-0.5 !text-[11px] text-[#5f5f5f] md:inline">⌘K</kbd>
           </button>
           <button
             type="button"
@@ -300,7 +316,11 @@ export default function MapStage() {
       </div>
 
       {/* mobile chip row */}
-      <div className="pointer-events-auto absolute inset-x-0 bottom-[calc(5rem+env(safe-area-inset-bottom))] z-20 overflow-x-auto md:hidden">
+      <div
+        className={`pointer-events-auto absolute inset-x-0 bottom-[calc(5rem+env(safe-area-inset-bottom))] z-20 overflow-x-auto md:hidden ${
+          selected ? 'hidden' : 'block'
+        }`}
+      >
         <div className="flex gap-1.5 px-4">
           {layers.map((l) => {
             const on = l.id === active
@@ -325,7 +345,7 @@ export default function MapStage() {
       <CommandPalette open={palette} onClose={close} />
 
       {selected && (
-        <p className="pointer-events-none absolute left-4 top-[92px] z-20 mono-label !text-[11px] !tracking-[0.24em] text-green-700 md:left-10">
+        <p className="pointer-events-none absolute left-4 top-[92px] z-20 hidden mono-label !text-[11px] !tracking-[0.24em] text-green-700 md:left-10 md:block">
           {selectionName(selectedDivision, selectedDistrict)}
         </p>
       )}

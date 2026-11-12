@@ -34,8 +34,9 @@ export default function SelectionCard() {
   const mean = stats?.mean ?? null
   const isCat = layer.type === 'categorical'
 
+  // on a phone the card takes the chips' place above the dock, full width
   return (
-    <div className="pointer-events-auto absolute bottom-24 left-5 z-30 w-[min(320px,calc(100vw-2.5rem))] md:bottom-8 md:left-auto md:right-6">
+    <div className="pointer-events-auto absolute bottom-[calc(5.5rem+env(safe-area-inset-bottom))] left-4 right-4 z-30 w-auto md:bottom-8 md:left-auto md:right-6 md:w-[320px]">
       <div className="stat-rise rounded-card border border-line bg-cream/90 p-5 shadow-[0_30px_70px_-40px_rgba(31,122,84,0.45)] backdrop-blur-md">
         <div className="flex items-start justify-between gap-3">
           <div>

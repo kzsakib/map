@@ -26,12 +26,16 @@ export default function RegionsDrawer({ open, onToggle }: { open: boolean; onTog
       <aside
         id="regions-drawer"
         aria-hidden={!open}
-        className={`absolute right-0 top-0 z-30 h-full w-[420px] max-w-[90vw] border-l border-line bg-cream/75 backdrop-blur-xl transition-transform duration-[600ms] premium-ease ${
-          open ? 'translate-x-0' : 'translate-x-full'
+        className={`absolute z-40 border-line bg-cream/75 backdrop-blur-xl transition-transform duration-[600ms] premium-ease inset-x-0 bottom-0 top-auto h-[74svh] w-full rounded-t-[20px] border-t md:inset-x-auto md:bottom-auto md:right-0 md:top-0 md:h-full md:w-[420px] md:max-w-[90vw] md:rounded-none md:border-l md:border-t-0 ${
+          open ? 'translate-y-0 md:translate-x-0' : 'translate-y-full md:translate-x-full'
         }`}
         style={{ boxShadow: open ? '-30px 0 80px -50px rgba(111,207,155,0.5)' : 'none' }}
       >
-        <div className="flex h-full flex-col pt-24">
+        <div className="flex h-full flex-col pt-4 md:pt-24">
+          <div
+            className="mx-auto mb-3 h-1 w-10 shrink-0 rounded-full bg-ink/15 md:hidden"
+            aria-hidden="true"
+          />
           <div className="flex items-end justify-between gap-4 px-6">
             <div>
               <p className="mono-label !text-[11px] !tracking-[0.26em] text-[#5f5f5f]">Sixty-four districts</p>
@@ -39,13 +43,23 @@ export default function RegionsDrawer({ open, onToggle }: { open: boolean; onTog
                 Explore the <span className="italic text-accent">Regions</span>
               </h2>
             </div>
-            <button
-              type="button"
-              onClick={clearSelection}
-              className="mono-label whitespace-nowrap !text-[11px] !tracking-[0.2em] text-[#5f5f5f] transition-colors duration-500 premium-ease hover:text-accent"
-            >
-              Reset view →
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={clearSelection}
+                className="mono-label whitespace-nowrap !text-[11px] !tracking-[0.2em] text-[#5f5f5f] transition-colors duration-500 premium-ease hover:text-accent"
+              >
+                Reset view →
+              </button>
+              <button
+                type="button"
+                onClick={onToggle}
+                aria-label="Close regions"
+                className="mono-label rounded-full border border-line px-2 py-1 !text-[11px] leading-none text-[#5f5f5f] md:hidden"
+              >
+                ×
+              </button>
+            </div>
           </div>
           <div data-lenis-prevent className="mt-6 min-h-0 flex-1 overflow-y-auto px-6 pb-10">
             <Accordion />
