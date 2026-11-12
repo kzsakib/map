@@ -226,7 +226,7 @@ export default function MapStage() {
 
       {/* legend */}
       <div
-        className={`pointer-events-none absolute bottom-[calc(8.5rem+env(safe-area-inset-bottom))] left-4 right-4 z-20 w-auto rounded-[14px] border border-line bg-cream/88 p-3 backdrop-blur-md md:bottom-10 md:left-10 md:right-auto md:w-[260px] md:rounded-none md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none ${
+        className={`pointer-events-none absolute bottom-[calc(8.5rem+env(safe-area-inset-bottom))] left-4 right-4 z-20 w-auto rounded-[14px] border border-line bg-cream/90 p-3 backdrop-blur-md md:bottom-10 md:left-10 md:right-auto md:w-[260px] md:rounded-none md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none ${
           selected ? 'hidden md:block' : 'block'
         }`}
       >
