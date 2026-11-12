@@ -25,7 +25,7 @@ import {
   makeRampTexture,
   shapeOf,
 } from './layers'
-import { HOME, applyCamera, boundsToWorld, fitState, type CamState } from './camera'
+import { applyCamera, boundsToWorld, fitState, homeFor, type CamState } from './camera'
 import Rivers from './Rivers'
 import CityLabels from './labels'
 
@@ -327,7 +327,11 @@ function CameraRig() {
   const invalidate = useThree((s) => s.invalidate)
   const selectedDivision = useStore((s) => s.selectedDivision)
   const selectedDistrict = useStore((s) => s.selectedDistrict)
-  const state = useRef<CamState>({ ...HOME })
+  const size = useThree((s) => s.size)
+  const aspect = size.width / Math.max(1, size.height)
+  // portrait stages fit the country by its width, not its height
+  const home = useMemo(() => homeFor(aspect), [aspect])
+  const state = useRef<CamState>({ ...home })
 
   useEffect(() => {
     camera.fov = 28
@@ -336,10 +340,22 @@ function CameraRig() {
     invalidate()
   }, [camera, invalidate])
 
+  // reframe when the stage changes shape (rotation, resize, phone/desktop)
+  useEffect(() => {
+    if (selectedDistrict || selectedDivision) return
+    gsap.to(state.current, {
+      ...home,
+      duration: 0.8,
+      ease: EASE,
+      overwrite: true,
+      onUpdate: invalidate,
+    })
+  }, [home, selectedDistrict, selectedDivision, invalidate])
+
   useEffect(() => {
     const active = Boolean(selectedDistrict || selectedDivision)
     // a slightly lower tilt so the lifted district reads as a slab
-    const target = active ? { ...fitState(selectionBox(), 28), phi: 0.78 } : HOME
+    const target = active ? { ...fitState(selectionBox(), 28, aspect), phi: 0.78 } : home
     gsap.to(state.current, {
       ...target,
       duration: 1.2,
@@ -347,7 +363,7 @@ function CameraRig() {
       overwrite: true,
       onUpdate: invalidate,
     })
-  }, [selectedDivision, selectedDistrict, invalidate])
+  }, [selectedDivision, selectedDistrict, invalidate, aspect, home])
 
   useEffect(() => {
     const el = gl.domElement

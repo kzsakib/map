@@ -178,7 +178,7 @@ export default function MapStage() {
       <div className="pointer-events-none absolute right-4 top-[150px] z-20 hidden w-[300px] text-right md:right-10 md:block md:w-[340px]">
         <p className="mono-label !text-[11px] !tracking-[0.28em] text-[#5f5f5f]">Chapter one · the landscape</p>
         <h2 className="mt-3 font-serif text-[34px] leading-[1.05] text-ink md:text-[46px]">
-          Bangladesh <span className="italic text-accent">in Relief</span>
+          Discover <span className="italic text-accent">Bangladesh</span>
         </h2>
         <p
           key={active}

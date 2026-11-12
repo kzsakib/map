@@ -38,15 +38,32 @@ export function boundsToWorld(bbox: number[]) {
   }
 }
 
-export function fitState(bbox: number[], fovDeg: number): CamState {
+/**
+ * Distance that fits a w x h patch in the view. The vertical field of view is
+ * fixed, so on a portrait stage the horizontal field is much narrower and the
+ * width becomes the binding constraint - that is why the map used to spill off
+ * both sides of a phone.
+ */
+function fitRadius(w: number, h: number, fovDeg: number, aspect: number, pad: number) {
+  const halfV = Math.tan(((fovDeg * Math.PI) / 180) / 2)
+  const halfH = halfV * Math.max(aspect, 0.25)
+  const vertical = h / 2 / halfV
+  const horizontal = w / 2 / halfH
+  return THREE.MathUtils.clamp(Math.max(vertical, horizontal) * pad, 240, 3600)
+}
+
+/** the country at rest, framed for the current stage aspect */
+export function homeFor(aspect: number): CamState {
+  const meta = db.meta
+  if (!meta) return HOME
+  const { w, h } = boundsToWorld(meta.bbox)
+  // the tilt foreshortens depth, so the country needs less height than its bbox
+  return { ...HOME, radius: fitRadius(w, h * 0.75, 28, aspect, 1.28) }
+}
+
+export function fitState(bbox: number[], fovDeg: number, aspect = 1): CamState {
   const { cx, cz, w, h } = boundsToWorld(bbox)
-  const span = Math.max(w, h, 30)
-  const radius = THREE.MathUtils.clamp(
-    // ~80% of the stage height, with 8% padding
-    (span / 2 / Math.tan((fovDeg * Math.PI) / 180 / 2)) * 1.2,
-    300,
-    2200,
-  )
+  const radius = fitRadius(Math.max(w, 60), Math.max(h * 0.8, 60), fovDeg, aspect, 1.16)
   return { tx: cx, tz: cz, radius, phi: 0.82, theta: -0.18 }
 }
 

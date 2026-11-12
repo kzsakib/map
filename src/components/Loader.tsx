@@ -39,7 +39,7 @@ export default function Loader() {
         className="loader-word mono-label !text-[11px] !tracking-[0.34em] text-green-700"
         style={{ animationDelay: '80ms' }}
       >
-        Bangladesh in Relief
+        Discover Bangladesh
       </p>
 
       <h1

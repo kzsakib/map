@@ -94,7 +94,7 @@ export default function Footer() {
 
         <div className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-white/10 pt-6 text-center">
           <p className="mono-label !text-[11px] !tracking-[0.24em] text-cream/35">
-            Bangladesh in Relief · eight layers · 64 districts
+            Discover Bangladesh · eight layers · 64 districts
           </p>
           <p className="mono-label !text-[11px] !tracking-[0.24em] text-cream/25">
             Data are indicative; read every number with its source.

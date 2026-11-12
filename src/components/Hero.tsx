@@ -141,10 +141,10 @@ export default function Hero() {
           A data landscape · 1 km grid · eight layers
         </p>
 
-        <h1 className="serif-display relative mx-auto pb-[0.12em] text-[clamp(3.4rem,13.2vw,13rem)]">
-          <BlurText text="Bangla" />
+        <h1 className="serif-display relative mx-auto pb-[0.12em] text-[clamp(2.7rem,9.6vw,9rem)]">
+          <BlurText text="Discover" />{' '}
           <span className="relative italic text-accent">
-            <BlurText text="desh" delay={0.32} />
+            <BlurText text="Bangladesh" delay={0.32} />
             <span data-hero-sun className="hero-sun" />
           </span>
         </h1>

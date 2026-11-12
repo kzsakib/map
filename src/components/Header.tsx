@@ -21,7 +21,7 @@ export default function Header() {
           }}
           className="font-serif text-lg italic leading-none tracking-tight md:text-xl"
         >
-          Bangladesh <span className="not-italic">in</span> Relief
+          Discover <span className="not-italic">Bangladesh</span>
         </a>
 
         <nav aria-label="Sections" className="hidden items-center gap-10 md:flex">
