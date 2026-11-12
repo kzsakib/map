@@ -226,7 +226,7 @@ export default function MapStage() {
 
       {/* legend */}
       <div
-        className={`pointer-events-none absolute bottom-[calc(8.5rem+env(safe-area-inset-bottom))] left-4 right-4 z-20 w-auto md:bottom-10 md:left-10 md:right-auto md:w-[260px] ${
+        className={`pointer-events-none absolute bottom-[calc(8.5rem+env(safe-area-inset-bottom))] left-4 right-4 z-20 w-auto rounded-[14px] border border-line bg-cream/88 p-3 backdrop-blur-md md:bottom-10 md:left-10 md:right-auto md:w-[260px] md:rounded-none md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none ${
           selected ? 'hidden md:block' : 'block'
         }`}
       >
@@ -257,12 +257,12 @@ export default function MapStage() {
                 </div>
               </>
             )}
-            <div className="mt-3 flex items-end gap-2" aria-hidden="true">
+            <div className="mt-3 hidden items-end gap-2 md:flex" aria-hidden="true">
               <span className="h-2 w-px bg-ink/30" />
               <span className="h-2 flex-1 border-x border-b border-ink/20" style={{ height: 4 }} />
               <span className="h-2 w-px bg-ink/30" />
             </div>
-            <div className="mt-1 flex justify-between">
+            <div className="mt-1 hidden justify-between md:flex">
               <span className="mono-label !text-[11px] !tracking-[0.18em] text-[#5f5f5f]">0</span>
               <span className="mono-label !text-[11px] !tracking-[0.18em] text-[#5f5f5f]">200 km</span>
             </div>
@@ -317,7 +317,7 @@ export default function MapStage() {
 
       {/* mobile chip row */}
       <div
-        className={`pointer-events-auto absolute inset-x-0 bottom-[calc(5rem+env(safe-area-inset-bottom))] z-20 overflow-x-auto md:hidden ${
+        className={`pointer-events-auto absolute inset-x-0 bottom-[calc(5rem+env(safe-area-inset-bottom))] z-20 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:hidden ${
           selected ? 'hidden' : 'block'
         }`}
       >
