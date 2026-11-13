@@ -11,6 +11,10 @@ type Store = {
   hovered: Hovered
   dataLoaded: boolean
   layerLoading: string | null
+  clouds: boolean
+  quality: 'high' | 'lite'
+  setClouds: (v: boolean) => void
+  setQuality: (q: 'high' | 'lite') => void
   setLayer: (id: string) => void
   setSelection: (sel: Selection) => void
   clearSelection: () => void
@@ -26,6 +30,11 @@ export const useStore = create<Store>((set) => ({
   hovered: null,
   dataLoaded: false,
   layerLoading: null,
+  clouds: true,
+  // phones and small laptops start in lite mode; the dock can override it
+  quality: 'high',
+  setClouds: (clouds) => set({ clouds }),
+  setQuality: (quality) => set({ quality }),
   setLayer: (id) => set({ activeLayer: id }),
   setSelection: ({ division, district }) =>
     set({

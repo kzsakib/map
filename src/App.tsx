@@ -14,6 +14,14 @@ export default function App() {
   // the blob shrinks over the map so it never hides the cell you are aiming at
   const [overMap, setOverMap] = useState(false)
 
+  // choose a quality tier before the first frame: phones and small laptops get
+  // the lighter mesh, fewer effects and dpr 1; the dock can override it
+  useEffect(() => {
+    const coarse = window.matchMedia('(max-width: 768px)').matches
+    const cores = navigator.hardwareConcurrency ?? 8
+    if (coarse || cores <= 4) useStore.getState().setQuality('lite')
+  }, [])
+
   useEffect(() => {
     const stage = document.getElementById('map')
     if (!stage) return

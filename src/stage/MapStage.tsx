@@ -34,6 +34,10 @@ export default function MapStage() {
   const clearSelection = useStore((s) => s.clearSelection)
   const selectedDivision = useStore((s) => s.selectedDivision)
   const selectedDistrict = useStore((s) => s.selectedDistrict)
+  const clouds = useStore((s) => s.clouds)
+  const setClouds = useStore((s) => s.setClouds)
+  const quality = useStore((s) => s.quality)
+  const setQuality = useStore((s) => s.setQuality)
   const [drawer, setDrawer] = useState(false)
   const [palette, setPalette] = useState(false)
   // no URL hash: the map must not rewrite the address bar on load or reload
@@ -301,6 +305,22 @@ export default function MapStage() {
             <span className="hidden md:inline">Search 64 districts</span>
             <span className="md:hidden">Search</span>
             <kbd className="ml-2 hidden rounded border border-line px-1 py-0.5 !text-[11px] text-[#5f5f5f] md:inline">⌘K</kbd>
+          </button>
+          <button
+            type="button"
+            onClick={() => setClouds(!clouds)}
+            aria-pressed={clouds}
+            className="mono-label hidden rounded-full px-3 py-2 !text-[11px] !tracking-[0.2em] text-[#4a4a4a] transition-colors duration-500 premium-ease hover:text-ink md:inline-block"
+          >
+            Clouds {clouds ? 'on' : 'off'}
+          </button>
+          <button
+            type="button"
+            onClick={() => setQuality(quality === 'lite' ? 'high' : 'lite')}
+            aria-pressed={quality === 'lite'}
+            className="mono-label hidden rounded-full px-3 py-2 !text-[11px] !tracking-[0.2em] text-[#4a4a4a] transition-colors duration-500 premium-ease hover:text-ink md:inline-block"
+          >
+            {quality === 'lite' ? 'Lite' : 'High'}
           </button>
           <button
             type="button"

@@ -91,6 +91,19 @@ export function makeRampTexture(layer: LayerDef): THREE.CanvasTexture {
   return tex
 }
 
+/** Single-channel R8 texture with LINEAR sampling: continuous fields, no stair steps. */
+export function makeDataTextureLinear(bin: Uint8Array, cols: number, rows: number): THREE.DataTexture {
+  const tex = new THREE.DataTexture(bin, cols, rows, THREE.RedFormat, THREE.UnsignedByteType)
+  tex.minFilter = THREE.LinearFilter
+  tex.magFilter = THREE.LinearFilter
+  tex.wrapS = THREE.ClampToEdgeWrapping
+  tex.wrapT = THREE.ClampToEdgeWrapping
+  tex.generateMipmaps = false
+  tex.unpackAlignment = 1
+  tex.needsUpdate = true
+  return tex
+}
+
 /** Single-channel R8 texture, nearest sampling, one texel per grid cell. */
 export function makeDataTexture(bin: Uint8Array, cols: number, rows: number): THREE.DataTexture {
   const tex = new THREE.DataTexture(bin, cols, rows, THREE.RedFormat, THREE.UnsignedByteType)
@@ -126,6 +139,27 @@ export function heightFor(layer: LayerDef, q: number): number {
   const shape = shapeOf(layer)
   if (shape.flat) return shape.scale * BASE_HEIGHT - (layer.sink ? t * 0.55 : 0)
   return Math.pow(t, shape.exp) * shape.scale * BASE_HEIGHT
+}
+
+/**
+ * World height of a cell's layer value on the continuous mesh, in km.
+ * The shader in terrainShader.ts must use the same numbers.
+ */
+export const TERRAIN_DATA_BASE = 22
+
+/** Layers that carry their own relief get a smaller data lift. */
+export const TERRAIN_DATA_HEIGHT: Record<string, number> = {
+  elevation: 8,
+  rivers: 6,
+  landuse: 12,
+}
+
+export function dataHeightFor(layer: LayerDef, q: number): number {
+  const shape = shapeOf(layer)
+  const t = Math.min(1, Math.max(0, q / 255))
+  const scale = shape.scale * (TERRAIN_DATA_HEIGHT[layer.id] ?? TERRAIN_DATA_BASE)
+  if (shape.flat) return Math.max(0, shape.scale * TERRAIN_DATA_BASE)
+  return Math.pow(t, shape.exp) * scale
 }
 
 /**
@@ -175,11 +209,32 @@ export function groundTexture(layer: LayerDef): THREE.CanvasTexture | null {
   ctx.imageSmoothingEnabled = true
   ctx.imageSmoothingQuality = 'high'
 
-  // soft cast shadow towards the south-east
+  // long violet cast shadow of the whole landmass, as on the reference plate:
+  // a tight contact edge plus a wide, soft throw toward the bottom-right
+  const sil = document.createElement('canvas')
+  sil.width = meta.cols
+  sil.height = meta.rows
+  const sctx = sil.getContext('2d')
+  if (sctx) {
+    const img = sctx.createImageData(meta.cols, meta.rows)
+    for (let i = 0; i < regions.length; i++) {
+      if (!regions[i]) continue
+      img.data[i * 4] = 214
+      img.data[i * 4 + 1] = 210
+      img.data[i * 4 + 2] = 236
+      img.data[i * 4 + 3] = 255
+    }
+    sctx.putImageData(img, 0, 0)
+  }
+  ctx.save()
+  ctx.globalAlpha = 0.14
+  ctx.filter = 'blur(40px)'
+  ctx.drawImage(sil, W * 0.105, H * 0.125, W * 0.99, H * 0.99)
+  ctx.restore()
   ctx.save()
   ctx.globalAlpha = 0.16
-  ctx.filter = 'blur(18px) brightness(0.15)'
-  ctx.drawImage(low, W * 0.014, H * 0.022, W * 0.985, H * 0.985)
+  ctx.filter = 'blur(7px)'
+  ctx.drawImage(sil, W * 0.018, H * 0.022, W * 0.99, H * 0.99)
   ctx.restore()
 
   // the layer wash: flat and class layers stay crisp so the categories read

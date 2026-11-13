@@ -28,6 +28,11 @@ import {
 import { applyCamera, boundsToWorld, fitState, homeFor, type CamState } from './camera'
 import Rivers from './Rivers'
 import CityLabels from './labels'
+import TerrainMesh from './TerrainMesh'
+import Skirt from './Skirt'
+import Clouds from './Clouds'
+import { useTerrain } from './useTerrain'
+import type { Terrain } from './terrain'
 
 const EASE = 'power3.inOut'
 
@@ -95,7 +100,7 @@ function spikeGeometry() {
   return geo
 }
 
-function Spikes({ bin }: { bin: Uint8Array }) {
+function Spikes({ bin, terrain }: { bin: Uint8Array; terrain: Terrain }) {
   const invalidate = useThree((s) => s.invalidate)
   const activeLayer = useStore((s) => s.activeLayer)
   const selectedDivision = useStore((s) => s.selectedDivision)
@@ -111,10 +116,24 @@ function Spikes({ bin }: { bin: Uint8Array }) {
 
   const geometry = useMemo(() => {
     const geo = spikeGeometry()
+    // the surface carries the field now, so only the very top of the range keeps
+    // a needle: Dhaka and Chattogram still spike, the rest of the country does not
+    const vals: number[] = []
+    for (let r = 0; r < meta.rows; r += step) {
+      for (let c = 0; c < meta.cols; c += step) {
+        const i = r * meta.cols + c
+        if (!db.divisionsBin?.[i]) continue
+        if (bin[i]) vals.push(bin[i])
+      }
+    }
+    vals.sort((a, b) => a - b)
+    const cut = vals.length ? vals[Math.floor(vals.length * 0.98)] : 255
     const cells: number[] = []
     for (let r = 0; r < meta.rows; r += step) {
       for (let c = 0; c < meta.cols; c += step) {
-        if (db.divisionsBin?.[r * meta.cols + c]) cells.push(c + (step - 1) / 2, r + (step - 1) / 2)
+        const i = r * meta.cols + c
+        if (!db.divisionsBin?.[i] || bin[i] < cut) continue
+        cells.push(c + (step - 1) / 2, r + (step - 1) / 2)
       }
     }
     const attr = new THREE.InstancedBufferAttribute(new Float32Array(cells), 2)
@@ -123,10 +142,14 @@ function Spikes({ bin }: { bin: Uint8Array }) {
     geo.boundingSphere = new THREE.Sphere(new THREE.Vector3(0, 30, 0), 1400)
     uniforms.uGrid.value = [meta.cols, meta.rows]
     uniforms.uCellSize.value = CELL_KM
-    uniforms.uBaseHeight.value = BASE_HEIGHT
-    uniforms.uWidth.value = step * 0.82
+    // the surface now carries the field, so the needles are accents, not columns
+    uniforms.uBaseHeight.value = BASE_HEIGHT * 0.32
+    // a quarter of the old width: thin tapered prisms, not columns
+    uniforms.uWidth.value = step * 0.82 * 0.25
+    uniforms.uTerrain.value = terrain.texture
+    uniforms.uTerrainScale.value = terrain.heightScale
     return geo
-  }, [meta, step, uniforms])
+  }, [meta, step, bin, uniforms, terrain])
 
   const regionTextures = useMemo(() => {
     const regions = makeDataTexture(db.regionsBin!, meta.cols, meta.rows)
@@ -166,7 +189,7 @@ function Spikes({ bin }: { bin: Uint8Array }) {
       u.uSink.value = [def.sink ? 1 : 0, def.sink ? 1 : 0]
       u.uCatA.value = def.type === 'categorical' ? 1 : 0
       u.uCatB.value = def.type === 'categorical' ? 1 : 0
-      u.uWidth.value = step * (shape.flat ? 1.0 : 0.82)
+      u.uWidth.value = step * (shape.flat ? 1.0 : 0.82) * 0.25
       invalidate()
       return
     }
@@ -180,7 +203,7 @@ function Spikes({ bin }: { bin: Uint8Array }) {
     u.uFlat.value = [u.uFlat.value[0], nextShape.flat ? 1 : 0]
     u.uSink.value = [u.uSink.value[0], def.sink ? 1 : 0]
     u.uCatB.value = def.type === 'categorical' ? 1 : 0
-    u.uWidth.value = step * (nextShape.flat ? 1.0 : 0.82)
+    u.uWidth.value = step * (nextShape.flat ? 1.0 : 0.82) * 0.25
     u.uMix.value = 0
     mix.current.v = 0
 
@@ -203,7 +226,7 @@ function Spikes({ bin }: { bin: Uint8Array }) {
         u.uFlat.value = [nextShape.flat ? 1 : 0, nextShape.flat ? 1 : 0]
         u.uSink.value = [def.sink ? 1 : 0, def.sink ? 1 : 0]
         u.uCatA.value = def.type === 'categorical' ? 1 : 0
-        u.uWidth.value = step * (nextShape.flat ? 1.0 : 0.82)
+        u.uWidth.value = step * (nextShape.flat ? 1.0 : 0.82) * 0.25
         u.uMix.value = 0
         mix.current.v = 0
         current.current = { def, tex, ramp }
@@ -275,6 +298,26 @@ function Spikes({ bin }: { bin: Uint8Array }) {
       castShadow={false}
       receiveShadow={false}
     />
+  )
+}
+
+/** The 3D scene: the relief, its slab edge, the needles, clouds and labels. */
+function MapScene({ bin }: { bin: Uint8Array }) {
+  const terrain = useTerrain()
+  const activeLayer = useStore((s) => s.activeLayer)
+  const clouds = useStore((s) => s.clouds)
+  const quality = useStore((s) => s.quality)
+  // clouds are a desktop luxury: they only ever obscure a phone-sized map
+  const coarse = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches
+  return (
+    <>
+      <Ground bin={bin} />
+      {terrain && <TerrainMesh bin={bin} terrain={terrain} />}
+      {terrain && <Skirt terrain={terrain} />}
+      {terrain && activeLayer === 'population' && <Spikes bin={bin} terrain={terrain} />}
+      <Clouds on={clouds && !coarse && quality !== 'lite'} />
+      <CityLabels />
+    </>
   )
 }
 
@@ -483,6 +526,7 @@ function Wake({ on }: { on: boolean }) {
 export default function DensityMap() {
   const dataLoaded = useStore((s) => s.dataLoaded)
   const activeLayer = useStore((s) => s.activeLayer)
+  const quality = useStore((s) => s.quality)
   const bin = useLayerBin(activeLayer)
   const tip = useRef<HTMLDivElement>(null)
   const tipName = useRef<HTMLDivElement>(null)
@@ -527,13 +571,18 @@ export default function DensityMap() {
   return (
     <div ref={host} className="relative h-full w-full overflow-hidden bg-cream">
       <Canvas
-        dpr={[1, 1.5]}
+        dpr={quality === 'lite' ? 1 : [1, 1.5]}
         frameloop={inView ? 'demand' : 'never'}
         camera={{ fov: 28, near: 1, far: 12000, position: [0, 1400, 900] }}
         gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
       >
         <color attach="background" args={['#fcfbf9']} />
-        {bin && <><Ground bin={bin} /><Spikes bin={bin} /><CityLabels /></>}
+        {/* one warm key from the upper left, a violet-blue sky fill: the pair the
+            baked shading and the ground shadow are tuned against */}
+        <hemisphereLight args={['#cfc8ff', '#fcfbf9', 0.9]} />
+        <directionalLight color="#fff0dc" intensity={1.4} position={[-420, 520, 320]} />
+        <fog attach="fog" args={['#fcfbf9', 1500, 3400]} />
+        {bin && <MapScene bin={bin} />}
         <Rivers />
         <HitPlane onHover={handleHover} />
         <CameraRig />

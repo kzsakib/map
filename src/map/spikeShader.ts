@@ -10,6 +10,9 @@ uniform sampler2D uRampA;
 uniform sampler2D uRampB;
 uniform sampler2D uRegions;
 uniform sampler2D uDivisions;
+// baked terrain, so a needle stands on the surface instead of the old flat plate
+uniform sampler2D uTerrain;
+uniform float uTerrainScale;
 
 uniform vec2 uGrid;
 uniform float uCellSize;
@@ -102,7 +105,8 @@ void main() {
   local.y *= 1.0 + 0.5 * pop;
   local.y += uPlinth * pop;
 
-  vec3 world = vec3(cx + local.x, local.y, cz + local.z);
+  float base = texture2D(uTerrain, vec2(uv.x, 1.0 - uv.y)).r * uTerrainScale;
+  vec3 world = vec3(cx + local.x, base + local.y, cz + local.z);
   gl_Position = projectionMatrix * viewMatrix * vec4(world, 1.0);
 }
 `
@@ -147,6 +151,8 @@ export function spikeUniforms() {
     uCatB: { value: 0 },
     uRegions: { value: null as THREE.Texture | null },
     uDivisions: { value: null as THREE.Texture | null },
+    uTerrain: { value: null as THREE.Texture | null },
+    uTerrainScale: { value: 11.5 },
     uGrid: { value: [478, 611] as [number, number] },
     uCellSize: { value: 1.11 },
     uBaseHeight: { value: 34 },

@@ -13,6 +13,7 @@ scripts/raw/
 
 # local review screenshots
 artifacts/
+review/
 
 # misc
 .DS_Store

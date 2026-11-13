@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react'
 import { Html, Line } from '@react-three/drei'
 import { cellFromLonLat, db, districtAt, layerDef } from '../lib/data'
 import { useStore } from '../store'
-import { CELL_KM, heightFor } from './layers'
+import { CELL_KM, dataHeightFor } from './layers'
+import { useTerrain } from './useTerrain'
+import { terrainWorldY } from './terrain'
 
 /** hand-tuned spread so the two Khulna-division labels never sit on top of each other */
 const OFFSETS: Record<string, [number, number]> = {
@@ -28,6 +30,8 @@ export default function CityLabels() {
   const selectedDivision = useStore((s) => s.selectedDivision)
   const selectedDistrict = useStore((s) => s.selectedDistrict)
   const [items, setItems] = useState<Item[]>([])
+  // labels ride the continuous surface now, so they need the same height field
+  const terrain = useTerrain()
 
   useEffect(() => {
     const meta = db.meta
@@ -52,7 +56,10 @@ export default function CityLabels() {
       }
       const x = (best.col + 0.5 - meta.cols / 2) * CELL_KM
       const z = (best.row + 0.5 - meta.rows / 2) * CELL_KM
-      const h = heightFor(def, best.q) + 1.5
+      const lon = meta.bbox[0] + (best.col + 0.5) * meta.cellSizeDeg
+      const lat = meta.bbox[3] - (best.row + 0.5) * meta.cellSizeDeg
+      const ground = terrain ? terrainWorldY(terrain, lon, lat) : 0
+      const h = ground + dataHeightFor(def, best.q) + 1.5
       const side = idx % 2 === 0 ? 1 : -1
       const off = OFFSETS[city.name]
       const cityDistrict = districtAt(city.lon, city.lat)
@@ -76,7 +83,7 @@ export default function CityLabels() {
       }
     })
     setItems(next)
-  }, [active, selectedDivision, selectedDistrict])
+  }, [active, selectedDivision, selectedDistrict, terrain])
 
   return (
     <group>
