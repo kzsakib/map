@@ -163,8 +163,9 @@ export function dataHeightFor(layer: LayerDef, q: number): number {
 }
 
 /**
- * Paints the cream ground: a soft cast shadow of the country, then the active
- * layer's ramp blurred into a wash. Returns null until the layer is loaded.
+ * Paints the cream ground: the active layer's ramp blurred into a wash. The
+ * cast shadow is a real shadow map now, not part of this canvas. Returns null
+ * until the layer is loaded.
  */
 export function groundTexture(layer: LayerDef): THREE.CanvasTexture | null {
   const meta = db.meta
@@ -208,34 +209,6 @@ export function groundTexture(layer: LayerDef): THREE.CanvasTexture | null {
   ctx.fillRect(0, 0, W, H)
   ctx.imageSmoothingEnabled = true
   ctx.imageSmoothingQuality = 'high'
-
-  // long violet cast shadow of the whole landmass, as on the reference plate:
-  // a tight contact edge plus a wide, soft throw toward the bottom-right
-  const sil = document.createElement('canvas')
-  sil.width = meta.cols
-  sil.height = meta.rows
-  const sctx = sil.getContext('2d')
-  if (sctx) {
-    const img = sctx.createImageData(meta.cols, meta.rows)
-    for (let i = 0; i < regions.length; i++) {
-      if (!regions[i]) continue
-      img.data[i * 4] = 214
-      img.data[i * 4 + 1] = 210
-      img.data[i * 4 + 2] = 236
-      img.data[i * 4 + 3] = 255
-    }
-    sctx.putImageData(img, 0, 0)
-  }
-  ctx.save()
-  ctx.globalAlpha = 0.14
-  ctx.filter = 'blur(40px)'
-  ctx.drawImage(sil, W * 0.105, H * 0.125, W * 0.99, H * 0.99)
-  ctx.restore()
-  ctx.save()
-  ctx.globalAlpha = 0.16
-  ctx.filter = 'blur(7px)'
-  ctx.drawImage(sil, W * 0.018, H * 0.022, W * 0.99, H * 0.99)
-  ctx.restore()
 
   // the layer wash: flat and class layers stay crisp so the categories read
   ctx.save()

@@ -281,10 +281,66 @@ export default function TerrainMesh({ bin, terrain }: { bin: Uint8Array; terrain
   )
   useEffect(() => () => material.dispose(), [material])
 
+  // The cast shadow has to come from the *displaced* surface, but the shadow
+  // pass renders geometry with a depth material that knows nothing about our
+  // vertex shader. Patch one so it lifts the plane by the same baked height (and
+  // the district plinth) and drops the cells outside the outline, otherwise the
+  // shadow would be a plain rectangle and the sea would cast too.
+  const depthMaterial = useMemo(() => {
+    const depth = new THREE.MeshDepthMaterial({ depthPacking: THREE.RGBADepthPacking })
+    depth.onBeforeCompile = (shader) => {
+      shader.uniforms.uTerrainHeight = uniforms.uTerrainHeight
+      shader.uniforms.uMask = uniforms.uMask
+      shader.uniforms.uTSize = uniforms.uTSize
+      shader.uniforms.uTerrainScale = uniforms.uTerrainScale
+      shader.uniforms.uPlinth = uniforms.uPlinth
+      shader.uniforms.uPop = uniforms.uPop
+
+      shader.vertexShader = shader.vertexShader
+        .replace(
+          '#include <common>',
+          `#include <common>
+          uniform sampler2D uTerrainHeight;
+          uniform sampler2D uMask;
+          uniform vec2 uTSize;
+          uniform float uTerrainScale;
+          uniform float uPlinth;
+          uniform float uPop;
+          varying vec2 vMaskUvD;`,
+        )
+        .replace(
+          '#include <begin_vertex>',
+          `#include <begin_vertex>
+          vec2 huvD = vec2(uv.x, 1.0 - uv.y);
+          vMaskUvD = uv;
+          float maskD = texture2D(uMask, uv).r;
+          transformed.z += texture2D(uTerrainHeight, huvD).r * uTerrainScale * maskD
+            + uPlinth * uPop * maskD;`,
+        )
+
+      shader.fragmentShader = shader.fragmentShader
+        .replace(
+          '#include <common>',
+          `#include <common>
+          uniform sampler2D uMask;
+          varying vec2 vMaskUvD;`,
+        )
+        .replace(
+          'void main() {',
+          `void main() {
+          if (texture2D(uMask, vMaskUvD).r < 0.5) discard;`,
+        )
+    }
+    return depth
+  }, [uniforms])
+  useEffect(() => () => depthMaterial.dispose(), [depthMaterial])
+
   return (
     <mesh
       geometry={geometry}
       material={material}
+      customDepthMaterial={depthMaterial}
+      castShadow
       frustumCulled={false}
       rotation-x={-Math.PI / 2}
       dispose={null}

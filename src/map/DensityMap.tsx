@@ -321,6 +321,45 @@ function MapScene({ bin }: { bin: Uint8Array }) {
   )
 }
 
+/**
+ * The one light that matters. It sits low and far away so the real shadow map
+ * throws the landmass a long shadow across the ground, the way the printed
+ * reference plate does. The shadow camera's frustum has to be pushed after the
+ * JSX props land: three only builds the ortho projection matrix when asked, and
+ * until then the light covers the default 10x10 units and casts nothing.
+ */
+function SunShadow({ on }: { on: boolean }) {
+  const ref = useRef<THREE.DirectionalLight>(null)
+  const invalidate = useThree((s) => s.invalidate)
+
+  useEffect(() => {
+    const light = ref.current
+    if (!light) return
+    light.shadow.camera.updateProjectionMatrix()
+    light.shadow.needsUpdate = true
+    invalidate()
+  }, [invalidate, on])
+
+  return (
+    <directionalLight
+      ref={ref}
+      color="#fff0dc"
+      intensity={1.4}
+      position={[-1100, 300, -780]}
+      castShadow={on}
+      shadow-mapSize={[512, 512]}
+      shadow-camera-left={-900}
+      shadow-camera-right={900}
+      shadow-camera-top={900}
+      shadow-camera-bottom={-900}
+      shadow-camera-near={1}
+      shadow-camera-far={4000}
+      shadow-bias={-0.0006}
+      shadow-normalBias={0.6}
+    />
+  )
+}
+
 function Ground({ bin }: { bin: Uint8Array }) {
   const activeLayer = useStore((s) => s.activeLayer)
   const texRef = useRef<THREE.CanvasTexture | null>(null)
@@ -355,6 +394,12 @@ function Ground({ bin }: { bin: Uint8Array }) {
       >
         <planeGeometry args={[meta.cols * CELL_KM, meta.rows * CELL_KM]} />
         <meshBasicMaterial ref={matRef} color="#ffffff" toneMapped={false} />
+      </mesh>
+      {/* the real cast shadow lands here: a shadow-only plane over the printed
+          cream ground, tinted toward the violet of the reference shadow */}
+      <mesh rotation-x={-Math.PI / 2} position={[0, -0.5, 0]} receiveShadow name="cast-shadow">
+        <planeGeometry args={[meta.cols * CELL_KM, meta.rows * CELL_KM]} />
+        <shadowMaterial color="#4b3a73" opacity={0.3} />
       </mesh>
       <mesh rotation-x={-Math.PI / 2} position={[0, 0.02, 0]} name="hit" visible={false}>
         <planeGeometry args={[meta.cols * CELL_KM, meta.rows * CELL_KM]} />
@@ -571,6 +616,7 @@ export default function DensityMap() {
   return (
     <div ref={host} className="relative h-full w-full overflow-hidden bg-cream">
       <Canvas
+        shadows="soft"
         dpr={quality === 'lite' ? 1 : [1, 1.5]}
         frameloop={inView ? 'demand' : 'never'}
         camera={{ fov: 28, near: 1, far: 12000, position: [0, 1400, 900] }}
@@ -580,7 +626,7 @@ export default function DensityMap() {
         {/* one warm key from the upper left, a violet-blue sky fill: the pair the
             baked shading and the ground shadow are tuned against */}
         <hemisphereLight args={['#cfc8ff', '#fcfbf9', 0.9]} />
-        <directionalLight color="#fff0dc" intensity={1.4} position={[-420, 520, 320]} />
+        <SunShadow on={quality !== 'lite'} />
         <fog attach="fog" args={['#fcfbf9', 1500, 3400]} />
         {bin && <MapScene bin={bin} />}
         <Rivers />

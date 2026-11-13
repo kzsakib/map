@@ -130,5 +130,7 @@ export default function Skirt({ terrain }: { terrain: Terrain }) {
   )
   useEffect(() => () => material.dispose(), [material])
 
-  return <mesh geometry={geometry} material={material} renderOrder={1} frustumCulled={false} />
+  return (
+    <mesh geometry={geometry} material={material} renderOrder={1} frustumCulled={false} castShadow />
+  )
 }
